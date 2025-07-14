@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecorcerie Gestionnaire</title>
+    <link rel="stylesheet" type="text/css" href="/public/assets/css/index.css" />
+    <script src="https://kit.fontawesome.com/65211b898e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <Nav class="bg_nav">
+            <div class="bg_nav__left">
+                <img src="/public/assets/pictures/logos/logo_white.png" />
+                <ul class="nav__container">
+                    <a href="/home" data-link>
+                        <li class="btn-nav">Accueil</li>
+                    </a>
+                    <a href="/daily-planning" data-link>
+                        <li class="btn-nav">Planning journalier</li>
+                    </a>
+                    <a href="/restaurants" data-link>
+                        <li class="btn-nav">Restaurants</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="bg_nav__right">
+                <div class="bg_nav__right__add">
+                    <div class="bg_nav__right__add__btn">
+                        <i class="fa-solid fa-thumbtack"></i><i class="fa-solid fa-angle-down"></i>
+                    </div>
+                    <ul>
+                        <a href="/tasks" data-link><li>Tâches</li></a>
+                        <a href="/courses" data-link><li>Courses</li></a>
+                        <a href="/rdvs" data-link><li>Rdvs</li></a>
+                       <a href="/events" data-link><li>Evenements</li></a>
+                       <a href="/projects" data-link><li>Projets</li></a>
+                    </ul>
+                </div>
+                <div class="avatarMenu">
+                    <img src="/public/assets/pictures/photos/avatar_sample.PNG" />
+                </div>
+            </div>
+        </Nav>
+    </header>
+
+    <div id="root"></div>
+    <script type="module" src="/public/js/index.js"></script>
+</body>
+
+</html>
