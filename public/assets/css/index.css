@@ -3,6 +3,9 @@
 @import "./utils/mediaQueries.css";
 @import "./utils/miseEnPage.css";
 
+/* asside */
+@import "./layouts/asside.css";
+
 /* pages */
 @import "./pages/home.css";
 @import "./pages/auth.css";
