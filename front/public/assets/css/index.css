@@ -1,0 +1,13 @@
+/* utils */
+@import "./utils/animations.css";
+@import "./utils/mediaQueries.css";
+@import "./utils/miseEnPage.css";
+
+/* pages */
+@import "./pages/home.css";
+@import "./pages/auth.css";
+@import "./pages/dailyPlanning.css";
+@import "./pages/restaurants.css";
+@import "./pages/agendaWeek.css";
+@import "./pages/agendaYear.css";
+@import "./pages/agendaPlanning.css";
