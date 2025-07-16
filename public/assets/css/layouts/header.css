@@ -4,7 +4,7 @@ header {
     width: 100%;
     background-color: rgb(29, 29, 31);
     color: white;
-    padding: 18px;
+    padding: 20px;
     border-left: 2px solid rgb(49, 49, 51);
     border-bottom: 2px solid rgb(49, 49, 51);
 
@@ -17,12 +17,38 @@ header {
 
 .header__left--slogan {
     color: #dbdbdb;
-    margin-top:2px;
+    margin-top: 2px;
+    font-size: 14px;
 }
 
 .header__right__alerts {
     display: flex;
     align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, .3);
+    margin-right: 19px;
+    padding-right: 26px
+}
+
+.header__right__alerts--chat,
+.header__right__alerts--bells {
+    border: 1px solid rgba(255, 255, 255, .3);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    position: relative;
+    cursor: pointer;
+}
+
+.header__right__alerts--chat--status,
+.header__right__alerts--bells--status {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(255, 50, 63);
+    border: 1px solid white;
 }
 
 .header__right__profil {
@@ -34,9 +60,48 @@ header {
     width: 35px;
     height: 35px;
     border-radius: 50%;
+    margin-right: 10px;
+}
+
+.header__right__profil__text {
+    font-weight: 600;
+}
+
+header .header__right__profil__text--name {
+    font-size: 14px;
+}
+
+header .header__right__profil__text--role {
+    font-size: 12px;
+}
+
+.header__right__profil__text--role {
+    color: #dbdbdb;
+    font-size: 13px;
 }
 
 .header__right__profil__options {
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.header__right__profil__options i {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    color: #dbdbdb;
+}
+
+.header__right__profil__options .fa-angle-up {
+    top: 3px;
+}
+
+.header__right__profil__options .fa-angle-down {
+    bottom: 3px;
 }

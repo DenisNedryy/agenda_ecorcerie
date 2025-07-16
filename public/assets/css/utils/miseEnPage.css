@@ -11,4 +11,22 @@ body {
 
 main {
     width: 83%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 11%;
+    /* ou toute autre valeur fixe appropriée */
+    min-height: 60px;
+    /* pour éviter d'être trop petit */
+}
+
+#root {
+    flex-grow: 1;
+    background-color: rgb(7, 8, 11);
+    color: white;
+    padding: 20px 40px;
+    overflow: auto;
 }
