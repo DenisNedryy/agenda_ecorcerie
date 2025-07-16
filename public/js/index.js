@@ -93,3 +93,38 @@
 
 // const navigationEventBinder = new NavigationEventBinder(navigationManager);
 // navigationEventBinder.bindClickLinks();
+
+
+
+// views
+import { HomeView } from "./classes/views/HomeView.js";
+
+// ctrls
+import { HomeCtrl } from "/public/js/classes/controllers/HomeCtrl.js";
+
+// core
+import { NavHighLighter } from "./classes/core/NavHighLighter.js";
+import { NavigationManager } from "./classes/core/NavigationManager.js";
+import { NavigationEventBinder } from "./classes/core/NavigationEventBinder.js";
+import { SEOManager } from "./classes/core/SEOManager.js";
+
+// eventBinder
+import { HomeEventBinder } from "./classes/eventBinders/homeEventBinder.js";
+
+
+const homeView = new HomeView();
+const homeEventBinder = new HomeEventBinder(homeView);
+const seoManager = new SEOManager();
+const homeCtrl = new HomeCtrl(homeView, seoManager, homeEventBinder);
+
+
+const routes = {
+    "home": homeCtrl
+}
+
+const navHighLighter = new NavHighLighter();
+const navigationManager = new NavigationManager(routes, navHighLighter);
+navigationManager.init();
+
+const navigationEventBinder = new NavigationEventBinder(navigationManager);
+navigationEventBinder.bindClickLinks();

@@ -1,0 +1,14 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    font-family: roboto-regular;
+}
+
+main {
+    width: 83%;
+}

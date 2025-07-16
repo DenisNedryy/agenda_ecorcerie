@@ -1,0 +1,42 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgb(29, 29, 31);
+    color: white;
+    padding: 18px;
+    border-left: 2px solid rgb(49, 49, 51);
+    border-bottom: 2px solid rgb(49, 49, 51);
+
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+}
+
+.header__left--slogan {
+    color: #dbdbdb;
+    margin-top:2px;
+}
+
+.header__right__alerts {
+    display: flex;
+    align-items: center;
+}
+
+.header__right__profil {
+    display: flex;
+    align-items: center;
+}
+
+.header__right__profil img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.header__right__profil__options {
+    display: flex;
+    flex-direction: column;
+}
