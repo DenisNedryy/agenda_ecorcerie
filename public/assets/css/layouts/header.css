@@ -29,14 +29,53 @@ header {
     padding-right: 26px
 }
 
+.header__right__alerts--bells::before {
+    content: "";
+    position: absolute;
+    z-index: 9999;
+    height: 311px;
+    width: 100px;
+    filter: blur(10px);
+    background: linear-gradient(to right, #ffffff3d 30%, #ffffff1a);
+    top: -30px;
+    transition-duration: 1.5s;
+    transform: translate(-190px) skew(-25deg);
+}
+
+.header__right__alerts--bells:hover::before {
+    transform: translateX(70px) skewX(-25deg);
+    transition-duration: 1s;
+}
+
+.header__right__alerts--chat::before {
+    content: "";
+    position: absolute;
+    z-index: 9999;
+    height: 311px;
+    width: 100px;
+    filter: blur(10px);
+    background: linear-gradient(to right, #ffffff3d 30%, #ffffff1a);
+    top: -30px;
+    transition-duration: 1.5s;
+    transform: translate(-190px) skew(-25deg);
+}
+
+.header__right__alerts--chat:hover::before {
+    transform: translateX(70px) skewX(-25deg);
+    transition-duration: 1s;
+}
+
+
 .header__right__alerts--chat,
 .header__right__alerts--bells {
+    transition-duration: 0.4s;
     border: 1px solid rgba(255, 255, 255, .3);
     padding: 10px;
     border-radius: 5px;
     margin: 5px;
     position: relative;
     cursor: pointer;
+    overflow:hidden;
 }
 
 .header__right__alerts--chat--status,
