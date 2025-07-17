@@ -64,7 +64,7 @@ export class AuthView {
                         </div>
                     </div>
                     <div class="form__footer">
-                        <button class="btn btn-inscription">Log in</button>
+                        <button class="btn btn-inscription">Sign in</button>
                         <p>Already have an account? <span class="bold toggleSign">Log in</span></p>
                          <p class="form__footer__answer"></p>
                     </div>
