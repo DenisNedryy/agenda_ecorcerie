@@ -73,4 +73,30 @@ export class AuthView {
             `;
         }
     }
+
+    showSuccess(char) {
+        const el = document.querySelector(".form__footer__answer");
+        if (el) {
+            setTimeout(() => {
+                el.classList.remove("success");
+                el.innerHTML = "";
+            }, [2000]);
+            el.classList.add("success");
+            el.textContent = char;
+
+            // ajouter icon verte + msg
+        }
+    }
+
+    showError(char) {
+        const el = document.querySelector(".form__footer__answer");
+        if (el) {
+            setTimeout(() => {
+                el.classList.remove("error");
+                el.innerHTML = "";
+            }, [2000]);
+            el.classList.add("error");
+            el.textContent = char;
+        }
+    }
 } 

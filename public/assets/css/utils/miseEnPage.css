@@ -17,10 +17,7 @@ main {
 }
 
 header {
-    height: 71px;
-    /* ou toute autre valeur fixe appropriée */
-    min-height: 60px;
-    /* pour éviter d'être trop petit */
+    height: 79px;
 }
 
 #root {

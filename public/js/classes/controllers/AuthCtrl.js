@@ -19,12 +19,15 @@ export class AuthCtrl {
     async inscription(data) {
         try {
             const result = await this.authModel.inscription(data);
-            this.authView.showSuccess("Inscription réussie !");
-            this.authView.isConnectionPage = true;
-            this.authView.render();
+            if (result.ok) {
+                this.authView.showSuccess("Registration successful");
+                this.authView.isConnectionPage = true;
+                this.authView.render();
+            }
+
         } catch (error) {
             console.error("Erreur d'inscription :", error);
-            this.authView.showError("Erreur lors de l'inscription.");
+            this.authView.showError("Error during the registration.");
         }
     }
 }
