@@ -1,14 +1,53 @@
 export class AuthView {
+    constructor() {
+        this.isConnectionPage = true;
+    }
 
     render() {
         const el = document.getElementById("root");
         if (el) {
+            this.isConnectionPage ? this.renderConnectionPage(el) : this.renderInscriptionPage(el);
+        }
+    }
+
+    renderConnectionPage(el) {
+        if (el) {
             el.innerHTML = ` 
             <div class="auth"> 
-                <form>
+                <form id="form-connection">
                     <div class="form__header">
                         <img src="/public/assets/images/logos/employIn.png"/>
                         <p>Log in to your account</p>
+                    </div>
+                     <div class="form__body">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="René"/>
+                        </div>
+                            <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" placeholder="123Soleil"/>
+                        </div>
+                    </div>
+                    <div class="form__footer">
+                        <button class="btn btn-connection">Log in</button>
+                        <p>Don't have an account? <span class="bold toggleSign">Sign up</span></p>
+                       <p class="form__footer__answer"></p>
+                    </div>
+                </form>
+            </div>
+            `;
+        }
+    }
+
+    renderInscriptionPage(el) {
+        if (el) {
+            el.innerHTML = ` 
+            <div class="auth"> 
+                <form id="form-inscription">
+                    <div class="form__header">
+                        <img src="/public/assets/images/logos/employIn.png"/>
+                        <p>Create an account</p>
                     </div>
                      <div class="form__body">
                         <div class="form-group">
@@ -25,12 +64,11 @@ export class AuthView {
                         </div>
                     </div>
                     <div class="form__footer">
-                        <button class="btn">Log in</button>
-                        <p>Don't have an account? Sign up</p>
+                        <button class="btn btn-inscription">Log in</button>
+                        <p>Already have an account? <span class="bold toggleSign">Log in</span></p>
+                         <p class="form__footer__answer"></p>
                     </div>
                 </form>
-
-               
             </div>
             `;
         }

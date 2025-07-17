@@ -101,6 +101,9 @@ import { NavigationManager } from "./classes/core/NavigationManager.js";
 import { NavigationEventBinder } from "./classes/core/NavigationEventBinder.js";
 import { SEOManager } from "./classes/core/SEOManager.js";
 
+// modesl
+import { AuthModel } from "./classes/models/AuthModel.js";
+
 // views
 import { HomeView } from "./classes/views/HomeView.js";
 import { AuthView } from "./classes/views/AuthView.js";
@@ -120,8 +123,9 @@ const homeEventBinder = new HomeEventBinder(homeView);
 const homeCtrl = new HomeCtrl(homeView, seoManager, homeEventBinder);
 
 const authView = new AuthView();
+const authModel = new AuthModel();
 const authEventBinder = new AuthEventBinder(authView);
-const authCtrl = new AuthCtrl(authView, seoManager, authEventBinder);
+const authCtrl = new AuthCtrl(authView, seoManager, authEventBinder, authModel);
 
 
 const routes = {
