@@ -3,7 +3,7 @@ export class HomeCtrl {
     constructor(homeView, seoManager, homeEventBinder) {
         this.homeView = homeView;
         this.seoManager = seoManager;
-        this.homeEventBinder = homeEventBinder;
+        this.homeEventBinder = homeEventBinder; 
     }
 
     async show() {

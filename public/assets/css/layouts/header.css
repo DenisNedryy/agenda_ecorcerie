@@ -16,9 +16,10 @@ header {
 }
 
 .header__left--slogan {
-    color: #dbdbdb;
+    color: #bfbfbf;
     margin-top: 2px;
     font-size: 14px;
+    margin-top: 5px;
 }
 
 .header__right__alerts {
@@ -75,7 +76,7 @@ header {
     margin: 5px;
     position: relative;
     cursor: pointer;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .header__right__alerts--chat--status,
@@ -115,7 +116,7 @@ header .header__right__profil__text--role {
 }
 
 .header__right__profil__text--role {
-    color: #dbdbdb;
+    color: #bfbfbf;
     font-size: 13px;
 }
 

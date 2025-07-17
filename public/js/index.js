@@ -95,31 +95,38 @@
 // navigationEventBinder.bindClickLinks();
 
 
-
-// views
-import { HomeView } from "./classes/views/HomeView.js";
-
-// ctrls
-import { HomeCtrl } from "/public/js/classes/controllers/HomeCtrl.js";
-
 // core
 import { NavHighLighter } from "./classes/core/NavHighLighter.js";
 import { NavigationManager } from "./classes/core/NavigationManager.js";
 import { NavigationEventBinder } from "./classes/core/NavigationEventBinder.js";
 import { SEOManager } from "./classes/core/SEOManager.js";
 
+// views
+import { HomeView } from "./classes/views/HomeView.js";
+import { AuthView } from "./classes/views/AuthView.js";
+
+// ctrls
+import { HomeCtrl } from "/public/js/classes/controllers/HomeCtrl.js";
+import { AuthCtrl } from "./classes/controllers/AuthCtrl.js";
+
 // eventBinder
 import { HomeEventBinder } from "./classes/eventBinders/homeEventBinder.js";
+import { AuthEventBinder } from "./classes/eventBinders/AuthEventBinder.js";
 
+const seoManager = new SEOManager();
 
 const homeView = new HomeView();
 const homeEventBinder = new HomeEventBinder(homeView);
-const seoManager = new SEOManager();
 const homeCtrl = new HomeCtrl(homeView, seoManager, homeEventBinder);
+
+const authView = new AuthView();
+const authEventBinder = new AuthEventBinder(authView);
+const authCtrl = new AuthCtrl(authView, seoManager, authEventBinder);
 
 
 const routes = {
-    "home": homeCtrl
+    "home": homeCtrl,
+    "auth": authCtrl
 }
 
 const navHighLighter = new NavHighLighter();

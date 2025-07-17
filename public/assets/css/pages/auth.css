@@ -1,0 +1,80 @@
+.auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    align-items: center;
+    background-color: rgb(29, 29, 31);
+    padding: 40px;
+}
+
+.form__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.form__header img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-bottom: 23px;
+}
+
+.form__header p {
+    font-size: 22px;
+}
+
+.form__body {
+    width: 100%;
+}
+
+.auth .form-group {
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, .1);
+    height: 51px;
+    border-radius: 7px;
+    margin: 23px 0px;
+    width: 100%;
+}
+
+.auth .form-group label {
+    position: absolute;
+    top: -16px;
+    left: 15px;
+    color: #dfdbdb;
+    font-size: 12px;
+    background-color: rgb(29, 29, 31);
+    padding: 6px 5px;
+}
+
+.auth input {
+    height: 100%;
+    background-color: rgb(29, 29, 31);
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    color: #dfdbdb;
+    padding-left: 10px;
+}
+
+.form__footer {
+    width: 100%;
+}
+
+.form__footer button {
+    width: 100%;
+}
+
+.form__footer p{
+    margin-top:25px;
+    text-align:center;
+}
