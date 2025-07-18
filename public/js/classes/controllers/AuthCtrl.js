@@ -19,15 +19,34 @@ export class AuthCtrl {
     async inscription(data) {
         try {
             const result = await this.authModel.inscription(data);
+            console.log(result);
             if (result.ok) {
                 this.authView.showSuccess("Registration successful");
-                this.authView.isConnectionPage = true;
-                this.authView.render();
+            } else {
+                this.authView.showError(result.data?.msg || "Something went wrong.");
             }
 
         } catch (error) {
             console.error("Erreur d'inscription :", error);
-            this.authView.showError("Error during the registration.");
+              this.authView.showError(result.data?.msg || "Something went wrong.");
+        }
+    }
+
+
+        async connection(data) {
+            console.log(data);
+        try {
+            const result = await this.authModel.connection(data);
+            console.log(result);
+            if (result.ok) {
+                this.authView.showSuccess("Connection successful");
+            } else {
+                this.authView.showError(result.data?.msg || "Something went wrong.");
+            }
+
+        } catch (error) {
+            console.error("Erreur d'inscription :", error);
+              this.authView.showError(result.data?.msg || "Something went wrong.");
         }
     }
 }

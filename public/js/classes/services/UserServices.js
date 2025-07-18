@@ -1,8 +1,6 @@
-import { HOST } from "../host.js";
+import { HOST } from "../../host.js";
 
 export class UserServices {
-
-
 
     async getMyProfil() {
         try {
@@ -29,14 +27,9 @@ export class UserServices {
             const preRes = await fetch(`${HOST}/api/auth/inscription`, {
                 method: "POST",
                 headers: {
-                    'Content-Type': "application/json"
                 },
                 credentials: "include",
-                body: JSON.stringify({
-                    name: data.name,
-                    password: data.password,
-                    magicWord: data.magicWord
-                }),
+                body: data,
             });
             const res = await preRes.json();
             return {
@@ -54,13 +47,9 @@ export class UserServices {
             const preRes = await fetch(`${HOST}/api/auth/connection`, {
                 method: "POST",
                 headers: {
-                    'Content-Type': "application/json"
                 },
                 credentials: "include",
-                body: JSON.stringify({
-                    name: data.name,
-                    password: data.password,
-                }),
+                body: data,
             });
             const res = await preRes.json();
             return {

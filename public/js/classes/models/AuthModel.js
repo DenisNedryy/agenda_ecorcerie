@@ -1,15 +1,15 @@
 export class AuthModel {
 
-    constructor() {
-
+    constructor(userServices) {
+        this.userServices = userServices;
     }
 
     async inscription(data) {
-        console.log(data);
+        return await this.userServices.inscription(data);
     }
 
-    async connection() {
-
+    async connection(data) {
+        return await this.userServices.connection(data);
     }
 
 }

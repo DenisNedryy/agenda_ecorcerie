@@ -95,6 +95,11 @@
 // navigationEventBinder.bindClickLinks();
 
 
+
+// services
+import { UserServices } from "./classes/services/UserServices.js";
+import { TaskServices } from "./classes/services/TaskServices.js";
+
 // core
 import { NavHighLighter } from "./classes/core/NavHighLighter.js";
 import { NavigationManager } from "./classes/core/NavigationManager.js";
@@ -117,21 +122,22 @@ import { HomeEventBinder } from "./classes/eventBinders/homeEventBinder.js";
 import { AuthEventBinder } from "./classes/eventBinders/AuthEventBinder.js";
 
 const seoManager = new SEOManager();
+const userServices = new UserServices();
+const taskServices = new TaskServices();
 
 const homeView = new HomeView();
 const homeEventBinder = new HomeEventBinder(homeView);
 const homeCtrl = new HomeCtrl(homeView, seoManager, homeEventBinder);
 
 const authView = new AuthView();
-const authModel = new AuthModel();
+const authModel = new AuthModel(userServices);
 const authEventBinder = new AuthEventBinder(authView);
 const authCtrl = new AuthCtrl(authView, seoManager, authEventBinder, authModel);
-
 
 const routes = {
     "home": homeCtrl,
     "auth": authCtrl
-}
+} 
 
 const navHighLighter = new NavHighLighter();
 const navigationManager = new NavigationManager(routes, navHighLighter);

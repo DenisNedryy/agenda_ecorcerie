@@ -29,6 +29,9 @@ export class AuthEventBinder {
 
         if (e.target.classList.contains("btn-connection")) {
             e.preventDefault();
+            const form = e.target.closest("form");
+            const formData = new FormData(form);
+            this.controller.connection(formData);
         }
     }
 

@@ -16,7 +16,7 @@ export class AuthView {
             <div class="auth"> 
                 <form id="form-connection">
                     <div class="form__header">
-                        <img src="/public/assets/images/logos/employIn.png"/>
+                        <img src="/public/assets/images/logos/employIn.png"/> 
                         <p>Log in to your account</p>
                     </div>
                      <div class="form__body">
@@ -32,7 +32,7 @@ export class AuthView {
                     <div class="form__footer">
                         <button class="btn btn-connection">Log in</button>
                         <p>Don't have an account? <span class="bold toggleSign">Sign up</span></p>
-                       <p class="form__footer__answer"></p>
+                          <div class="form__footer__answer"></div>
                     </div>
                 </form>
             </div>
@@ -66,7 +66,7 @@ export class AuthView {
                     <div class="form__footer">
                         <button class="btn btn-inscription">Sign in</button>
                         <p>Already have an account? <span class="bold toggleSign">Log in</span></p>
-                         <p class="form__footer__answer"></p>
+                      <div class="form__footer__answer"></div>
                     </div>
                 </form>
             </div>
@@ -77,26 +77,37 @@ export class AuthView {
     showSuccess(char) {
         const el = document.querySelector(".form__footer__answer");
         if (el) {
+            el.innerHTML = "";
             setTimeout(() => {
                 el.classList.remove("success");
                 el.innerHTML = "";
             }, [2000]);
             el.classList.add("success");
-            el.textContent = char;
-
-            // ajouter icon verte + msg
+            const ico = document.createElement("i");
+            ico.className = "fa-solid fa-check";
+            const para = document.createElement("p");
+            para.textContent = char;
+            el.appendChild(ico);
+            el.appendChild(para);
         }
     }
 
     showError(char) {
         const el = document.querySelector(".form__footer__answer");
+        console.log(el);
         if (el) {
+            el.innerHTML = "";
             setTimeout(() => {
                 el.classList.remove("error");
                 el.innerHTML = "";
             }, [2000]);
             el.classList.add("error");
-            el.textContent = char;
+            const ico = document.createElement("i");
+            ico.className = "fa-solid fa-triangle-exclamation";
+            const para = document.createElement("p");
+            para.textContent = char;
+            el.appendChild(ico);
+            el.appendChild(para);
         }
     }
 } 
