@@ -3,7 +3,7 @@ export class DateHelper {
     ajouterJours(date, nbJours) {
         const nouvelleDate = new Date(date);
         nouvelleDate.setDate(date.getDate() + nbJours);
-        return nouvelleDate;
+        return nouvelleDate; 
     }
 
     sortTasksByDate(tasks) {

@@ -71,15 +71,14 @@ export class HomeView {
                 <div class="home__bodyContainer">
                     <div class="home__bodyContainer__plannings">
                         <div class="home__bodyContainer__plannings__events">
-                            <img src="/public/assets/images/vue_aerienne/ete.png"/>
                         </div>
                          <div class="home__bodyContainer__plannings__rdvs">
-                            <img src="/public/assets/images/vue_aerienne/automne.png"/>
+                           
                         </div>
               
                     </div>
                     <div class="home__bodyContainer__chatGeneral">
-                          <img src="/public/assets/images/vue_aerienne/hiver.png"/>
+                          <p>chat général</p>
                     </div>
                 </div>
             </div>

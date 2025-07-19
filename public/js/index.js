@@ -94,7 +94,12 @@
 // const navigationEventBinder = new NavigationEventBinder(navigationManager);
 // navigationEventBinder.bindClickLinks();
 
+// composants
+import { DecompteEvents } from "./classes/components/DecompteEvents.js";
+import { HomeAgendaRdv } from "./classes/components/HomeAgendaRdv.js";
 
+// utils
+import { DateHelper } from "./classes/utils/DateHelper.js";
 
 // services
 import { UserServices } from "./classes/services/UserServices.js";
@@ -106,8 +111,9 @@ import { NavigationManager } from "./classes/core/NavigationManager.js";
 import { NavigationEventBinder } from "./classes/core/NavigationEventBinder.js";
 import { SEOManager } from "./classes/core/SEOManager.js";
 
-// modesl
+// models
 import { AuthModel } from "./classes/models/AuthModel.js";
+import { AgendaPlanning } from "./classes/models/AgendaPlanning.js";
 
 // views
 import { HomeView } from "./classes/views/HomeView.js";
@@ -125,9 +131,15 @@ const seoManager = new SEOManager();
 const userServices = new UserServices();
 const taskServices = new TaskServices();
 
+const dateHelper = new DateHelper();
+const agendaPlanning = new AgendaPlanning();
+
+const decompteEvents = new DecompteEvents();
+const homeAgendaRdv = new HomeAgendaRdv();
+
 const homeView = new HomeView();
 const homeEventBinder = new HomeEventBinder(homeView);
-const homeCtrl = new HomeCtrl(homeView, seoManager, homeEventBinder);
+const homeCtrl = new HomeCtrl(homeView, seoManager, homeEventBinder, dateHelper, agendaPlanning, decompteEvents, homeAgendaRdv);
 
 const authView = new AuthView();
 const authModel = new AuthModel(userServices);
@@ -137,11 +149,11 @@ const authCtrl = new AuthCtrl(authView, seoManager, authEventBinder, authModel);
 const routes = {
     "home": homeCtrl,
     "auth": authCtrl
-} 
+}
 
 const navHighLighter = new NavHighLighter();
 const navigationManager = new NavigationManager(routes, navHighLighter);
 navigationManager.init();
 
 const navigationEventBinder = new NavigationEventBinder(navigationManager);
-navigationEventBinder.bindClickLinks();
+navigationEventBinder.bindClickLinks(); 
