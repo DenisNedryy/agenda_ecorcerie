@@ -15,7 +15,7 @@ export class DecompteEvents {
             const countDownObj = countdown.getCountdownParts();
             el.innerHTML = `
             <p>Next event</p>
-            <p class="eventName">${event.name}</p>
+            <p class="eventName">"${event.name}"</p>
             <div class="decompte">
                 <div>
                     <div class="circle">${countDownObj.days}</div>

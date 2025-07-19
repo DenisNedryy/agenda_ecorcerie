@@ -6,9 +6,16 @@
     color: white;
     font-size: 16px;
     font-weight: 600;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.bold{
-    font-weight:600;
+
+
+/* spans  */
+.blue {
+    color: blue;
+}
+
+.bold {
+    font-weight: 600;
 }

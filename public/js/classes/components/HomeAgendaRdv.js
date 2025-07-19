@@ -2,7 +2,6 @@ export class HomeAgendaRdv{
     
 
     render(rdvs){
-        console.log(rdvs);
         const el = document.querySelector(".home__bodyContainer__plannings__rdvs");
         if(el){
         
