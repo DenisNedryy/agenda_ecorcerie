@@ -1,10 +1,30 @@
 export class HomeAgendaRdv{
     
 
-    render(){
+    render(rdvs){
+        console.log(rdvs);
         const el = document.querySelector(".home__bodyContainer__plannings__rdvs");
         if(el){
-            el.innerHTML = "3 prochains rdvs";
+        
+            const title = document.createElement("p");
+            title.textContent = "Next rdvs";
+
+            const ul = document.createElement("ul");
+            ul.className="home__bodyContainer__plannings__rdvs__container";
+            for(let i=0;i<rdvs.length;i++){
+                if(rdvs[i]){
+                    const li = document.createElement("li");
+                    const name = document.createElement("p");
+                    name.textContent = rdvs[i].name;
+                    const date = document.createElement("p");
+                    date.textContent = new Date(rdvs[i].date).toLocaleDateString('fr-FR'); ;
+                    li.appendChild(name);
+                    li.appendChild(date);
+                    ul.appendChild(li);
+                }
+            }
+            el.appendChild(title);
+            el.appendChild(ul);
         }
     }
 }

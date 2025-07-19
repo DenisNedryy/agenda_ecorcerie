@@ -109,7 +109,7 @@ body .banner__text--title {
 .home__bodyContainer__plannings img {
     width: 100%;
     height: 100%;
-    object-fit:cover;
+    object-fit: cover;
 }
 
 .home__bodyContainer__plannings__events,
@@ -119,6 +119,10 @@ body .banner__text--title {
     padding: 24px;
     border-radius: 15px;
     margin: 20px 15px;
+    height: 229px;
+}
+
+body .home__bodyContainer__plannings__rdvs {
     height: 300px;
 }
 
@@ -128,11 +132,71 @@ body .banner__text--title {
     padding: 24px;
     border-radius: 15px;
     margin: 20px 0px;
-    height: 620px;
+    height: 551px;
     width: 40%;
 }
 
 .home__bodyContainer__chatGeneral img {
     width: 100%;
     height: 100%;
+}
+
+/* --------decompte events--------- */
+
+.decompte {
+    display: flex;
+    align-items: center;
+}
+
+.circle {
+    padding: 15px;
+    background-color: rgb(0, 95, 242);
+    margin: 5px;
+    min-width: 50px;
+    text-align: center;
+}
+
+.decompte {
+    margin: 30px 15px;
+}
+
+.decompte div p {
+    text-align: center;
+    font-size: 12px;
+}
+
+.eventName {
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+/* --------rdvs-------- */
+
+.home__bodyContainer__plannings__rdvs__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 19px;
+}
+
+.home__bodyContainer__plannings__rdvs__container li {
+    display: flex;
+}
+
+.home__bodyContainer__plannings__rdvs__container li p:first-child {
+    margin-right: 15px;
+}
+
+.home__bodyContainer__plannings__rdvs__container li p:last-child {
+    color: rgb(0, 95, 242);
+    font-weight: 600;
+}
+
+.home__bodyContainer__plannings__rdvs__container li {
+    border: 1px solid rgba(108, 102, 102, 0.2);
+    border-radius: 3px;
+    padding: 16px;
+    margin: 7px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    justify-content: space-between;
 }

@@ -19,7 +19,6 @@ export class AuthCtrl {
     async inscription(data) {
         try {
             const result = await this.authModel.inscription(data);
-            console.log(result);
             if (result.ok) {
                 this.authView.showSuccess("Registration successful");
             } else {
@@ -34,10 +33,8 @@ export class AuthCtrl {
 
 
         async connection(data) {
-            console.log(data);
         try {
             const result = await this.authModel.connection(data);
-            console.log(result);
             if (result.ok) {
                 this.authView.showSuccess("Connection successful");
             } else {

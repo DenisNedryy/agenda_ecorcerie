@@ -100,6 +100,7 @@ import { HomeAgendaRdv } from "./classes/components/HomeAgendaRdv.js";
 
 // utils
 import { DateHelper } from "./classes/utils/DateHelper.js";
+import { TaskHelper } from "./classes/utils/TaskHelper.js";
 
 // services
 import { UserServices } from "./classes/services/UserServices.js";
@@ -117,7 +118,7 @@ import { AgendaPlanning } from "./classes/models/AgendaPlanning.js";
 
 // views
 import { HomeView } from "./classes/views/HomeView.js";
-import { AuthView } from "./classes/views/AuthView.js";
+import { AuthView } from "./classes/views/AuthView.js"; 
 
 // ctrls
 import { HomeCtrl } from "/public/js/classes/controllers/HomeCtrl.js";
@@ -129,17 +130,18 @@ import { AuthEventBinder } from "./classes/eventBinders/AuthEventBinder.js";
 
 const seoManager = new SEOManager();
 const userServices = new UserServices();
-const taskServices = new TaskServices();
+const taskServices = new TaskServices(); 
 
 const dateHelper = new DateHelper();
+const taskHelper = new TaskHelper();
 const agendaPlanning = new AgendaPlanning();
 
 const decompteEvents = new DecompteEvents();
-const homeAgendaRdv = new HomeAgendaRdv();
+const homeAgendaRdv = new HomeAgendaRdv();  
 
 const homeView = new HomeView();
 const homeEventBinder = new HomeEventBinder(homeView);
-const homeCtrl = new HomeCtrl(homeView, seoManager, homeEventBinder, dateHelper, agendaPlanning, decompteEvents, homeAgendaRdv);
+const homeCtrl = new HomeCtrl(homeView, seoManager, homeEventBinder, dateHelper, taskHelper, agendaPlanning, decompteEvents, homeAgendaRdv, taskServices);
 
 const authView = new AuthView();
 const authModel = new AuthModel(userServices);
