@@ -3,7 +3,7 @@ export class DateHelper {
     ajouterJours(date, nbJours) {
         const nouvelleDate = new Date(date);
         nouvelleDate.setDate(date.getDate() + nbJours);
-        return nouvelleDate; 
+        return nouvelleDate;
     }
 
     sortTasksByDate(tasks) {
@@ -42,7 +42,12 @@ export class DateHelper {
     }
 
     // convertie une date en string avec format 00-00-00
-    convertDateToSTring(date) {
+    convertDateToSTring(date = false) {
+        if (date === false) {
+            date = new Date();
+        }
+        
+        date = new Date(date);
         const year = date.getFullYear();
         const month = this.getFormatForNumbersWidhtZeroBefore(date.getMonth());
         const day = this.getFormatForNumbersWidhtZeroBefore(date.getDate());

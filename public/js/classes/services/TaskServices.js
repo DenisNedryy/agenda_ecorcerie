@@ -6,7 +6,7 @@ export class TaskServices {
 
     async getTasks() {
         try {
-            const preRes = await fetch(`${HOST}/api/tasks`, {
+            const preRes = await fetch(`${HOST}/api/tasks`, {  
                 method: "GET",
                 headers: {
                     'Content-Type': "application/json" 
@@ -20,7 +20,7 @@ export class TaskServices {
                 data: res
             };
         } catch (err) {
-            console.error(err);
+            console.error(err); 
         }
     }
 

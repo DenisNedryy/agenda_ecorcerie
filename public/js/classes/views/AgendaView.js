@@ -13,6 +13,7 @@ export class AgendaView {
                         <li><i class="fa-solid fa-rectangle-list"></i><p>Planning</p></li>
                     </ul>
                 </div>
+                <div class="agendaContent"></div>
             </div>
             `
         }

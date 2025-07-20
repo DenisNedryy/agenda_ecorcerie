@@ -1,0 +1,97 @@
+.agendaContent__header {
+    display: flex;
+    align-items: center;
+    width: 54%;
+    margin: auto;
+}
+
+.agendaContent__header .btn {
+    padding: 10px;
+}
+
+.agendaContent__header--iconsContainer {
+    margin: 0px 11px;
+}
+
+.agendaContent__header--iconsContainer i {
+    margin: 0px 11px;
+    cursor: pointer;
+}
+
+.agendaContent__body {
+    display: flex;
+}
+
+.agendaContent__body__left {
+    width: 30%;
+}
+
+.agendaContent__body__right {
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+}
+
+.agendaContent__body__left ul {
+    list-style-type: none;
+}
+
+.agendaContent__body__left--category {
+    margin: 25px 0px 5px 0px;
+}
+
+.agendaContent__body__left .checkBox {
+    width: 25px;
+    height: 25px;
+    background-color: rgb(0, 95, 242);
+}
+
+.agendaContent__body__left li {
+    display: flex;
+    align-items: flex-end;
+    margin: 19px 0px;
+}
+
+.agendaContent__body__left li .checkBox {
+    margin-right: 15px;
+}
+
+.agendaContent__body__right ul {
+    list-style-type: none;
+    margin-top: 17px;
+}
+
+
+.dayFiche {
+    width: 14.2%;
+}
+
+.dayFiche--title p:first-child {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.dayFiche--title p:last-child {
+    font-size: 27px;
+    text-align: center;
+}
+
+.dayFiche ul li {
+    border: 1px solid rgba(255, 255, 255, .1);
+    padding: 13px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 46px;
+}
+
+.dayFiche ul li:first-child {
+    border-top: none;
+}
+
+.checkBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

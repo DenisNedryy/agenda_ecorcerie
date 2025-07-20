@@ -21,6 +21,7 @@ import { SEOManager } from "./classes/core/SEOManager.js";
 // models
 import { AuthModel } from "./classes/models/AuthModel.js";
 import { AgendaPlanning } from "./classes/models/AgendaPlanning.js";
+import { AgendaWeek } from "./classes/models/AgendaWeek.js";
 
 // views
 import { HomeView } from "./classes/views/HomeView.js";
@@ -45,10 +46,10 @@ const taskServices = new TaskServices();
 
 const dateHelper = new DateHelper();
 const taskHelper = new TaskHelper();
-const agendaPlanning = new AgendaPlanning();
+const agendaPlanning = new AgendaPlanning(); 
 
 const decompteEvents = new DecompteEvents();
-const homeAgendaRdv = new HomeAgendaRdv();
+const homeAgendaRdv = new HomeAgendaRdv(); 
 
 const homeView = new HomeView();
 const homeEventBinder = new HomeEventBinder(homeView);
@@ -61,9 +62,10 @@ const authCtrl = new AuthCtrl(authView, seoManager, authEventBinder, authModel);
 
 const agendaView = new AgendaView();
 const weekView = new WeekView();
+const agendaWeekModel = new AgendaWeek(dateHelper);
 const agendaEventBinder = new AgendaEventBinder(agendaView);
 const agendaWeekEventBinder = new AgendaWeekEventBinder(weekView);
-const agendaCtrl = new AgendaCtrl(agendaView, seoManager, agendaEventBinder, authServices);
+const agendaCtrl = new AgendaCtrl(agendaView, seoManager, agendaEventBinder, authServices, weekView, agendaWeekEventBinder, taskServices, agendaWeekModel);
 
 const routes = {
     "home": homeCtrl,

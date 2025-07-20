@@ -91,7 +91,7 @@ export class UserServices {
                 },
                 credentials: "include",
             });
-            const res = await preRes.json();
+            const res = await preRes.json(); 
             return {
                 status: preRes.status,
                 ok: preRes.ok,
