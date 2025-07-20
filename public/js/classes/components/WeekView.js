@@ -116,7 +116,7 @@ export class WeekView {
                 const day = document.createElement("p");
                 day.textContent = this.weekDays[index];
                 const number = document.createElement("p");
-                number.textContent = cell.dayNumber;
+                number.textContent = cell.weekDays.dayDateNum;
                 titleContainer.appendChild(day);
                 titleContainer.appendChild(number);
                 containerSupreme.appendChild(titleContainer);
