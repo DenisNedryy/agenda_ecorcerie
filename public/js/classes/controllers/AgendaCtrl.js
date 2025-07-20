@@ -15,7 +15,8 @@ export class AgendaCtrl {
         this.agendaView.render();
         await this.authServices.init();
         const auth = await this.authServices.getAuth();
-        const userSelected = await this.authServices.getUserById(this.authServices.userIdSelected);
+        const userSelectedRes = await this.authServices.getUserById(this.authServices.userIdSelected);
+        const userSelected = userSelectedRes.data.user;
         const tasksRes = await this.taskServices.getTasks();
         const tasks = tasksRes.data.tasks;
         const tasksFiltered = await this.agendaWeekModel.getTasksFiltered(auth, userSelected, tasks);

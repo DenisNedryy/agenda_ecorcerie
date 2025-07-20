@@ -21,7 +21,8 @@ export class AgendaWeek {
     }
 
     async getTasksFiltered(auth, userSelected, tasks) {
-        const myTasksProvisoire = tasks.filter((task) => task.user_id === userSelected.id ? userSelected.id : auth.id);
+        const selectedUserId = userSelected?.id ?? auth.id;
+        const myTasksProvisoire = tasks.filter((task) => task.user_id === selectedUserId);
         let myTasks = myTasksProvisoire.map((task) => {
 
             const myDate = new Date(task.date);
@@ -133,7 +134,7 @@ export class AgendaWeek {
 
                 if (
                     Number(taskYear) === Number(dayYear) &&
-                    Number(taskMonth+1) === Number(dayMonth) &&
+                    Number(taskMonth + 1) === Number(dayMonth) &&
                     Number(taskDay) === Number(dayDateNum)
                 ) {
                     tasksByDay.push({

@@ -104,7 +104,6 @@ export class WeekView {
     }
 
     renderCalendar(data) {
-        console.log(data);
         const el = document.querySelector(".agendaContent__body__right");
         if (el) {
 
