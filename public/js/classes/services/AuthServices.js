@@ -38,4 +38,6 @@ export class AuthServices {
         const authRes = await this.userServices.getMyProfil();
         return authRes.data.user;
     }
+
+    
 }

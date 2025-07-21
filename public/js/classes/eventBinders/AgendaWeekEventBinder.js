@@ -70,7 +70,17 @@ export class AgendaWeekEventBinder {
                 await this.controller.taskServices.createTask(task);
             }
             this.controller.show();
+        }
 
+        // focus modal 
+        else if (e.target.classList.contains("task")) {
+            const taskId = e.target.getAttribute("data-id");
+            if (taskId !== undefined && (!e.target.classList.contains("bgJaune") && !e.target.classList.contains("bgBlack"))) {
+                const taskRes = await this.controller.taskServices.readOneTask(taskId);
+                const task = taskRes.data.tasks;
+                this.controller.weekView.renderModalFocus(task);
+                document.querySelector(".modalFocus").classList.remove("hidden");
+            }
         }
     }
 

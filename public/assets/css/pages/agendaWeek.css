@@ -24,13 +24,14 @@
 
 .agendaContent__body__left {
     width: 30%;
-    position:relative;
+    position: relative;
 }
 
 .agendaContent__body__right {
     width: 100%;
     display: flex;
     margin-top: 50px;
+    position: relative;
 }
 
 .agendaContent__body__left ul {
@@ -138,24 +139,74 @@
 
 .bgBanksHollidays {
     background-color: #d92020;
+    cursor: pointer;
 }
 
 .bgTasks {
     background-color: #dd4646;
+    cursor: pointer;
 }
 
 .bgRdvs {
     background-color: rgb(22, 96, 6);
+    cursor: pointer;
 }
 
 .bgEvents {
     background-color: rgb(153, 37, 130);
+    cursor: pointer;
 }
 
 .bgProjects {
     background-color: rgb(255, 120, 0);
+    cursor: pointer;
 }
 
 .bgCourses {
     background-color: palevioletred;
+    cursor: pointer;
 }
+
+/* modal focus task */
+.boxTitle {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: rgb(0, 95, 242);
+    margin-right: 15px;
+}
+
+.modalFocus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContent__header{
+    display:flex;
+    justify-content:flex-end;
+}
+
+.modalContent__body >div{
+    display:flex;
+    margin-top:20px;
+}
+
+
+.modalContent__body__name div:last-child p:last-child{
+    font-size:12px;
+}
+
+.modalContent__body__description{
+    display:flex;
+}
+.agendaContent__body__right i{
+    margin-right: 15px;
+}
+

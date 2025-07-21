@@ -15,7 +15,7 @@ export class AgendaCtrl {
 
     async show() { 
         this.agendaView.render();
-        console.log(this.authServices.userIdSelected);
+
         await this.authServices.init();
         this.agendaWeekModel.setCurrentDateMsState();
         const auth = await this.authServices.getAuth();

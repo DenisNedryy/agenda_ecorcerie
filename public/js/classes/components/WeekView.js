@@ -102,10 +102,10 @@ export class WeekView {
 
             el.appendChild(paramTitle);
             el.appendChild(paramUl);
-            
+
             // modal selector
             const modalContainer = document.createElement("div");
-            modalContainer.className="modalAddContainer";
+            modalContainer.className = "modalAddContainer";
             el.appendChild(modalContainer);
         }
     }
@@ -156,6 +156,43 @@ export class WeekView {
         }
     }
 
+    renderModalFocus(task) {
+        const el = document.querySelector(".modalFocus");
+        console.log(task);
+        if (el) {
+            const date = new Date(task.date);
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const dayNum = date.getDay();
+            el.innerHTML = `
+                <div class="modalContent">
+                    <div class="modalContent__header">
+                        <i class="fa-solid fa-pencil task-update"></i>
+                        <i class="fa-solid fa-trash-can task-delete"></i>
+                        <i class="fa-solid fa-xmark" task-leave></i>
+                    </div>
+                    <div class="modalContent__body">
+                    <div class="modalContent__body__name">
+                            <div class="boxTitle"> </div>
+                                <div>
+                                  <p>${task.name}</p>
+                                  <p> ${day} ${this.yearMonth[month - 1]} ${year}</p>             
+                                </div>
+                     </div>
+
+                     <div class="modalContent__body__description">
+                        <i class="fa-solid fa-bars"></i>
+                        <p>${task.description}</p>
+                     </div>
+
+                     
+                    </div>
+                </div>
+              `;
+        }
+    }
+
     renderCalendar(data) {
         const el = document.querySelector(".agendaContent__body__right");
         if (el) {
@@ -169,7 +206,7 @@ export class WeekView {
                 const day = document.createElement("p");
                 day.textContent = this.weekDays[index];
                 const number = document.createElement("p");
-                number.className = cell.weekDays.isCurrentDay? "weekNumber currentDay" : "weekNumber";
+                number.className = cell.weekDays.isCurrentDay ? "weekNumber currentDay" : "weekNumber";
                 number.textContent = cell.weekDays.dayDateNum;
                 const date = `${cell.weekDays.year}-${cell.weekDays.month}-${cell.weekDays.dayDateNum}`;
                 number.setAttribute("data-date", date);
@@ -182,7 +219,8 @@ export class WeekView {
                     const li = document.createElement("li");
                     if (data[index].tasksByDay[i]) {
                         li.textContent = data[index].tasksByDay[i].name;
-                        li.className = data[index].tasksByDay[i].bg;
+                        li.className = `${data[index].tasksByDay[i].bg} task`;
+                        li.setAttribute("data-id", data[index].tasksByDay[i].id);
                     }
                     ul.appendChild(li);
                 }
@@ -190,7 +228,9 @@ export class WeekView {
                 el.appendChild(containerSupreme);
             });
 
-
+            const modalFocus = document.createElement("div");
+            modalFocus.className = "modalFocus hidden";
+            el.appendChild(modalFocus);
         }
     }
 
@@ -218,7 +258,6 @@ export class WeekView {
             this.renderParameters(params);
             this.renderCalendar(data.weekDays);
             this.renderModel();
-
         }
     }
 }
