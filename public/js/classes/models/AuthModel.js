@@ -12,4 +12,9 @@ export class AuthModel {
         return await this.userServices.connection(data);
     }
 
+    async setCurrentUser(){
+         const authRes =  await this.userServices.getMyProfil();
+         return authRes.data.user;
+    }
+
 }

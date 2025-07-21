@@ -20,7 +20,7 @@ exports.getOneUser = async (req, res, next) => {
     try {
         const id = req.params.id;
         console.log(id);
-        const [users] = await pool.execute(`SELECT * FROM users WHERE id = ?`,[id]);
+        const [users] = await pool.execute(`SELECT id, name, img_url FROM users WHERE id = ?`,[id]);
         if (users.length === 0) { return res.status(200).json({ users: [] }) };
         return res.status(200).json({ user: users[0] });
     } catch (err) {

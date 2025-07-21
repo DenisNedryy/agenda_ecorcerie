@@ -6,7 +6,7 @@ const fs = require('fs').promises;
 
 exports.readTasks = async (req, res, next) => {
     try {
-        const [tasks] = await pool.execute('SELECT * FROM tasks');
+        const [tasks] = await pool.execute('SELECT * FROM tasks ORDER BY _index');
         if (tasks.length === 0) {
             return res.status(200).json({ tasks: [] });
         }
@@ -32,7 +32,6 @@ exports.readOneTask = async (req, res, next) => {
 exports.createTask = async (req, res, next) => {
     try {
         const { name, description, date, type, author_id, owner_id } = req.body;
-
         const data = {
             id: uuidv4(),
             name: name || null,
@@ -43,9 +42,7 @@ exports.createTask = async (req, res, next) => {
             owner_id: owner_id || null 
         }
 
-        console.log(data);
         data.user_id = owner_id;
-
 
         const keys = Object.keys(data).filter((key) => data[key] !== null);
         console.log(keys);

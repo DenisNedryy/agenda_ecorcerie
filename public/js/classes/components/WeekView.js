@@ -31,9 +31,9 @@ export class WeekView {
         const el = document.querySelector(".agendaContent__header");
         if (el) {
             el.innerHTML = `
-                  <div class="btn">Today</div>
+                  <div class="btn btn-today">Today</div>
                   <div class="agendaContent__header--iconsContainer">
-                    <i class="fa-solid fa-angle-left"></i> <i class="fa-solid fa-angle-right"></i>
+                    <i class="fa-solid fa-angle-left previousWeek"></i> <i class="fa-solid fa-angle-right nextWeek"></i>
                   </div>
                   <p>${this.yearMonth[Number(date.month) - 1]} ${date.year}</p>
             `;
@@ -54,9 +54,10 @@ export class WeekView {
                 const li = document.createElement("li");
                 const check = document.createElement("div");
                 check.className = "checkBox";
+                check.setAttribute("data-userId", users[i].id)
                 if (users[i].isSelected) {
                     const i = document.createElement("i");
-                    i.className = "fa-solid fa-check";
+                    i.className = "fa-solid fa-check checkBox__user";
                     check.appendChild(i);
                 }
                 const name = document.createElement("p");
@@ -65,6 +66,7 @@ export class WeekView {
                 li.appendChild(name);
                 ul.appendChild(li);
             };
+
             el.appendChild(userTitle);
             el.appendChild(ul);
 
@@ -76,10 +78,10 @@ export class WeekView {
 
             const bank = document.createElement("li");
             const bankBox = document.createElement("div");
-            bankBox.className = "checkBox";
+            bankBox.className = "checkBoxParams";
             if (params.bankHolidays) {
                 const i = document.createElement("i");
-                i.className = "fa-solid fa-check";
+                i.className = "fa-solid fa-check checkBox__params";
                 bankBox.appendChild(i);
             }
             const bankPara = document.createElement("p");
@@ -100,6 +102,57 @@ export class WeekView {
 
             el.appendChild(paramTitle);
             el.appendChild(paramUl);
+            
+            // modal selector
+            const modalContainer = document.createElement("div");
+            modalContainer.className="modalAddContainer";
+            el.appendChild(modalContainer);
+        }
+    }
+
+    renderModel() {
+        const el = document.querySelector(".modalAddContainer");
+        if (el) {
+            el.innerHTML = `
+            <div class="modal hidden">
+  <div class="modalContent">
+    <div class="modal__content__header">
+      <h3>Nouvelle tâche</h3>
+      <i class="fa-solid fa-square-xmark leaveModal"></i>
+    </div>
+
+    <form class="formTask-add">
+      <!-- Name -->
+      <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label for="description">Description</label>
+        <textarea name="description" id="description"></textarea>
+      </div>
+
+      <!-- Type -->
+      <div>
+        <label for="typeSelect">Type</label>
+        <select id="typeSelect" name="type">
+          <option value="tasks">Tasks</option>
+          <option value="courses">Courses</option>
+          <option value="rdvs">Rdvs</option>
+          <option value="events">Events</option>
+          <option value="projets">Projets</option>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-submit-addTask">Enregistrer</button>
+    </form>
+  </div>
+</div>
+
+            `;
         }
     }
 
@@ -116,7 +169,10 @@ export class WeekView {
                 const day = document.createElement("p");
                 day.textContent = this.weekDays[index];
                 const number = document.createElement("p");
+                number.className = cell.weekDays.isCurrentDay? "weekNumber currentDay" : "weekNumber";
                 number.textContent = cell.weekDays.dayDateNum;
+                const date = `${cell.weekDays.year}-${cell.weekDays.month}-${cell.weekDays.dayDateNum}`;
+                number.setAttribute("data-date", date);
                 titleContainer.appendChild(day);
                 titleContainer.appendChild(number);
                 containerSupreme.appendChild(titleContainer);
@@ -124,16 +180,12 @@ export class WeekView {
                 const ul = document.createElement("ul");
                 for (let i = 0; i < 20; i++) {
                     const li = document.createElement("li");
-                    if(data[index].tasksByDay[i]){
+                    if (data[index].tasksByDay[i]) {
                         li.textContent = data[index].tasksByDay[i].name;
+                        li.className = data[index].tasksByDay[i].bg;
                     }
                     ul.appendChild(li);
                 }
-                // cell.tasksByDay.forEach((cell2) => {
-                //     const li = document.createElement("li");
-                //     li.textContent = cell2.name;
-                //     ul.appendChild(li);
-                // });
                 containerSupreme.appendChild(ul);
                 el.appendChild(containerSupreme);
             });
@@ -165,6 +217,7 @@ export class WeekView {
             this.renderNavigation(data.dateSelected);
             this.renderParameters(params);
             this.renderCalendar(data.weekDays);
+            this.renderModel();
 
         }
     }

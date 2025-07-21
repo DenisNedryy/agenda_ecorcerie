@@ -4,6 +4,7 @@ export class AgendaWeek {
         this.dateHelper = dateHelper;
         this.stateDateMs = null;
         this.bankHolidays = true;
+        this.modalAddDate = null;
     }
 
     // modal week
@@ -38,8 +39,10 @@ export class AgendaWeek {
     }
 
     setCurrentDateMsState() {
-        const currentDate = new Date();
-        this.stateDateMs = currentDate.getTime();
+        if (this.stateDateMs === null) {
+            const currentDate = new Date();
+            this.stateDateMs = currentDate.getTime();
+        }
     }
 
     async getAgendaPerWeek(tasks, date = false) {
@@ -62,18 +65,18 @@ export class AgendaWeek {
         const pentecote = this.dateHelper.ajouterJours(paques, 50);
 
         const joursFeries = [
-            { type: 'jours férié', name: 'Jour de l’an', date: new Date(currentYear + 1, 0, 1), bg: 'bgRed' },
-            { type: 'jours férié', name: 'Lundi de Pâques', date: lundiPaques, bg: 'bgRed' },
-            { type: 'jours férié', name: 'Fête du Travail', date: new Date(currentYear, 4, 1), bg: 'bgRed' },
-            { type: 'jours férié', name: 'Victoire 1945', date: new Date(currentYear, 4, 8), bg: 'bgRed' },
-            { type: 'jours férié', name: 'Ascension', date: ascension, bg: 'bgRed' },
-            { type: 'jours férié', name: 'Pentecôte', date: pentecote, bg: 'bgRed' },
-            { type: 'jours férié', name: 'Fête Nationale', date: new Date(currentYear, 6, 14), bg: 'bgRed' },
-            { type: 'jours férié', name: 'Assomption', date: new Date(currentYear, 7, 15), bg: 'bgRed' },
-            { type: 'jours férié', name: 'Toussaint', date: new Date(currentYear, 10, 1), bg: 'bgRed' },
-            { type: 'jours férié', name: 'Armistice', date: new Date(currentYear, 10, 11), bg: 'bgRed' },
-            { type: 'jours férié', name: 'Noël', date: new Date(currentYear, 11, 25), bg: 'bgRed' },
-            { type: 'jours férié', name: 'Pâques', date: paques, bg: 'bgRed' }
+            { type: 'jours férié', name: 'Jour de l’an', date: new Date(currentYear + 1, 0, 1), bg: 'bgBanksHollidays' },
+            { type: 'jours férié', name: 'Lundi de Pâques', date: lundiPaques, bg: 'bgBanksHollidays' },
+            { type: 'jours férié', name: 'Fête du Travail', date: new Date(currentYear, 4, 1), bg: 'bgBanksHollidays' },
+            { type: 'jours férié', name: 'Victoire 1945', date: new Date(currentYear, 4, 8), bg: 'bgBanksHollidays' },
+            { type: 'jours férié', name: 'Ascension', date: ascension, bg: 'bgBanksHollidays' },
+            { type: 'jours férié', name: 'Pentecôte', date: pentecote, bg: 'bgBanksHollidays' },
+            { type: 'jours férié', name: 'Fête Nationale', date: new Date(currentYear, 6, 14), bg: 'bgBanksHollidays' },
+            { type: 'jours férié', name: 'Assomption', date: new Date(currentYear, 7, 15), bg: 'bgBanksHollidays' },
+            { type: 'jours férié', name: 'Toussaint', date: new Date(currentYear, 10, 1), bg: 'bgBanksHollidays' },
+            { type: 'jours férié', name: 'Armistice', date: new Date(currentYear, 10, 11), bg: 'bgBanksHollidays' },
+            { type: 'jours férié', name: 'Noël', date: new Date(currentYear, 11, 25), bg: 'bgBanksHollidays' },
+            { type: 'jours férié', name: 'Pâques', date: paques, bg: 'bgBanksHollidays' }
         ];
 
         for (let i = 0; i < 7; i++) {
@@ -111,12 +114,24 @@ export class AgendaWeek {
                 dayLetter: dayDay
             });
 
+            function stripTime(date) {
+                return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
+            }
+
             if (this.bankHolidays) {
                 for (let jf of joursFeries) {
-                    if (dayDate.getTime() === jf.date.getTime()) {
+                    if (stripTime(dayDate) === stripTime(jf.date)) {
                         tasksByDay.push(jf);
                     }
                 }
+            }
+
+            function isSameDay(d1, d2) {
+                return (
+                    d1.getFullYear() === d2.getFullYear() &&
+                    d1.getMonth() === d2.getMonth() &&
+                    d1.getDate() === d2.getDate()
+                );
             }
 
             const weekDays = {
@@ -125,7 +140,7 @@ export class AgendaWeek {
                 month: dayMonth,
                 dayDateNum,
                 bankHolidays: this.bankHolidays,
-                isCurrentDay: (currentYear === dayYear && currentMonth === dayMonth && currentDay === dayDateNum)
+                isCurrentDay: (isSameDay(dayDate, new Date()))
             };
 
             for (let task of tasks) {
@@ -137,6 +152,7 @@ export class AgendaWeek {
                     Number(taskMonth + 1) === Number(dayMonth) &&
                     Number(taskDay) === Number(dayDateNum)
                 ) {
+
                     tasksByDay.push({
                         id: task.id,
                         author_id: task.author_id || null,
@@ -148,7 +164,8 @@ export class AgendaWeek {
                         year: dayYear,
                         month: taskMonth,
                         dateNum: taskDay,
-                        dayLetter: dayDay
+                        dayLetter: dayDay,
+                        bg: this.getBgColor(task.type)
                     });
                 }
             }
@@ -160,5 +177,50 @@ export class AgendaWeek {
             dateSelected: { year: currentYear, month: currentMonth, dateDate: currentDay },
             weekDays: weekDayTasks
         };
+    }
+
+    getBgColor(type) {
+        switch (type) {
+            case 'tasks':
+                return 'bgTasks';
+                break;
+
+            case 'events':
+                return 'bgEvents';
+                break;
+
+            case 'rdvs':
+                return 'bgRdvs';
+                break;
+
+            case 'projets':
+                return 'bgProjects';
+                break;
+
+            case 'courses':
+                return 'bgCourses';
+                break;
+        }
+    }
+
+    getTaskObj(form, userIdSelected, auth) {
+        const date = this.modalAddDate;
+
+        const name = form.elements['name'].value;
+        const description = form.elements['description'].value;
+        const type = form.elements['type'].value;
+        form.reset();
+        const task = {
+            name: name,
+            description: description || null,
+            type: type,
+            date:date,
+            owner_id: userIdSelected
+        };
+
+
+        // check if auth!==current 
+        if (auth.id !== userIdSelected.id) task.author_id = auth.id;
+        return task;
     }
 }

@@ -1,10 +1,11 @@
 export class AuthCtrl {
 
-    constructor(authView, seoManager, authEventBinder, authModel) {
+    constructor(authView, seoManager, authEventBinder, authModel, authServices) {
         this.authView = authView;
         this.seoManager = seoManager;
         this.authEventBinder = authEventBinder;
         this.authModel = authModel;
+        this.authServices = authServices;
 
         // Liaison : le EventBinder saura appeler le contrôleur
         this.authEventBinder.setController(this);
@@ -27,23 +28,25 @@ export class AuthCtrl {
 
         } catch (error) {
             console.error("Erreur d'inscription :", error);
-              this.authView.showError(result.data?.msg || "Something went wrong.");
+            this.authView.showError(result.data?.msg || "Something went wrong.");
         }
     }
 
-
-        async connection(data) {
+    async connection(data) {
         try {
             const result = await this.authModel.connection(data);
             if (result.ok) {
                 this.authView.showSuccess("Connection successful");
+                const auth = await this.authServices.setCurrentUser();
+                this.authServices.userIdSelected = auth.id;
+                console.log(this.authServices.userIdSelected);
             } else {
                 this.authView.showError(result.data?.msg || "Something went wrong.");
             }
 
         } catch (error) {
             console.error("Erreur d'inscription :", error);
-              this.authView.showError(result.data?.msg || "Something went wrong.");
+            this.authView.showError(result.data?.msg || "Something went wrong.");
         }
     }
 }

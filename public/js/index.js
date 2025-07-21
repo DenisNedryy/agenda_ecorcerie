@@ -58,7 +58,7 @@ const homeCtrl = new HomeCtrl(homeView, seoManager, homeEventBinder, dateHelper,
 const authView = new AuthView();
 const authModel = new AuthModel(userServices);
 const authEventBinder = new AuthEventBinder(authView);
-const authCtrl = new AuthCtrl(authView, seoManager, authEventBinder, authModel);
+const authCtrl = new AuthCtrl(authView, seoManager, authEventBinder, authModel, authServices);
 
 const agendaView = new AgendaView();
 const weekView = new WeekView();

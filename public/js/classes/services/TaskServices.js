@@ -45,6 +45,7 @@ export class TaskServices {
     }
 
     async createTask(data) {
+        
         try {
             const preRes = await fetch(`${HOST}/api/tasks`, {
                 method: "POST",

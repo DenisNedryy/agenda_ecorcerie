@@ -6,9 +6,12 @@ export class AuthServices {
     }
 
     async init() {
-        const auth = await this.userServices.getMyProfil();
-        this.userIdSelected = auth.data.user.id;
+        if (this.userIdSelected === null) {
+            const auth = await this.userServices.getMyProfil();
+            this.userIdSelected = auth.data.user.id;
+        }
     }
+
 
     async getUserById(id) {
         return await this.userServices.getOneUser(id);
@@ -25,9 +28,14 @@ export class AuthServices {
     }
 
     async getUsersStatus() {
-        const users = await this.getUsers();
+        const users = await this.getUsers()
         return users.map((user) => {
             return { ...user, isSelected: user.id === this.userIdSelected ? true : false };
         });
+    }
+
+    async setCurrentUser() {
+        const authRes = await this.userServices.getMyProfil();
+        return authRes.data.user;
     }
 }

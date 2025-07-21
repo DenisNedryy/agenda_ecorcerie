@@ -4,6 +4,7 @@
 @import "./utils/mediaQueries.css";
 @import "./utils/miseEnPage.css";
 @import "./utils/fonts.css";
+@import "./utils/ModalAdd.css";
 
 /* asside */
 @import "./layouts/aside.css";

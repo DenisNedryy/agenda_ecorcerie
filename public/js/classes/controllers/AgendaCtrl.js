@@ -9,29 +9,30 @@ export class AgendaCtrl {
         this.agendaWeekEventBinder = agendaWeekEventBinder;
         this.taskServices = taskServices;
         this.agendaWeekModel = agendaWeekModel;
+
+        this.agendaWeekEventBinder.setController(this);
     };
 
-    async show() {
+    async show() { 
         this.agendaView.render();
+        console.log(this.authServices.userIdSelected);
         await this.authServices.init();
+        this.agendaWeekModel.setCurrentDateMsState();
         const auth = await this.authServices.getAuth();
         const userSelectedRes = await this.authServices.getUserById(this.authServices.userIdSelected);
         const userSelected = userSelectedRes.data.user;
         const tasksRes = await this.taskServices.getTasks();
         const tasks = tasksRes.data.tasks;
         const tasksFiltered = await this.agendaWeekModel.getTasksFiltered(auth, userSelected, tasks);
-        const weekData = await this.agendaWeekModel.getAgendaPerWeek(tasksFiltered);
+        const date = new Date(this.agendaWeekModel.stateDateMs);
+        const weekData = await this.agendaWeekModel.getAgendaPerWeek(tasksFiltered, date);
 
-        // this.weekView.render(user, date);
-        // besoin d'ajouter string navigation
-        //                  object users & parameters
-        //                  calendar
-
-        const params = await this.authServices.getUsersStatus();
+        const params = await this.authServices.getUsersStatus(); 
         params.bankHolidays = this.agendaWeekModel.bankHolidays;
 
         this.weekView.render(weekData, params);
-        // mettre this.authServices.userIdSelected dans le renderViewWeek()
         this.seoManager.setTitle('Ecorcerie Gestionnaire - Agenda');
+
+        this.agendaWeekEventBinder.addEventListeners();
     }
 }

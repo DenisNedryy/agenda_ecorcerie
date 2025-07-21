@@ -24,6 +24,7 @@
 
 .agendaContent__body__left {
     width: 30%;
+    position:relative;
 }
 
 .agendaContent__body__right {
@@ -40,11 +41,13 @@
     margin: 25px 0px 5px 0px;
 }
 
-.agendaContent__body__left .checkBox {
+.agendaContent__body__left .checkBox,
+.agendaContent__body__left .checkBoxParams {
     width: 25px;
     height: 25px;
     background-color: rgb(0, 95, 242);
 }
+
 
 .agendaContent__body__left li {
     display: flex;
@@ -52,7 +55,8 @@
     margin: 19px 0px;
 }
 
-.agendaContent__body__left li .checkBox {
+.agendaContent__body__left li .checkBox,
+.agendaContent__body__left li .checkBoxParams {
     margin-right: 15px;
 }
 
@@ -66,6 +70,16 @@
     width: 14.2%;
 }
 
+.dayFiche--title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.currentDay {
+    background-color: rgb(0, 95, 242);
+}
+
 .dayFiche--title p:first-child {
     text-align: center;
     margin-bottom: 5px;
@@ -74,6 +88,20 @@
 .dayFiche--title p:last-child {
     font-size: 27px;
     text-align: center;
+    font-size: 27px;
+    text-align: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 19px;
+    cursor: pointer;
+}
+
+.dayFiche--title p:last-child:hover {
+    background-color: rgb(168, 199, 250);
 }
 
 .dayFiche ul li {
@@ -82,16 +110,52 @@
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
-    height: 46px;
+    white-space: wrap;
+    height: 56px;
+    font-size: 13px;
 }
 
 .dayFiche ul li:first-child {
     border-top: none;
 }
 
-.checkBox {
+.checkBox,
+.checkBoxParams {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.bgJaune {
+    background-color: #ffef00;
+    color: black;
+}
+
+.bgBlack {
+    background-color: #121415;
+}
+
+.bgBanksHollidays {
+    background-color: #d92020;
+}
+
+.bgTasks {
+    background-color: #dd4646;
+}
+
+.bgRdvs {
+    background-color: rgb(22, 96, 6);
+}
+
+.bgEvents {
+    background-color: rgb(153, 37, 130);
+}
+
+.bgProjects {
+    background-color: rgb(255, 120, 0);
+}
+
+.bgCourses {
+    background-color: palevioletred;
 }
