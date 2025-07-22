@@ -128,44 +128,51 @@
     cursor: pointer;
 }
 
+/* === Thème personnalisé pour fond #121415 === */
 .bgJaune {
-    background-color: #ffef00;
-    color: black;
+    background-color: #D4AF37;  /* Jaune or élégant */
+    color: #121415;
 }
 
 .bgBlack {
-    background-color: #121415;
+    background-color: #121415;  /* Fond principal */
 }
 
 .bgBanksHollidays {
-    background-color: #d92020;
+    background-color: #B04A4A;  /* Rouge atténué */
     cursor: pointer;
 }
 
 .bgTasks {
-    background-color: #dd4646;
+    background-color: #CA6F1E;  /* Orange terre cuite */
     cursor: pointer;
 }
 
 .bgRdvs {
-    background-color: rgb(22, 96, 6);
+    background-color: #4C9A2A;  /* Vert naturel */
     cursor: pointer;
 }
 
 .bgEvents {
-    background-color: rgb(153, 37, 130);
+    background-color: #A56CC1;  /* Violet doux */
     cursor: pointer;
 }
 
 .bgProjects {
-    background-color: rgb(255, 120, 0);
+    background-color: #2E86C1;  /* Bleu moyen */
     cursor: pointer;
 }
 
 .bgCourses {
-    background-color: palevioletred;
+    background-color: #5DADE2;  /* Bleu clair adouci */
+    color: #f0f0f0;
     cursor: pointer;
 }
+
+
+
+
+
 
 /* modal focus task */
 .boxTitle {
@@ -188,25 +195,48 @@
     align-items: center;
 }
 
-.modalContent__header{
-    display:flex;
-    justify-content:flex-end;
+.modalContent__header {
+    display: flex;
+    justify-content: flex-end;
 }
 
-.modalContent__body >div{
-    display:flex;
-    margin-top:20px;
+.modalContent__body>div {
+    display: flex;
+    margin-top: 20px;
 }
 
 
-.modalContent__body__name div:last-child p:last-child{
-    font-size:12px;
+.modalContent__body__name div:last-child p:last-child {
+    font-size: 12px;
 }
 
-.modalContent__body__description{
-    display:flex;
+.modalContent__body__description {
+    display: flex;
+    align-items: center;
 }
-.agendaContent__body__right i{
+
+.modalContent__body__description i {
+    margin-left: 26px;
+    font-size: 12px;
+    color: rgb(0, 95, 242);
+}
+
+.agendaContent__body__right i {
     margin-right: 15px;
 }
 
+.modalContent__header i {
+    cursor: pointer;
+}
+
+.agendaContent__body__right .dayFiche {
+    z-index: 50;
+}
+
+.modal {
+    z-index: 9999;
+}
+
+.modalFocus {
+    z-index: 9999;
+}

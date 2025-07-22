@@ -2,6 +2,8 @@
 import { DecompteEvents } from "./classes/components/DecompteEvents.js";
 import { HomeAgendaRdv } from "./classes/components/HomeAgendaRdv.js";
 import { WeekView } from "./classes/components/WeekView.js";
+import { YearView } from "./classes/components/YearView.js";
+import { PlanningView } from "./classes/components/PlanningView.js";
 
 // utils
 import { DateHelper } from "./classes/utils/DateHelper.js";
@@ -22,6 +24,7 @@ import { SEOManager } from "./classes/core/SEOManager.js";
 import { AuthModel } from "./classes/models/AuthModel.js";
 import { AgendaPlanning } from "./classes/models/AgendaPlanning.js";
 import { AgendaWeek } from "./classes/models/AgendaWeek.js";
+import { AgendaYear } from "./classes/models/AgendaYear.js";
 
 // views
 import { HomeView } from "./classes/views/HomeView.js";
@@ -38,6 +41,8 @@ import { HomeEventBinder } from "./classes/eventBinders/homeEventBinder.js";
 import { AuthEventBinder } from "./classes/eventBinders/AuthEventBinder.js";
 import { AgendaEventBinder } from "./classes/eventBinders/AgendaEventBinder.js";
 import { AgendaWeekEventBinder } from "./classes/eventBinders/AgendaWeekEventBinder.js";
+import { AgendaYearEventBinder } from "./classes/eventBinders/AgendaYearEventBinder.js";
+import { AgendaPlanningEventBinder } from "./classes/eventBinders/AgendaPlanningEventBinder.js";
 
 const seoManager = new SEOManager();
 const userServices = new UserServices();
@@ -46,10 +51,10 @@ const taskServices = new TaskServices();
 
 const dateHelper = new DateHelper();
 const taskHelper = new TaskHelper();
-const agendaPlanning = new AgendaPlanning(); 
+const agendaPlanning = new AgendaPlanning();
 
 const decompteEvents = new DecompteEvents();
-const homeAgendaRdv = new HomeAgendaRdv(); 
+const homeAgendaRdv = new HomeAgendaRdv();
 
 const homeView = new HomeView();
 const homeEventBinder = new HomeEventBinder(homeView);
@@ -62,10 +67,15 @@ const authCtrl = new AuthCtrl(authView, seoManager, authEventBinder, authModel, 
 
 const agendaView = new AgendaView();
 const weekView = new WeekView();
+const yearView = new YearView();
+const planningView = new PlanningView();
 const agendaWeekModel = new AgendaWeek(dateHelper);
+const agendaYearModel = new AgendaYear(dateHelper);
 const agendaEventBinder = new AgendaEventBinder(agendaView);
 const agendaWeekEventBinder = new AgendaWeekEventBinder(weekView);
-const agendaCtrl = new AgendaCtrl(agendaView, seoManager, agendaEventBinder, authServices, weekView, agendaWeekEventBinder, taskServices, agendaWeekModel);
+const agendaYearEventBinder = new AgendaYearEventBinder(yearView);
+const agendaPlanningEventBinder = new AgendaPlanningEventBinder(planningView);
+const agendaCtrl = new AgendaCtrl(agendaView, seoManager, agendaEventBinder, authServices, weekView, agendaWeekEventBinder, taskServices, agendaWeekModel, yearView, planningView, agendaYearEventBinder, agendaPlanningEventBinder,agendaYearModel);
 
 const routes = {
     "home": homeCtrl,

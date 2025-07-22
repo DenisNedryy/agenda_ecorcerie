@@ -90,7 +90,7 @@ export class AgendaWeek {
             const tasksByDay = [];
 
             const dayDay = dayDate.getDay();
-            if (dayDay === 2) tasksByDay.push({
+            if (dayDay === 5) tasksByDay.push({
                 bg: "bgJaune",
                 color: 'colorBlack',
                 type: 'tasks',
@@ -102,7 +102,7 @@ export class AgendaWeek {
                 dayLetter: dayDay
             });
 
-            if (dayDay === 5) tasksByDay.push({
+            if (dayDay === 2) tasksByDay.push({
                 bg: "bgBlack",
                 color: 'colorWhite',
                 type: 'tasks',

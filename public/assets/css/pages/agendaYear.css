@@ -1,0 +1,41 @@
+.agendaYear {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.agendaYear__monthBox {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 234px;
+    padding: 25px;
+}
+
+.agendaYear__monthBox table {
+    font-size: 12px;
+}
+
+.agendaYear__monthBox table th {
+    padding: 5px;
+}
+
+.agendaYear__monthBox table td {
+    padding: 5px;
+}
+
+.yearCurrentDay {
+    background-color: rgb(0, 95, 242) !important;
+    /* #005C38  vert sympa*/
+    font-weight: 600;
+    border-radius: 50%;
+}
+
+.numero {
+    padding: 5px;
+}
+
+.numero:hover {
+    background-color: rgba(255, 255, 255, .2);
+    border-radius: 50%;
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 export class AgendaCtrl {
 
-    constructor(agendaView, seoManager, agendaEventBinder, authServices, weekView, agendaWeekEventBinder, taskServices, agendaWeekModel) {
+    constructor(agendaView, seoManager, agendaEventBinder, authServices, weekView, agendaWeekEventBinder, taskServices, agendaWeekModel, yearView, planningView, agendaYearEventBinder, agendaPlanningEventBinder, agendaYearModel) {
         this.agendaView = agendaView;
         this.seoManager = seoManager;
         this.agendaEventBinder = agendaEventBinder;
@@ -9,11 +9,20 @@ export class AgendaCtrl {
         this.agendaWeekEventBinder = agendaWeekEventBinder;
         this.taskServices = taskServices;
         this.agendaWeekModel = agendaWeekModel;
+        this.yearView = yearView;
+        this.planningView = planningView;
+        this.agendaYearEventBinder = agendaYearEventBinder;
+        this.agendaPlanningEventBinder = agendaPlanningEventBinder;
+        this.agendaYearModel = agendaYearModel;
 
+        this.agendaEventBinder.setController(this);
         this.agendaWeekEventBinder.setController(this);
+        this.agendaYearEventBinder.setController(this);
+        this.agendaPlanningEventBinder.setController(this);
+
     };
 
-    async show() { 
+    async show() {
         this.agendaView.render();
 
         await this.authServices.init();
@@ -27,12 +36,13 @@ export class AgendaCtrl {
         const date = new Date(this.agendaWeekModel.stateDateMs);
         const weekData = await this.agendaWeekModel.getAgendaPerWeek(tasksFiltered, date);
 
-        const params = await this.authServices.getUsersStatus(); 
+        const params = await this.authServices.getUsersStatus();
         params.bankHolidays = this.agendaWeekModel.bankHolidays;
 
         this.weekView.render(weekData, params);
         this.seoManager.setTitle('Ecorcerie Gestionnaire - Agenda');
 
         this.agendaWeekEventBinder.addEventListeners();
+        this.agendaEventBinder.addEventListeners();
     }
 }

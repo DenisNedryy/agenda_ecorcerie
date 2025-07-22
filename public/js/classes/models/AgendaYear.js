@@ -1,5 +1,8 @@
 export class AgendaYear {
-
+ 
+    constructor(dateHelper){
+        this.dateHelper = dateHelper;
+    }
 
     previousWeek() {
         this.stateYear--;
@@ -13,7 +16,7 @@ export class AgendaYear {
 
     getAgendaPerYear(year = false) {
         if (!year) year = new Date().getFullYear();
-        const daysPerMonths = [31, this.getDaysInFebruary(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        const daysPerMonths = [31, this.dateHelper.getDaysInFebruary(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         const currentDate = new Date();
         this.stateDateMs = currentDate;
 
@@ -29,9 +32,10 @@ export class AgendaYear {
                 return {
                     isCurrentDay: year === currentYear && index === currentMonth && day === currentDay,
                     day,
-                    task: this.checkIfTask(year, index + 1, day)
+
                 };
             })
         }));
     }
 }
+

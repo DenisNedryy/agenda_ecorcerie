@@ -82,6 +82,35 @@ export class AgendaWeekEventBinder {
                 document.querySelector(".modalFocus").classList.remove("hidden");
             }
         }
+
+        else if (e.target.classList.contains("task-leave")) {
+            document.querySelector(".modalFocus").classList.add("hidden");
+        }
+
+        else if (e.target.classList.contains("task-delete")) {
+            const taskId = e.target.closest(".modalContent").getAttribute("data-id");
+            await this.controller.taskServices.deleteTask(taskId);
+            this.controller.show();
+        }
+
+        else if (e.target.classList.contains("task-update")) {
+            document.querySelector(".modalContent__footer").classList.remove("hidden");
+        }
+
+        else if (e.target.classList.contains("btn-updateTask")) {
+            e.preventDefault();
+            const taskId = e.target.closest(".modalContent").getAttribute("data-id");
+            const form = e.target.closest("form");
+
+            const data = {
+                name: form.elements['name'].value || null,
+                description: form.elements['description'].value || null,
+                type: form.elements['type'].value || null
+            }
+
+            await this.controller.taskServices.updateTask(data, taskId);
+            this.controller.show();
+        }
     }
 
 
