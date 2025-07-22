@@ -2,6 +2,7 @@ export class AgendaYear {
  
     constructor(dateHelper){
         this.dateHelper = dateHelper;
+        this.stateYear = null;
     }
 
     previousWeek() {

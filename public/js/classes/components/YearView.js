@@ -26,7 +26,7 @@ export class YearView {
             const agendaYearConsole = document.createElement("div");
             agendaYearConsole.className = "agendaWeek__console";
             const today = document.createElement("p");
-            today.className = "agendYear__console__today";
+            today.className = "agendYear__console__today btn";
             today.textContent = "Today";
             agendaYearConsole.appendChild(today);
 
@@ -126,7 +126,7 @@ export class YearView {
                     const today = new Date();
                     const isToday = today.getFullYear() === year && today.getMonth() === monthIndex && today.getDate() === day;
                     cell.className = isToday ? 'numero yearCurrentDay' : 'numero';
-                    cell.setAttribute('data-date', `${year}-${this.getFormatForNumbersWidhtZeroBefore(monthIndex)}-${this.getFormatForNumbersWidhtZeroBefore(day)}`);
+                    cell.setAttribute('data-date', `${year}-${this.getFormatForNumbersWidhtZeroBefore(monthIndex+1)}-${this.getFormatForNumbersWidhtZeroBefore(day)}`);
                     weekRow.appendChild(cell);
 
                     // Si on arrive à dimanche (7 colonnes), on termine la ligne

@@ -42,7 +42,9 @@ export class AgendaCtrl {
         this.weekView.render(weekData, params);
         this.seoManager.setTitle('Ecorcerie Gestionnaire - Agenda');
 
-        this.agendaWeekEventBinder.addEventListeners();
         this.agendaEventBinder.addEventListeners();
+        this.agendaWeekEventBinder.addEventListeners();
+        this.agendaYearEventBinder.addEventListeners();
+        this.agendaPlanningEventBinder.addEventListeners();
     }
 }

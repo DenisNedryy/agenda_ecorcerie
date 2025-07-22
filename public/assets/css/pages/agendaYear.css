@@ -39,3 +39,19 @@
     border-radius: 50%;
     cursor: pointer;
 }
+
+.agendaWeek__console {
+    display: flex;
+    align-items: center;
+    padding-left: 21px;
+}
+
+
+.agendaWeek__console__directions {
+    margin: 0px 10px;
+}
+
+.agendaWeek__console__directions i {
+    margin: 0px 5px;
+    cursor: pointer;
+}
