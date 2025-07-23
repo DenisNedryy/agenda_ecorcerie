@@ -6,6 +6,7 @@ const app = express();
 const userRoutes = require("./routes/users_routes");
 const tasksRoutes = require("./routes/tasks_routes");
 const path = require('path');
+const { startTaskStatusCron } = require("./hooks/statusTasks");
 
 app.use(cookieParser());
 app.use(express.json());
@@ -17,13 +18,11 @@ app.use(cors({
     credentials: true,
 }));
 
-// app.use("/api/cors",(req, res, next) => {
-//     res.status(200).json({ msg: "Les CORS marchent" });
-// })
-
 app.use("/api/auth", userRoutes);
 app.use("/api/tasks", tasksRoutes);
 
-app.use("/api/images/avatars", express.static(path.join(__dirname, "uploads/pictures/avatars"))); 
+app.use("/api/images/avatars", express.static(path.join(__dirname, "uploads/pictures/avatars")));
+
+startTaskStatusCron();
 
 module.exports = app;

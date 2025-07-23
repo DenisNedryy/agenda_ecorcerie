@@ -51,7 +51,7 @@ const taskServices = new TaskServices();
 
 const dateHelper = new DateHelper();
 const taskHelper = new TaskHelper();
-const agendaPlanning = new AgendaPlanning();
+const agendaPlanning = new AgendaPlanning(dateHelper);
 
 const decompteEvents = new DecompteEvents();
 const homeAgendaRdv = new HomeAgendaRdv();
@@ -75,7 +75,7 @@ const agendaEventBinder = new AgendaEventBinder(agendaView);
 const agendaWeekEventBinder = new AgendaWeekEventBinder(weekView);
 const agendaYearEventBinder = new AgendaYearEventBinder(yearView);
 const agendaPlanningEventBinder = new AgendaPlanningEventBinder(planningView);
-const agendaCtrl = new AgendaCtrl(agendaView, seoManager, agendaEventBinder, authServices, weekView, agendaWeekEventBinder, taskServices, agendaWeekModel, yearView, planningView, agendaYearEventBinder, agendaPlanningEventBinder,agendaYearModel);
+const agendaCtrl = new AgendaCtrl(agendaView, seoManager, agendaEventBinder, authServices, weekView, agendaWeekEventBinder, taskServices, agendaWeekModel, yearView, planningView, agendaYearEventBinder, agendaPlanningEventBinder, agendaYearModel, agendaPlanning);
 
 const routes = {
     "home": homeCtrl,

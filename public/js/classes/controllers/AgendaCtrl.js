@@ -1,6 +1,6 @@
 export class AgendaCtrl {
 
-    constructor(agendaView, seoManager, agendaEventBinder, authServices, weekView, agendaWeekEventBinder, taskServices, agendaWeekModel, yearView, planningView, agendaYearEventBinder, agendaPlanningEventBinder, agendaYearModel) {
+    constructor(agendaView, seoManager, agendaEventBinder, authServices, weekView, agendaWeekEventBinder, taskServices, agendaWeekModel, yearView, planningView, agendaYearEventBinder, agendaPlanningEventBinder, agendaYearModel, agendaPlanning) {
         this.agendaView = agendaView;
         this.seoManager = seoManager;
         this.agendaEventBinder = agendaEventBinder;
@@ -14,6 +14,7 @@ export class AgendaCtrl {
         this.agendaYearEventBinder = agendaYearEventBinder;
         this.agendaPlanningEventBinder = agendaPlanningEventBinder;
         this.agendaYearModel = agendaYearModel;
+        this.agendaPlanning = agendaPlanning;
 
         this.agendaEventBinder.setController(this);
         this.agendaWeekEventBinder.setController(this);
