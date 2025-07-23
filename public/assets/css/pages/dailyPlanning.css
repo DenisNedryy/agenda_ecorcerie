@@ -1,0 +1,10 @@
+.dailyPlanning__services {
+    background-color: rgb(29, 29, 31);
+    color: white;
+    padding: 24px;
+    border-radius: 15px;
+}
+
+.dailyPlanning__services__content {
+    margin-top: 15px;
+}

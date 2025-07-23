@@ -1,9 +1,10 @@
-import { tachesSoir } from "../../data/tachesSoir.js";
+
 
 export class DailyPlanningModel {
-    constructor() {
+    constructor(tasksPlanningData) {
+        this.tasksPlanningData = tasksPlanningData;
         this.isPlanningStarted = false;
-        this.planning = [];
+        this.planning = {};
         this.isFinished = true;
     }
 
@@ -22,7 +23,7 @@ export class DailyPlanningModel {
     }
 
     init() {
-        this.planning = tachesSoir;
+        this.planning = tasksPlanningData;
     }
 
 
