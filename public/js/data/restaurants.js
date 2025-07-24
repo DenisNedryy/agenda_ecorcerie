@@ -3,7 +3,7 @@
 // l'essentiel
 // le cap
 
-export const liste_restaurants = [
+export const restaurants = [
     {
         name: "Logis Auberge le centre - Poitou",
         imgName: "auberge_centre_poitou.jpg",

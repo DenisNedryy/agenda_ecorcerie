@@ -7,6 +7,6 @@ export class RestaurantsCtrl{
 
     show(){
         this.view.render();
-        this.seoManager.setTitle('Ecorcerie Gestionnaire - Restaurants');
+        this.seoManager.setTitle('Ecorcerie Gestionnaire - Restaurants'); 
     }
 }

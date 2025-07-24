@@ -9,18 +9,67 @@ export class DailyPlanningView {
                 <p>Services</p>
                     <div class="dailyPlanning__services__content">
                     <div class="service--morning">
-                        <i class="fa-solid fa-mug-saucer"></i> <p>Morning</p>
+                        <i class="fa-solid fa-mug-saucer serviceI--morning""></i> <p  class="serviceP--morning">Morning</p>
                     </div>
                     <div class="service--afternoon">
-                        <i class="fa-solid fa-sun"></i> <p>Afternoon</p>
+                        <i class="fa-solid fa-sun serviceI--afternoon"></i> <p class="serviceP--afternoon">Afternoon</p>
                     </div>
                     <div class="service--evening">
-                        <i class="fa-solid fa-cloud-moon"></i> <p>Evening</p>
+                        <i class="fa-solid fa-moon serviceI--evening"></i> <p serviceP--evening>Evening</p>
                     </div>
                     </div>
                 </div> 
+                <div class="dailyPlanning__content"></div> 
            </div>
            `;
         }
     }
+
+
+
+    renderService(data, service = "morning") {
+        console.log(service);
+        const dataByService = data;
+        this.renderTasks(dataByService, service)
+    }
+
+    renderTasks(data, service) {
+        const el = document.querySelector(".dailyPlanning__content");
+        if (el) {
+            let cpt=0;
+            const title = document.createElement("p");
+            title.textContent = `${service} tasks`;
+
+            const btnReset = document.createElement("div");
+            btnReset.setAttribute("data-service", service);
+            btnReset.className="btn btn-reset";
+            btnReset.textContent=`Reset ${service} tasks`;
+
+            const tasksContainer = document.createElement("div");
+
+            tasksContainer.className = "dailyPlanning__content__tasksContainer";
+            for (let i = 0; i < data.length; i++) {
+                const task = document.createElement("div");
+
+                const name = document.createElement("p");
+                if (data[i].isDone) name.className = "rayé"
+                name.textContent = data[i].name;
+                const iconContainer = document.createElement("div");
+                iconContainer.className = "dailyPlanningTaskBox"
+                if (data[i].isDone) {
+                    const icon = document.createElement("i");
+                    icon.className = "fa-solid fa-check dPTBi";
+                    iconContainer.appendChild(icon);
+                }
+
+                task.appendChild(name);
+                task.appendChild(iconContainer);
+                tasksContainer.appendChild(task);
+            }
+            el.appendChild(title);
+            el.appendChild(btnReset);
+            el.appendChild(tasksContainer);
+        }
+    }
+
 }

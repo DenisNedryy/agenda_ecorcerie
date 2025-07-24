@@ -6,10 +6,11 @@ export class DailyPlanningModel {
         this.isPlanningStarted = false;
         this.planning = {};
         this.isFinished = true;
+        this.service = "morning";
     }
 
     toggleTask(index) {
-        this.planning[index].isDone = !this.planning[index].isDone;
+        this.planning[this.service][index].isDone = !this.planning[this.service][index].isDone;
     }
 
     checkIfisFinished() {
@@ -22,8 +23,16 @@ export class DailyPlanningModel {
         }
     }
 
+    resetService(service) {
+        this.planning[service].map((serviceTask) => serviceTask.isDone = false);
+    }
+
+    getData() {
+        return this.planning[this.service];
+    }
+
     init() {
-        this.planning = tasksPlanningData;
+        this.planning = this.tasksPlanningData;
     }
 
 

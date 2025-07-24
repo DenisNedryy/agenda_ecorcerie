@@ -109,6 +109,7 @@ header {
 
 header .header__right__profil__text--name {
     font-size: 14px;
+    text-transform:capitalize;
 }
 
 header .header__right__profil__text--role {

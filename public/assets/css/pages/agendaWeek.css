@@ -47,6 +47,7 @@
     width: 25px;
     height: 25px;
     background-color: rgb(0, 95, 242);
+    border: 1px solid white;
 }
 
 
@@ -130,41 +131,49 @@
 
 /* === Thème personnalisé pour fond #121415 === */
 .bgJaune {
-    background-color: #D4AF37;  /* Jaune or élégant */
+    background-color: #D4AF37;
+    /* Jaune or élégant */
     color: #121415;
 }
 
 .bgBlack {
-    background-color: #121415;  /* Fond principal */
+    background-color: #121415;
+    /* Fond principal */
 }
 
 .bgBanksHollidays {
-    background-color: #B04A4A;  /* Rouge atténué */
+    background-color: #B04A4A;
+    /* Rouge atténué */
     cursor: pointer;
 }
 
 .bgTasks {
-    background-color: #CA6F1E;  /* Orange terre cuite */
+    background-color: #CA6F1E;
+    /* Orange terre cuite */
     cursor: pointer;
 }
 
 .bgRdvs {
-    background-color: #4C9A2A;  /* Vert naturel */
+    background-color: #4C9A2A;
+    /* Vert naturel */
     cursor: pointer;
 }
 
 .bgEvents {
-    background-color: #A56CC1;  /* Violet doux */
+    background-color: #A56CC1;
+    /* Violet doux */
     cursor: pointer;
 }
 
 .bgProjects {
-    background-color: #2E86C1;  /* Bleu moyen */
+    background-color: #2E86C1;
+    /* Bleu moyen */
     cursor: pointer;
 }
 
 .bgCourses {
-    background-color: #5DADE2;  /* Bleu clair adouci */
+    background-color: #5DADE2;
+    /* Bleu clair adouci */
     color: #f0f0f0;
     cursor: pointer;
 }

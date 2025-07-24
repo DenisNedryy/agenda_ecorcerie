@@ -7,6 +7,7 @@ export class AuthView {
         const el = document.getElementById("root");
         if (el) {
             this.isConnectionPage ? this.renderConnectionPage(el) : this.renderInscriptionPage(el);
+            
         }
     }
 
