@@ -73,6 +73,9 @@
     margin-top: 17px;
 }
 
+.dayOff{
+    filter:brightness(.3);
+}
 
 .dayFiche {
     width: 14.2%;

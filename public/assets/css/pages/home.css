@@ -145,6 +145,7 @@ body .home__bodyContainer__plannings__rdvs {
 
 .decompte {
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -160,6 +161,10 @@ body .home__bodyContainer__plannings__rdvs {
     margin: 30px 15px;
 }
 
+.decompte>div {
+    display: flex;
+}
+
 .decompte div p {
     text-align: center;
     font-size: 12px;
@@ -169,6 +174,29 @@ body .home__bodyContainer__plannings__rdvs {
     margin-top: 15px;
     font-size: 20px;
     letter-spacing: 1px;
+}
+
+.meteo {
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.meteo p:nth-child(1) {
+    font-size: 15px;
+}
+
+.meteo p:nth-child(2) {
+    font-size: 35px;
+    color: rgb(0, 95, 242);
+    margin: 5px 0px;
+}
+
+.meteo p:nth-child(3) {
+    font-size: 15px;
+    text-transform: capitalize;
 }
 
 /* --------rdvs-------- */
@@ -200,4 +228,34 @@ body .home__bodyContainer__plannings__rdvs {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
     justify-content: space-between;
+}
+
+/* --------alerts--------  */
+
+.alert {
+    display: flex;
+    padding: 15px;
+    margin: 15px 0px;
+    border: 1px solid rgba(255, 255, 255, .1);
+}
+
+.alert i {
+    margin-right: 15px;
+}
+
+.alert p:nth-child(2) {
+    text-transform: uppercase;
+}
+
+.alert p:last-child {
+    margin: 0px 15px;
+    color: rgb(0, 95, 242);
+}
+
+.alert-red {
+    color: red;
+}
+
+.alertContainer {
+    margin-top: 15px;
 }

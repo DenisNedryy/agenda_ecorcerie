@@ -78,7 +78,7 @@ export class HomeView {
               
                     </div>
                     <div class="home__bodyContainer__chatGeneral">
-                          <p>General chat</p>
+                          <p>Alerts</p>
                     </div>
                 </div>
             </div>

@@ -61,8 +61,6 @@
 
 .dailyPlanning__content__tasksContainer {
     margin-top: 15px;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .dailyPlanning__content>p {

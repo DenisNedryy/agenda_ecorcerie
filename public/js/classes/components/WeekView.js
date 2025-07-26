@@ -145,6 +145,8 @@ export class WeekView {
           <option value="rdvs">Rdvs</option>
           <option value="events">Events</option>
           <option value="projets">Projets</option>
+          <option value="dayOff">DayOff</option>
+          <option value="alert">Alert</option>
         </select>
       </div>
 
@@ -218,13 +220,19 @@ export class WeekView {
     }
 
     renderCalendar(data) {  
-        console.log(data);
         const el = document.querySelector(".agendaContent__body__right");
         if (el) {
 
             data.forEach((cell, index) => {
                 const containerSupreme = document.createElement("div");
                 containerSupreme.className = "dayFiche";
+                let isDayOff = false;
+                const tasksCheck = cell.tasksByDay;
+                for(let i=0;i<tasksCheck.length;i++){
+                    if(tasksCheck[i].type==="dayOff") isDayOff = true;
+                }
+                console.log(isDayOff);
+                if(isDayOff) containerSupreme.className="dayFiche dayOff";
 
                 const titleContainer = document.createElement("div");
                 titleContainer.className = "dayFiche--title";

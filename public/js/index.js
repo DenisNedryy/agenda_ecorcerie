@@ -5,6 +5,7 @@ import { WeekView } from "./classes/components/WeekView.js";
 import { YearView } from "./classes/components/YearView.js";
 import { PlanningView } from "./classes/components/PlanningView.js";
 import { MiseAJourAuth } from "./classes/components/MiseAJourAuth.js";
+import { HomeAlertView } from "./classes/components/HomeAlertView.js";
 
 // datas
 import { dailyPlanningTasks } from "./data/dailyPlanningTasks.js";
@@ -18,6 +19,7 @@ import { TaskHelper } from "./classes/utils/TaskHelper.js";
 import { UserServices } from "./classes/services/UserServices.js";
 import { TaskServices } from "./classes/services/TaskServices.js";
 import { AuthServices } from "./classes/services/AuthServices.js";
+import { MeteoServices } from "./classes/services/MeteoServices.js";
 
 // core
 import { NavHighLighter } from "./classes/core/NavHighLighter.js";
@@ -59,6 +61,7 @@ const seoManager = new SEOManager();
 const userServices = new UserServices();
 const authServices = new AuthServices(userServices);
 const taskServices = new TaskServices();
+const meteoServices = new MeteoServices();
 
 const dateHelper = new DateHelper();
 const taskHelper = new TaskHelper();
@@ -66,14 +69,14 @@ const agendaPlanning = new AgendaPlanning(dateHelper);
 
 const decompteEvents = new DecompteEvents();
 const homeAgendaRdv = new HomeAgendaRdv();
-
+const homeAlertView = new HomeAlertView();
 
 const miseAJourAuth = new MiseAJourAuth(authServices);
 miseAJourAuth.init();
 
 const homeView = new HomeView();
 const homeEventBinder = new HomeEventBinder(homeView);
-const homeCtrl = new HomeCtrl(homeView, seoManager, homeEventBinder, dateHelper, taskHelper, agendaPlanning, decompteEvents, homeAgendaRdv, taskServices);
+const homeCtrl = new HomeCtrl(homeView, seoManager, homeEventBinder, dateHelper, taskHelper, agendaPlanning, decompteEvents, homeAgendaRdv, homeAlertView, taskServices, meteoServices);
 
 const authView = new AuthView();
 const authModel = new AuthModel(userServices);

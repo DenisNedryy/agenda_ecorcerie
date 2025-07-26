@@ -6,10 +6,10 @@ export class TaskServices {
 
     async getTasks() {
         try {
-            const preRes = await fetch(`${HOST}/api/tasks`, {  
+            const preRes = await fetch(`${HOST}/api/tasks`, {
                 method: "GET",
                 headers: {
-                    'Content-Type': "application/json" 
+                    'Content-Type': "application/json"
                 },
                 credentials: "include",
             });
@@ -20,7 +20,27 @@ export class TaskServices {
                 data: res
             };
         } catch (err) {
-            console.error(err); 
+            console.error(err);
+        }
+    }
+
+    async getAlerts() {
+        try {
+            const preRes = await fetch(`${HOST}/api/tasks/alerts`, {
+                method: "GET",
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                credentials: "include",
+            });
+            const res = await preRes.json();
+            return {
+                status: preRes.status,
+                ok: preRes.ok,
+                data: res
+            };
+        } catch (err) {
+            console.error(err);
         }
     }
 

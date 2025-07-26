@@ -5,7 +5,8 @@ export class DecompteEvents {
         this.interval = null;
     }
 
-    render(event) {
+    render(event, meteoData) {
+        console.log(meteoData);
         const el = document.querySelector(".home__bodyContainer__plannings__events");
 
         if (!el || !event) return;
@@ -17,6 +18,7 @@ export class DecompteEvents {
             <p>Next event</p>
             <p class="eventName">"${event.name}"</p>
             <div class="decompte">
+            <div>
                 <div>
                     <div class="circle">${countDownObj.days}</div>
                     <p>Days</p>
@@ -36,8 +38,13 @@ export class DecompteEvents {
                      <div class="circle">${countDownObj.seconds}</div>
                      <p>Seconds</p>
                 </div>
-                     
+                     </div>
             <div>
+            <div class="meteo">
+                <p>Meteo ligugé</p>
+                <p>${meteoData.main.temp}°c</p>
+                <p>${meteoData.weather[0].description}</p>
+            </div>
             `;
 
             // `<p>Prochain event : <strong>${event.name}</strong><br>Dans ${countdown.toString()}</p>`;
