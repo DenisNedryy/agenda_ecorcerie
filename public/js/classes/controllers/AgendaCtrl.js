@@ -24,7 +24,7 @@ export class AgendaCtrl {
     };
 
     async show() {
-        this.agendaView.render();
+
 
         await this.authServices.init();
         this.agendaWeekModel.setCurrentDateMsState();
@@ -39,7 +39,8 @@ export class AgendaCtrl {
 
         const params = await this.authServices.getUsersStatus();
         params.bankHolidays = this.agendaWeekModel.bankHolidays;
-
+        
+        this.agendaView.render();
         this.weekView.render(weekData, params);
         this.seoManager.setTitle('Ecorcerie Gestionnaire - Agenda');
 

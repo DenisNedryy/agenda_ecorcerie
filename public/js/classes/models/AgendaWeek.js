@@ -159,13 +159,14 @@ export class AgendaWeek {
                         owner_id: task.owner_id || null,
                         type: task.type,
                         name: task.name,
-                        description: task.description,
+                        description: task.description, 
                         date,
                         year: dayYear,
                         month: taskMonth,
                         dateNum: taskDay,
                         dayLetter: dayDay,
-                        bg: this.getBgColor(task.type)
+                        bg: this.getBgColor(task.type),
+                        author_img_url: task.author_img_url || null
                     });
                 }
             }
@@ -186,7 +187,7 @@ export class AgendaWeek {
                 break;
 
             case 'events':
-                return 'bgEvents';
+                return 'bgEvents'; 
                 break;
 
             case 'rdvs':
@@ -214,13 +215,14 @@ export class AgendaWeek {
             name: name,
             description: description || null,
             type: type,
-            date:date,
-            owner_id: userIdSelected
+            date: date,
+            owner_id: userIdSelected 
         };
-
-
         // check if auth!==current 
-        if (auth.id !== userIdSelected.id) task.author_id = auth.id;
+        if (auth.id !== userIdSelected) {
+            task.author_id = auth.id;
+            task.author_img_url = auth.img_url 
+        }
         return task;
     }
 }

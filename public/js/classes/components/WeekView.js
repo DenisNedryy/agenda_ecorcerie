@@ -1,3 +1,5 @@
+import { HOST } from "../../host.js";
+
 export class WeekView {
 
     constructor() {
@@ -158,7 +160,6 @@ export class WeekView {
 
     renderModalFocus(task) {
         const el = document.querySelector(".modalFocus");
-        console.log(task);
         if (el) {
             const date = new Date(task.date);
             const year = date.getFullYear();
@@ -216,7 +217,8 @@ export class WeekView {
         }
     }
 
-    renderCalendar(data) {
+    renderCalendar(data) {  
+        console.log(data);
         const el = document.querySelector(".agendaContent__body__right");
         if (el) {
 
@@ -241,9 +243,18 @@ export class WeekView {
                 for (let i = 0; i < 20; i++) {
                     const li = document.createElement("li");
                     if (data[index].tasksByDay[i]) {
-                        li.textContent = data[index].tasksByDay[i].name;
                         li.className = `${data[index].tasksByDay[i].bg} task`;
                         li.setAttribute("data-id", data[index].tasksByDay[i].id);
+                        const para = document.createElement("p");
+                        para.className="taskPara";
+                        para.textContent = data[index].tasksByDay[i].name;
+                        if(data[index].tasksByDay[i].author_id){
+                            const img = document.createElement("img");
+                            img.className="taskImg"
+                            img.setAttribute("src", `${HOST}/api/images/avatars/${data[index].tasksByDay[i].author_img_url}`);
+                            li.appendChild(img);
+                        }
+                        li.appendChild(para);
                     }
                     ul.appendChild(li);
                 }

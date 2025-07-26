@@ -64,7 +64,7 @@ export class AgendaWeekEventBinder {
             e.preventDefault();
             const form = e.target.closest("form");
             const userIdSelected = this.controller.authServices.userIdSelected;
-            const auth = this.controller.authServices.getAuth();
+            const auth = await this.controller.authServices.getAuth();
             const task = this.controller.agendaWeekModel.getTaskObj(form, userIdSelected, auth);
             if (task) {
                 await this.controller.taskServices.createTask(task);
@@ -73,8 +73,9 @@ export class AgendaWeekEventBinder {
         }
 
         // focus modal 
-        else if (e.target.classList.contains("task")) {
-            const taskId = e.target.getAttribute("data-id");
+        else if (e.target.classList.contains("task") || e.target.classList.contains("taskPara") || e.target.classList.contains("taskImg")) {
+            const el = e.target.closest(".task");
+            const taskId = el.getAttribute("data-id");
             if (taskId !== undefined && (!e.target.classList.contains("bgJaune") && !e.target.classList.contains("bgBlack"))) {
                 const taskRes = await this.controller.taskServices.readOneTask(taskId);
                 const task = taskRes.data.tasks;

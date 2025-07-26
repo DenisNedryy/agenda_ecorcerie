@@ -14,8 +14,14 @@
 }
 
 .agendaContent__header--iconsContainer i {
-    margin: 0px 11px;
+    margin: 0px 5px;
     cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+}
+
+.agendaContent__header--iconsContainer i:hover {
+    background-color: rgb(0, 95, 242);
 }
 
 .agendaContent__body {
@@ -100,6 +106,9 @@
     align-items: center;
     padding: 19px;
     cursor: pointer;
+    animation-name: btt;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
 }
 
 .dayFiche--title p:last-child:hover {
@@ -115,6 +124,14 @@
     white-space: wrap;
     height: 56px;
     font-size: 13px;
+    position: relative;
+}
+
+.dayFiche ul li img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 22px;
 }
 
 .dayFiche ul li:first-child {
@@ -151,24 +168,36 @@
     background-color: #CA6F1E;
     /* Orange terre cuite */
     cursor: pointer;
+    animation-name: growUp;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
 }
 
 .bgRdvs {
     background-color: #4C9A2A;
     /* Vert naturel */
     cursor: pointer;
+    animation-name: growUp;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
 }
 
 .bgEvents {
     background-color: #A56CC1;
     /* Violet doux */
     cursor: pointer;
+    animation-name: growUp;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
 }
 
 .bgProjects {
     background-color: #2E86C1;
     /* Bleu moyen */
     cursor: pointer;
+    animation-name: growUp;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
 }
 
 .bgCourses {
@@ -176,6 +205,9 @@
     /* Bleu clair adouci */
     color: #f0f0f0;
     cursor: pointer;
+    animation-name: growUp;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
 }
 
 

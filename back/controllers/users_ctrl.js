@@ -42,6 +42,7 @@ exports.getMyPfofil = async (req, res, next) => {
 
 
 exports.inscription = async (req, res, next) => {
+    console.log("ctrl_inscription");
     try {
         const magicWord = req.body.magicWord;
         if (!magicWord || magicWord !== process.env.MAGIC_WORD) {
@@ -61,7 +62,7 @@ exports.inscription = async (req, res, next) => {
             id: uuidv4(),
             name: req.body.name,
             password: hash,
-            img_url: req.file ? req.file.filename : "avatar_sample.png"
+            img_url: req.file ? req.file.filename : "avatar_sample.PNG"
         };
 
         const [existingUser] = await pool.execute('SELECT * FROM users WHERE name = ?', [req.body.name]);

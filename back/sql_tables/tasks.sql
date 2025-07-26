@@ -8,6 +8,7 @@ CREATE TABLE tasks (
     description TEXT,
     date DATE,
     type ENUM('tasks', 'courses', 'rdvs', 'events', 'projets'),
-    _index INT NOT NULL AUTO_INCREMENT, ADD UNIQUE INDEX (_index),
+    _index INT NOT NULL AUTO_INCREMENT, UNIQUE INDEX (_index),
+    author_img_url VARCHAR(500),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;

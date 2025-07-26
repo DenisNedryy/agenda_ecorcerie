@@ -45,7 +45,7 @@ export class TaskServices {
     }
 
     async createTask(data) {
-        
+        console.log(data);
         try {
             const preRes = await fetch(`${HOST}/api/tasks`, {
                 method: "POST",
@@ -59,7 +59,8 @@ export class TaskServices {
                     date: data.date,
                     type: data.type,
                     author_id: data.author_id || null,
-                    owner_id: data.owner_id || null
+                    owner_id: data.owner_id || null,
+                    author_img_url: data.author_img_url || null
                 }),
             });
             const res = await preRes.json();

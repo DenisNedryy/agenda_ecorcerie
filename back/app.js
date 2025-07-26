@@ -18,6 +18,11 @@ app.use(cors({
     credentials: true,
 }));
 
+
+app.use("/api/welcome", (req, res, next) => {
+    res.status(200).json({ msg: "Les cors marchent ! " });
+});
+
 app.use("/api/auth", userRoutes);
 app.use("/api/tasks", tasksRoutes);
 

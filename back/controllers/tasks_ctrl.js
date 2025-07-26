@@ -31,7 +31,7 @@ exports.readOneTask = async (req, res, next) => {
 
 exports.createTask = async (req, res, next) => {
     try {
-        const { name, description, date, type, author_id, owner_id } = req.body;
+        const { name, description, date, type, author_id, owner_id, author_img_url } = req.body;
         const data = {
             id: uuidv4(),
             name: name || null,
@@ -39,7 +39,8 @@ exports.createTask = async (req, res, next) => {
             date: date || null,
             type: type || null,
             author_id: author_id || null,
-            owner_id: owner_id || null 
+            owner_id: owner_id || null,
+            author_img_url: author_img_url
         }
 
         data.user_id = owner_id;
