@@ -1,7 +1,7 @@
 export class HeaderEventBinder {
 
-    constructor(userServices,miseAJourAuth) {
-        this.userServices = userServices; 
+    constructor(userServices, miseAJourAuth) {
+        this.userServices = userServices;
         this.miseAJourAuth = miseAJourAuth;
 
         this.boundHandleClickTask = this.handleClickTask.bind(this);
@@ -17,12 +17,10 @@ export class HeaderEventBinder {
     }
 
     async handleClickTask(e) {
-        const optionsContainer = e.target.closest(".header__right__profil__options");
-        if (optionsContainer) {
+        if (e.target.classList.contains("log-out")) {
             // créer une déconection des cookies https-only
             await this.userServices.logOut();
             await this.miseAJourAuth.init();
-
         }
     }
 
