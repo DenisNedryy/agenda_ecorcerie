@@ -47,6 +47,7 @@ import { AuthCtrl } from "./classes/controllers/AuthCtrl.js";
 import { AgendaCtrl } from "./classes/controllers/AgendaCtrl.js";
 import { DailyPlanningCtrl } from "./classes/controllers/DailyPlanningCtrl.js";
 import { RestaurantsCtrl } from "./classes/controllers/RestaurantsCtrl.js";
+import { HeaderCtrl } from "./classes/controllers/HeaderCtrl.js";
 
 // eventBinder
 import { HomeEventBinder } from "./classes/eventBinders/homeEventBinder.js";
@@ -56,6 +57,7 @@ import { AgendaWeekEventBinder } from "./classes/eventBinders/AgendaWeekEventBin
 import { AgendaYearEventBinder } from "./classes/eventBinders/AgendaYearEventBinder.js";
 import { AgendaPlanningEventBinder } from "./classes/eventBinders/AgendaPlanningEventBinder.js";
 import { DailyPlanningEventBinder } from "./classes/eventBinders/DailyPlanningEventBinder.js";
+import { HeaderEventBinder } from "./classes/eventBinders/HeaderEventBinder.js";
 
 const seoManager = new SEOManager();
 const userServices = new UserServices();
@@ -73,6 +75,10 @@ const homeAlertView = new HomeAlertView();
 
 const miseAJourAuth = new MiseAJourAuth(authServices);
 miseAJourAuth.init();
+
+const headerEventBinder = new HeaderEventBinder(userServices,miseAJourAuth);
+const headerCtrl = new HeaderCtrl(headerEventBinder);
+headerCtrl.init();
 
 const homeView = new HomeView();
 const homeEventBinder = new HomeEventBinder(homeView);

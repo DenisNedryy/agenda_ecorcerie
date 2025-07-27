@@ -1,6 +1,7 @@
 CREATE TABLE tasks (
     id VARCHAR(36) PRIMARY KEY,
     user_id VARCHAR(36),
+    role VARCHAR(100),
     author_id VARCHAR(36),
     owner_id VARCHAR(36),
     status BOOLEAN DEFAULT FALSE, 

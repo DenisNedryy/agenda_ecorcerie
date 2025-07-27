@@ -91,7 +91,7 @@ export class UserServices {
                 },
                 credentials: "include",
             });
-            const res = await preRes.json(); 
+            const res = await preRes.json();
             return {
                 status: preRes.status,
                 ok: preRes.ok,
@@ -106,6 +106,26 @@ export class UserServices {
         try {
             const preRes = await fetch(`${HOST}/api/auth/getOneUser/${id}`, {
                 method: "GET",
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                credentials: "include",
+            });
+            const res = await preRes.json();
+            return {
+                status: preRes.status,
+                ok: preRes.ok,
+                data: res
+            };
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    async logOut() {
+        try {
+            const preRes = await fetch(`${HOST}/api/auth/logOut`, {
+                method: "POST",
                 headers: {
                     'Content-Type': "application/json"
                 },
