@@ -129,6 +129,14 @@ header .header__right__profil__text--role {
     position: relative;
 }
 
+.header__right__profil__options:hover i:nth-child(1) {
+    transform: translateY(-2px);
+}
+
+.header__right__profil__options:hover i:nth-child(2) {
+    transform: translateY(2px);
+}
+
 .header__right__profil__options i {
     display: flex;
     flex-direction: column;
@@ -137,6 +145,7 @@ header .header__right__profil__text--role {
     position: relative;
     border: none;
     color: #dbdbdb;
+    transition-duration:.4s;
 }
 
 .header__right__profil__options .fa-angle-up {
@@ -155,7 +164,7 @@ header .header__right__profil__text--role {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: rgb(25,25,25);
+    background-color: rgb(25, 25, 25);
     border-radius: 3px;
     flex-direction: column;
     animation-name: menuDeroulant;
@@ -174,11 +183,12 @@ header .header__right__profil__text--role {
 
 .header__right__profil__options ul li {
     padding: 10px;
-    display:flex;
+    display: flex;
 }
-.header__right__profil__options ul li i{
+
+.header__right__profil__options ul li i {
     margin-right: 10px;
-    color:rgb(0, 95, 242);
+    color: rgb(0, 95, 242);
 }
 
 .header__right__profil__options ul li:hover {

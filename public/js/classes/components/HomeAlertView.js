@@ -18,7 +18,7 @@ export class HomeAlertView {
     }
 
 
-    render(alerts) {
+    render(alerts=[]) {
         const el = document.querySelector(".home__bodyContainer__chatGeneral");
         if (el) {
             const alertContainer = document.createElement("div");

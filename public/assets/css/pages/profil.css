@@ -26,10 +26,52 @@
 .profil_top__update>div i {
     color: rgb(0, 95, 242);
     cursor: pointer;
+    border: 1px solid rgb(29, 29, 31);
+    padding: 10px;
+}
+
+.profil_top__update>div i:hover {
+    border: 1px solid rgba(255, 255, 255, .3);
 }
 
 .profil_top__profil img {
     width: 200px;
     height: 200px;
     object-fit: cover;
+    border-radius: 50%;
+}
+
+/* ----avatar---- */
+#img-avatar {
+    display: none;
+}
+
+.profil_form form>div {
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, .1);
+    height: 51px;
+    border-radius: 7px;
+    margin: 23px 0px;
+    max-width: 332px;
+}
+
+.profil_form form>div input {
+    height: 100%;
+    background-color: rgb(29, 29, 31);
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    color: #dfdbdb;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.profil_form .form-group label {
+    position: absolute;
+    top: -16px;
+    left: 15px;
+    color: #dfdbdb;
+    font-size: 12px;
+    background-color: rgb(29, 29, 31);
+    padding: 6px 5px;
 }

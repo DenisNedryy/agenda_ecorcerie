@@ -20,7 +20,7 @@ exports.getOneUser = async (req, res, next) => {
     try {
         const id = req.params.id;
         console.log(id);
-        const [users] = await pool.execute(`SELECT id, name, img_url, role FROM users WHERE id = ?`,[id]);
+        const [users] = await pool.execute(`SELECT id, name, img_url, role FROM users WHERE id = ?`, [id]);
         if (users.length === 0) { return res.status(200).json({ users: [] }) };
         return res.status(200).json({ user: users[0] });
     } catch (err) {
@@ -158,6 +158,49 @@ exports.disconnect = async (req, res, next) => {
         return res.status(200).json({ msg: "Vous êtes désormais déconnecté" });
     } catch (err) {
         return res.status(500).json({ error: "Erreur serveur lors de la déconnexion" });
+    }
+};
+
+exports.updateUser = async (req, res, next) => {
+    try {
+        const authId = req.auth.userId;
+        const { name, password, role } = req.body;
+
+        const [userArr] = await pool.execute("SELECT img_url from users WHERE id = ?", [authId]);
+        const user = userArr[0];
+
+        console.log(req.file.filename);
+        const data = {
+            name: name || null,
+            password: password || null,
+            role: role || null,
+            img_url: req.file ? req.file.filename : null
+        }
+
+        const keys = Object.keys(data).filter((val) => data[val] !== null);
+        const values = Object.values(data).filter((val) => val !== null);
+        const placeholder = keys.map((key) => `${key} = ?`).join(", ");
+        values.push(authId);
+        console.log(placeholder);
+        console.log(values);
+
+        await pool.execute(`UPDATE users SET ${placeholder} WHERE ID = ?`, values);
+
+        // Si file, suppression de l'image
+        if (data.img_url) {
+            try {
+                if (data.img_url !== "smiley_sans_fond.png") {
+                    await fs.unlink(`uploads/pictures/avatars/${user.img_url}`);
+                }
+            } catch (err) {
+                console.error("Erreur lors de la suppression de l'ancienne image:", err);
+                return res.status(500).json({ msg: "Error deleting old image", error: err });
+            }
+        }
+        return res.status(200).json({ msg: "User updated" })
+
+    } catch (err) {
+        return res.status(500).json({ error: err })
     }
 };
 

@@ -6,6 +6,7 @@ import { YearView } from "./classes/components/YearView.js";
 import { PlanningView } from "./classes/components/PlanningView.js";
 import { MiseAJourAuth } from "./classes/components/MiseAJourAuth.js";
 import { HomeAlertView } from "./classes/components/HomeAlertView.js";
+import { ProfilFormView } from "./classes/components/ProfilFormView.js";
 
 // datas
 import { dailyPlanningTasks } from "./data/dailyPlanningTasks.js";
@@ -116,8 +117,9 @@ const restaurantsCtrl = new RestaurantsCtrl(restaurantsView, seoManager);
 
 
 const profilView = new ProfilView();
+const profilFormView = new ProfilFormView();
 const profilEventBinder = new ProfilEventBinder(profilView);
-const profilCtrl = new ProfilCtrl(profilView, seoManager, profilEventBinder, authServices);
+const profilCtrl = new ProfilCtrl(profilView, seoManager, profilEventBinder, authServices, miseAJourAuth, profilFormView);
 
 const routes = {
     "home": homeCtrl,

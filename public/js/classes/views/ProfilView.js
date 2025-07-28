@@ -14,11 +14,15 @@ export class ProfilView {
                         <div><p><span class="paraGrey">Password: </span>coucou123</p> <i class="fa-solid fa-pen-to-square profilUpdate-password"></i></div>
                     </div>
                     <div class="profil_top__profil box">
-                        <div class="btn profilUpdate-img">Update</div>
-                        <img src="${HOST}/api/images/avatars/${data.img_url}"/> 
+             
+                        <label for="img-avatar">  
+                            <div class="btn profilUpdate-img">Update</div>
+                        </label>
+                        <input id="img-avatar" type="file"/>
+                        <img  class="avatar-preview" src="${HOST}/api/images/avatars/${data.img_url}"/>  
                     </div>
                 </div>
-                <div class="profil_form box"></div>
+                <div class="profil_form"></div>
             </div>
             `;
         }

@@ -141,4 +141,24 @@ export class UserServices {
             console.error(err);
         }
     }
+
+    async updateUser(data) { 
+        try {
+            const preRes = await fetch(`${HOST}/api/auth/update`, {
+                method: "PUT",
+                headers: {
+                },
+                credentials: "include",
+                body: data,
+            });
+            const res = await preRes.json();
+            return {
+                status: preRes.status,
+                ok: preRes.ok,
+                data: res
+            };
+        } catch (err) {
+            console.error(err);
+        }
+    }
 }

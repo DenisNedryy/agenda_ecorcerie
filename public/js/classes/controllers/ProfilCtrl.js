@@ -1,10 +1,12 @@
 export class ProfilCtrl {
 
-    constructor(view, seoManager, eventBinder, authServices) {
+    constructor(view, seoManager, eventBinder, authServices, miseAJourAuth, profilFormView) {
         this.view = view;
         this.seoManager = seoManager;
         this.eventBinder = eventBinder;
         this.authServices = authServices;
+        this.miseAJourAuth = miseAJourAuth;
+        this.profilFormView = profilFormView;
 
         this.eventBinder.setController(this);
     }
