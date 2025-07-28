@@ -40,6 +40,7 @@ import { AuthView } from "./classes/views/AuthView.js";
 import { AgendaView } from "./classes/views/AgendaView.js";
 import { DailyPlanningView } from "./classes/views/DailyPlanningView.js";
 import { RestaurantsView } from "./classes/views/restaurantsView.js";
+import { ProfilView } from "./classes/views/ProfilView.js";
 
 // ctrls
 import { HomeCtrl } from "/public/js/classes/controllers/HomeCtrl.js";
@@ -48,6 +49,7 @@ import { AgendaCtrl } from "./classes/controllers/AgendaCtrl.js";
 import { DailyPlanningCtrl } from "./classes/controllers/DailyPlanningCtrl.js";
 import { RestaurantsCtrl } from "./classes/controllers/RestaurantsCtrl.js";
 import { HeaderCtrl } from "./classes/controllers/HeaderCtrl.js";
+import { ProfilCtrl } from "./classes/controllers/ProfilCtrl.js";
 
 // eventBinder
 import { HomeEventBinder } from "./classes/eventBinders/homeEventBinder.js";
@@ -58,6 +60,7 @@ import { AgendaYearEventBinder } from "./classes/eventBinders/AgendaYearEventBin
 import { AgendaPlanningEventBinder } from "./classes/eventBinders/AgendaPlanningEventBinder.js";
 import { DailyPlanningEventBinder } from "./classes/eventBinders/DailyPlanningEventBinder.js";
 import { HeaderEventBinder } from "./classes/eventBinders/HeaderEventBinder.js";
+import { ProfilEventBinder } from "./classes/eventBinders/ProfilEventBinder.js";
 
 const seoManager = new SEOManager();
 const userServices = new UserServices();
@@ -76,7 +79,7 @@ const homeAlertView = new HomeAlertView();
 const miseAJourAuth = new MiseAJourAuth(authServices);
 miseAJourAuth.init();
 
-const headerEventBinder = new HeaderEventBinder(userServices,miseAJourAuth);
+const headerEventBinder = new HeaderEventBinder(userServices, miseAJourAuth);
 const headerCtrl = new HeaderCtrl(headerEventBinder);
 headerCtrl.init();
 
@@ -112,14 +115,17 @@ const restaurantsView = new RestaurantsView(restaurants);
 const restaurantsCtrl = new RestaurantsCtrl(restaurantsView, seoManager);
 
 
-
+const profilView = new ProfilView();
+const profilEventBinder = new ProfilEventBinder(profilView);
+const profilCtrl = new ProfilCtrl(profilView, seoManager, profilEventBinder, authServices);
 
 const routes = {
     "home": homeCtrl,
     "auth": authCtrl,
     "agenda": agendaCtrl,
     "planning": dailyPlanningCtrl,
-    "restaurants": restaurantsCtrl
+    "restaurants": restaurantsCtrl,
+    "profil": profilCtrl
 }
 
 const navHighLighter = new NavHighLighter();

@@ -20,7 +20,7 @@ exports.getOneUser = async (req, res, next) => {
     try {
         const id = req.params.id;
         console.log(id);
-        const [users] = await pool.execute(`SELECT id, name, img_url FROM users WHERE id = ?`,[id]);
+        const [users] = await pool.execute(`SELECT id, name, img_url, role FROM users WHERE id = ?`,[id]);
         if (users.length === 0) { return res.status(200).json({ users: [] }) };
         return res.status(200).json({ user: users[0] });
     } catch (err) {
@@ -32,7 +32,7 @@ exports.getOneUser = async (req, res, next) => {
 exports.getMyPfofil = async (req, res, next) => {
     try {
         const id = req.auth.userId;
-        const [users] = await pool.execute(`SELECT name, img_url, id FROM users WHERE id = ?`, [id]);
+        const [users] = await pool.execute(`SELECT name, img_url, id, role FROM users WHERE id = ?`, [id]);
         if (users.length === 0) { return res.status(200).json({ users: [] }) };
         return res.status(200).json({ user: users[0] });
     } catch (err) {
@@ -62,7 +62,7 @@ exports.inscription = async (req, res, next) => {
             id: uuidv4(),
             name: req.body.name,
             password: hash,
-            img_url: req.file ? req.file.filename : "avatar_sample.PNG"
+            img_url: req.file ? req.file.filename : "smiley_sans_fond.png"
         };
 
         const [existingUser] = await pool.execute('SELECT * FROM users WHERE name = ?', [req.body.name]);

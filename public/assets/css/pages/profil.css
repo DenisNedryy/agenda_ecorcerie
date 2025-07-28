@@ -1,0 +1,26 @@
+.profil_top {
+    display: flex;
+}
+
+.profil_top .box:nth-child(1) {
+    width: 100%;
+}
+
+.profil_top .box:nth-child(2) {
+    width: 60%;
+}
+
+.profil_top__update>div {
+    border: 1px solid rgba(108, 102, 102, 0.2);
+    border-radius: 3px;
+    padding: 16px;
+    margin: 7px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profil_top__update>div i {
+    color: rgb(0, 95, 242);
+    cursor: pointer;
+}

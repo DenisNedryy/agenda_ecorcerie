@@ -23,11 +23,13 @@ export class MiseAJourAuth {
         const greetings = document.querySelector(".header__left--greetings");
         const avatar = document.querySelector(".header__right__profil img");
         const name = document.querySelector(".header__right__profil__text--name");
+        const role = document.querySelector(".header__right__profil__text--role");
 
-        if (greetings && avatar && name) {
+        if (greetings && avatar && name && role) {
             greetings.textContent = `Hello, ${user.name}`;
             avatar.src = `${HOST}/api/images/avatars/${user.img_url}`;
             name.textContent = user.name;
+            role.textContent = user.role;
         }
     }
 
@@ -36,11 +38,12 @@ export class MiseAJourAuth {
         const avatar = document.querySelector(".header__right__profil img");
         const name = document.querySelector(".header__right__profil__text--name");
         const role = document.querySelector(".header__right__profil__text--role");
-        if (greetings && avatar && name) {
-            greetings.textContent = `Hello, Céline Dion`;
-            avatar.src = `${HOST}/api/images/avatars/celine.jpg`;
-            name.textContent = "Céline Dion";
-            role.textContent = "Idole des hommes";
+
+        if (greetings && avatar && name && role) {
+            greetings.textContent = `Hello, Alice Terrique`;
+            avatar.src = `${HOST}/api/images/avatars/smiley_sans_fond.png`;
+            name.textContent = "Alice Terrique"; // Alice Terrique
+            role.textContent = "Psychedelic Consultant";
         }
     }
 
