@@ -1,9 +1,11 @@
+import { HOST } from "../../host.js";
+
 export class ProfilView {
 
     render(data) {
         const el = document.getElementById("root");
         if (el) {
-            el.innerHTML = `
+            el.innerHTML = ` 
             <div class="profil">
                 <div class="profil_top">
                     <div class="profil_top__update box">
@@ -12,10 +14,11 @@ export class ProfilView {
                         <div><p><span class="paraGrey">Password: </span>coucou123</p> <i class="fa-solid fa-pen-to-square profilUpdate-password"></i></div>
                     </div>
                     <div class="profil_top__profil box">
-                        xvxvxvxv
+                        <div class="btn profilUpdate-img">Update</div>
+                        <img src="${HOST}/api/images/avatars/${data.img_url}"/> 
                     </div>
                 </div>
-                <div class="profil_form box">xcvvxcvcv</div>
+                <div class="profil_form box"></div>
             </div>
             `;
         }
