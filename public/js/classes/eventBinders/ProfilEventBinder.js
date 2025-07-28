@@ -32,17 +32,41 @@ export class ProfilEventBinder {
 
         else if (e.target.classList.contains("btn-profil-name")) {
             e.preventDefault();
-            console.log("let's submit profil name");
+            const form = e.target.closest("form");
+            const name = form.elements['name'].value;
+            const formData = new FormData();
+            formData.append("name", name);
+            const res = await this.controller.authServices.updateUser(formData);
+            await this.controller.show();
+            await this.controller.miseAJourAuth.init();
         }
 
         else if (e.target.classList.contains("btn-profil-password")) {
             e.preventDefault();
-            console.log("let's submit profil password");
+            const form = e.target.closest("form");
+            const oldPassword = form.elements['password-old'].value;
+            const newPassword = form.elements['password-new'].value;
+            const passwordConfirmation = form.elements['password-confirmation'].value;
+
+            const formData = new FormData();
+            formData.append("oldPassword", oldPassword);
+            formData.append("newPassword", newPassword);
+            formData.append("passwordConfirmation", passwordConfirmation);
+            const res = await this.controller.authServices.updatePassword(formData);
+            console.log(res);
+            await this.controller.miseAJourAuth.init();
+            await this.controller.show();
         }
 
         else if (e.target.classList.contains("btn-profil-role")) {
             e.preventDefault();
-            console.log("let's submit profil role");
+            const form = e.target.closest("form");
+            const role = form.elements['role'].value;
+            const formData = new FormData();
+            formData.append("role", role);
+            const res = await this.controller.authServices.updateUser(formData);
+            await this.controller.miseAJourAuth.init();
+            await this.controller.show();
         }
     }
 

@@ -8,13 +8,13 @@ export class ProfilCtrl {
         this.miseAJourAuth = miseAJourAuth;
         this.profilFormView = profilFormView;
 
-        this.eventBinder.setController(this);
+        this.eventBinder.setController(this); 
     }
 
     async show() {
         const data = await this.authServices.getAuth();
         this.view.render(data);
-        this.seoManager.setTitle('Ecorcerie Gestionnaire - Profil');
+        this.seoManager.setTitle('Ecorcerie Gestionnaire - Profil'); 
         this.eventBinder.addEventListeners();
     }
 }

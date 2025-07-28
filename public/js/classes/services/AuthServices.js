@@ -39,7 +39,11 @@ export class AuthServices {
     }
 
     updateUser(data) {
-        this.userServices.updateUser(data); 
+        return this.userServices.updateUser(data); 
+    }
+
+    updatePassword(data){
+        return this.userServices.updatePassword(data);
     }
 
 

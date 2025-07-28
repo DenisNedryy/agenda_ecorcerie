@@ -19,7 +19,6 @@ export class MiseAJourAuth {
     }
 
     show(user) {
-        console.log(user);
         const greetings = document.querySelector(".header__left--greetings");
         const avatar = document.querySelector(".header__right__profil img");
         const name = document.querySelector(".header__right__profil__text--name");

@@ -52,8 +52,6 @@ exports.inscription = async (req, res, next) => {
         // Vérification des champs
         if (!req.body.name || !req.body.password || !req.body.magicWord) return res.status(400).json({ msg: "All fields are required" });
 
-
-
         // Attendre que le hash du mot de passe soit généré
         const hash = await bcrypt.hash(req.body.password, 10);
 
@@ -163,13 +161,14 @@ exports.disconnect = async (req, res, next) => {
 
 exports.updateUser = async (req, res, next) => {
     try {
+        console.log("ctrl updateUser");
+        console.log(req.body);
         const authId = req.auth.userId;
         const { name, password, role } = req.body;
 
         const [userArr] = await pool.execute("SELECT img_url from users WHERE id = ?", [authId]);
         const user = userArr[0];
 
-        console.log(req.file.filename);
         const data = {
             name: name || null,
             password: password || null,
@@ -181,8 +180,7 @@ exports.updateUser = async (req, res, next) => {
         const values = Object.values(data).filter((val) => val !== null);
         const placeholder = keys.map((key) => `${key} = ?`).join(", ");
         values.push(authId);
-        console.log(placeholder);
-        console.log(values);
+
 
         await pool.execute(`UPDATE users SET ${placeholder} WHERE ID = ?`, values);
 
@@ -201,6 +199,23 @@ exports.updateUser = async (req, res, next) => {
 
     } catch (err) {
         return res.status(500).json({ error: err })
+    }
+};
+
+exports.updatePassword = async (req, res, next) => {
+    try {
+        const { oldPassword, newPassword, passwordConfirmation } = req.body;
+        if (!oldPassword || !newPassword || !passwordConfirmation) return res.status(400).json({ msg: "all fields required" });
+        const [userArr] = await pool.execute("SELECT * from users WHERE id = ?", [req.auth.userId]);
+        const user = userArr[0];
+        const isPassword = await bcrypt.compare(oldPassword, user.password);
+        if (!isPassword) return res.status(400).json({ msg: "Password incorect" });
+        if (newPassword !== passwordConfirmation) return res.status(400).json({ msg: "The passwords do not match" });
+        const hash = await bcrypt.hash(req.body.newPassword, 10);
+        await pool.execute("UPDATE users SET password = ? WHERE id = ?", [hash, req.auth.userId]);
+        return res.status(200).json({ msg: "Password modified" });
+    } catch (err) {
+
     }
 };
 

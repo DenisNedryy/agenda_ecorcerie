@@ -9,11 +9,11 @@ export class ProfilFormView {
             <form>
             <div class="form-group">
               <label>Name</label>
-            <input type="text" name="name"/>
+            <input type="text" name="name"/> 
             </div>
             <button class="btn btn-profil-name">Submit</div>
             </form>
-            `;
+            `; 
         }
     }
 

@@ -161,4 +161,25 @@ export class UserServices {
             console.error(err);
         }
     }
+
+        async updatePassword(data) { 
+        try {
+            const preRes = await fetch(`${HOST}/api/auth/updatePassword`, {
+                method: "PUT",
+                headers: {
+                },
+                credentials: "include",
+                body: data,
+            });
+            const res = await preRes.json();
+            return {
+                status: preRes.status,
+                ok: preRes.ok,
+                data: res
+            };
+        } catch (err) {
+            console.error(err);
+        }
+    }
+    
 }
