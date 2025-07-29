@@ -11,16 +11,18 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-direction: column-reverse;
 }
 
 .profil_top__update>div {
     border: 1px solid rgba(108, 102, 102, 0.2);
     border-radius: 3px;
-    padding: 16px;
+    padding: 5px 15px;
     margin: 7px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .profil_top__update>div i {
@@ -74,4 +76,19 @@
     font-size: 12px;
     background-color: rgb(29, 29, 31);
     padding: 6px 5px;
+}
+
+/* -----birthdays---- */
+.birthdayInputsContainer {
+    display: flex;
+    width: 176px;
+}
+
+.birthdayInputsContainer input[name='birthDay-date'], .birthdayInputsContainer input[name='birthDay-month'] {
+    max-width: 40px;
+    font-size: 19px;
+}
+.birthdayInputsContainer input[name='birthDay-year']{
+       max-width: 70px;
+    font-size: 19px;
 }

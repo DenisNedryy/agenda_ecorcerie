@@ -6,14 +6,15 @@ export class ProfilFormView {
         if (el) {
             el.classList.add("box");
             el.innerHTML = `
+            <p>Update Name</p>
             <form>
-            <div class="form-group">
+            <div class="form-group"> 
               <label>Name</label>
             <input type="text" name="name"/> 
             </div>
-            <button class="btn btn-profil-name">Submit</div>
+            <button class="btn btn-profil-name">Submit</div> 
             </form>
-            `; 
+            `;
         }
     }
 
@@ -23,6 +24,7 @@ export class ProfilFormView {
             el.classList.add("box");
             el.innerHTML = `
             <form>
+            <label>Update Password</label>
             <div class="form-group">
                 <label>Old password</label>
                 <input type="password" name="password-old"/>
@@ -47,11 +49,30 @@ export class ProfilFormView {
             el.classList.add("box");
             el.innerHTML = `
             <form>
+            <label>Update Role</label>
             <div class="form-group">
               <label>Role</label>
             <input type="text" name="role"/>
             </div>
             <button class="btn btn-profil-role">Submit</div>
+            </form>
+            `;
+        }
+    }
+
+    renderAddBirthday() {
+        const el = document.querySelector(".profil_form");
+        if (el) {
+            el.classList.add("box");
+            el.innerHTML = `
+            <form>
+          <label>Birthday</label>
+<div class="birthdayInputsContainer">
+  <input type="text" id="day" name="birthDay-date" maxlength="2" placeholder="DD" inputmode="numeric" />
+  <input type="text" id="month" name="birthDay-month" maxlength="2" placeholder="MM" inputmode="numeric" />
+  <input type="text" id="year" name="birthDay-year" maxlength="4" placeholder="YYYY" inputmode="numeric" />
+</div>
+             <button class="btn btn-profil-birthDay-add">Submit</div>
             </form>
             `;
         }

@@ -3,6 +3,7 @@ export class ProfilEventBinder {
         this.profilView = profilView;
         this.boundHandleClickTask = this.handleClickTask.bind(this);
         this.boundHandleChangeTask = this.handleChangeTask.bind(this);
+        this.boundHandleInputTask = this.handleInputTask.bind(this);
     }
 
     setController(controller) {
@@ -14,6 +15,8 @@ export class ProfilEventBinder {
         document.addEventListener('click', this.boundHandleClickTask);
         document.removeEventListener('change', this.boundHandleChangeTask);
         document.addEventListener('change', this.boundHandleChangeTask);
+        document.removeEventListener('input', this.boundHandleInputTask);
+        document.addEventListener('input', this.boundHandleInputTask);
     }
 
     async handleClickTask(e) {
@@ -27,6 +30,10 @@ export class ProfilEventBinder {
         }
         else if (e.target.classList.contains("profilUpdate-role")) {
             this.controller.profilFormView.renderRole();
+            this.addEventListeners();
+        }
+        else if (e.target.classList.contains("profilCreateBirthDays")) {
+            this.controller.profilFormView.renderAddBirthday();
             this.addEventListeners();
         }
 
@@ -68,6 +75,23 @@ export class ProfilEventBinder {
             await this.controller.miseAJourAuth.init();
             await this.controller.show();
         }
+
+        else if (e.target.classList.contains("btn-profil-birthDay-add")) {
+            e.preventDefault();
+            const form = e.target.closest("form");
+            const year = Number(form.elements['birthDay-year'].value);
+            const month = Number(form.elements['birthDay-month'].value);
+            const date = Number(form.elements['birthDay-date'].value);
+            const formData = new FormData();
+            formData.append("year", year);
+            formData.append("month", month);
+            formData.append("date", date);
+            form.reset();
+            // definir la bdd birthDay + service // controller le format et ensuite renvoyer une réponse ui
+            const res = await this.controller.birthDayService.AddBirthDay(formData);
+            await this.controller.miseAJourAuth.init();
+            await this.controller.show();
+        }
     }
 
     async handleChangeTask(e) {
@@ -80,6 +104,22 @@ export class ProfilEventBinder {
             await this.controller.authServices.updateUser(formData);
             this.controller.miseAJourAuth.init();
             this.controller.show();
+        }
+    }
+
+    async handleInputTask(e) {
+        e.preventDefault();
+        const inputs = document.querySelectorAll('.birthdayInputsContainer input[type="text"]');
+        const input = e.target;
+        const idx = Array.from(inputs).indexOf(input);
+        const maxLength = input.maxLength;
+        const value = input.value;
+
+        if (value.length >= maxLength) {
+            const nextInput = inputs[idx + 1];
+            if (nextInput) {
+                nextInput.focus();
+            }
         }
     }
 
