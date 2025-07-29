@@ -44,6 +44,21 @@ exports.readOneTask = async (req, res, next) => {
     }
 };
 
+exports.readTasksByAuth = async (req, res, next) => {
+    console.log("ctrl tasksByAuthè--------------------------------------")
+    try {
+        const userId = req.auth.userId;
+        const [tasks] = await pool.execute('SELECT * FROM tasks WHERE user_id = ? ORDER BY _index',[userId]);
+        console.log(tasks);
+        if (tasks.length === 0) {
+            return res.status(200).json({ tasks: [] });
+        }
+        return res.status(200).json({ tasks: tasks });
+    } catch (err) {
+        return res.status(500).json({ err });
+    }
+};
+
 exports.createTask = async (req, res, next) => {
     try {
         const { name, description, date, type, author_id, owner_id, author_img_url } = req.body;
@@ -117,3 +132,4 @@ exports.deleteTask = async (req, res, next) => {
         return res.status(500).json({ err });
     }
 };
+

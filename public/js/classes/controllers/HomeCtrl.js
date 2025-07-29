@@ -33,7 +33,8 @@ export class HomeCtrl {
     }
 
     async show3NextRdvs() {
-        const tasks = await this.getTasks();
+        const tasks = await this.getTasksByAuth();
+        console.log(tasks);
         const rdvs = this.taskHelper.getRdvs(tasks);
         const rdvsSortedByDate = this.dateHelper.sortTasksByDate(rdvs);
         const first3Rdvs = this.taskHelper.get3FirstRdvs(rdvsSortedByDate);
@@ -47,6 +48,11 @@ export class HomeCtrl {
 
     async getTasks() {
         const res = await this.taskServices.getTasks();
+        return res.data.tasks;
+    }
+
+    async getTasksByAuth() {
+        const res = await this.taskServices.getTasksByAuth();
         return res.data.tasks;
     }
 

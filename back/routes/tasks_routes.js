@@ -5,6 +5,7 @@ const auth = require("../middlewares/auth");
 
 router.get("/", auth, tasksCtrl.readTasks);
 router.get("/alerts", auth, tasksCtrl.readAlerts);
+router.get("/authTasks", auth, tasksCtrl.readTasksByAuth);
 router.get("/:id", auth, tasksCtrl.readOneTask);
 router.post("/", auth, tasksCtrl.createTask);
 router.put("/:id", auth, tasksCtrl.updateTask);

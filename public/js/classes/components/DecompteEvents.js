@@ -6,7 +6,6 @@ export class DecompteEvents {
     }
 
     render(event, meteoData) {
-        console.log(meteoData);
         const el = document.querySelector(".home__bodyContainer__plannings__events");
 
         if (!el || !event) return;

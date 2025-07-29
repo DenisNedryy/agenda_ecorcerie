@@ -187,7 +187,7 @@ exports.updateUser = async (req, res, next) => {
         // Si file, suppression de l'image
         if (data.img_url) {
             try {
-                if (data.img_url !== "smiley_sans_fond.png") {
+                if (data.img_url !== "smiley_sans_fond.png" && user.img_url !== "smiley_sans_fond.png") {
                     await fs.unlink(`uploads/pictures/avatars/${user.img_url}`);
                 }
             } catch (err) {

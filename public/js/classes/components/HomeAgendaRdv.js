@@ -3,11 +3,9 @@ export class HomeAgendaRdv{
 
     render(rdvs){
         const el = document.querySelector(".home__bodyContainer__plannings__rdvs");
-        if(el){
-        
+        if(el){ 
             const title = document.createElement("p");
             title.textContent = "Next rdvs";
-
             const ul = document.createElement("ul");
             ul.className="home__bodyContainer__plannings__rdvs__container";
             for(let i=0;i<rdvs.length;i++){
