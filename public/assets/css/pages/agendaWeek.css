@@ -68,13 +68,19 @@
     margin-right: 15px;
 }
 
+.agendaContent__body__left li img {
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
+}
+
 .agendaContent__body__right ul {
     list-style-type: none;
     margin-top: 17px;
 }
 
-.dayOff{
-    filter:brightness(.3);
+.dayOff {
+    filter: brightness(.3);
 }
 
 .dayFiche {

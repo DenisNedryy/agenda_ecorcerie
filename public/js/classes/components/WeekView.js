@@ -42,10 +42,9 @@ export class WeekView {
         }
     }
 
-    renderParameters(params) {
+    renderParameters(params) { 
         const el = document.querySelector(".agendaContent__body__left");
         if (el) {
-
             const userTitle = document.createElement("p");
             userTitle.className = "agendaContent__body__left--category";
             userTitle.textContent = "Users";
@@ -64,8 +63,12 @@ export class WeekView {
                 }
                 const name = document.createElement("p");
                 name.textContent = users[i].name;
+                const miniAvatar = document.createElement("img");
+                miniAvatar.setAttribute("src",`${HOST}/api/images/avatars/${users[i].img_url}`)
+
                 li.appendChild(check);
                 li.appendChild(name);
+                li.appendChild(miniAvatar);
                 ul.appendChild(li);
             };
 
@@ -231,7 +234,6 @@ export class WeekView {
                 for(let i=0;i<tasksCheck.length;i++){
                     if(tasksCheck[i].type==="dayOff") isDayOff = true;
                 }
-                console.log(isDayOff);
                 if(isDayOff) containerSupreme.className="dayFiche dayOff";
 
                 const titleContainer = document.createElement("div");
