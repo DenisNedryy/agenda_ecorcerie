@@ -1,10 +1,13 @@
 export class AgendaWeek {
 
-    constructor(dateHelper) {
+    constructor(dateHelper, birthDaysServices) {
         this.dateHelper = dateHelper;
+        this.birthDaysServices = birthDaysServices;
         this.stateDateMs = null;
         this.bankHolidays = true;
         this.modalAddDate = null;
+        this.birthDays = true;
+        this.birthDaysTasks = [];
     }
 
     // modal week
@@ -114,6 +117,8 @@ export class AgendaWeek {
                 dayLetter: dayDay
             });
 
+
+
             function stripTime(date) {
                 return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
             }
@@ -125,6 +130,17 @@ export class AgendaWeek {
                     }
                 }
             }
+
+            if (this.birthDays) {
+                for (let bd of this.birthDaysTasks) {
+                    if (stripTime(dayDate) === stripTime(new Date(bd.date))) { }
+                    if (dayDate.getMonth() === new Date(bd.date).getMonth() && dayDate.getDate() === new Date(bd.date).getDate()) {
+                        tasksByDay.push(bd);
+                    }
+                }
+            }
+
+
 
             function isSameDay(d1, d2) {
                 return (
@@ -159,7 +175,7 @@ export class AgendaWeek {
                         owner_id: task.owner_id || null,
                         type: task.type,
                         name: task.name,
-                        description: task.description, 
+                        description: task.description,
                         date,
                         year: dayYear,
                         month: taskMonth,
@@ -187,7 +203,7 @@ export class AgendaWeek {
                 break;
 
             case 'events':
-                return 'bgEvents'; 
+                return 'bgEvents';
                 break;
 
             case 'rdvs':
@@ -216,12 +232,12 @@ export class AgendaWeek {
             description: description || null,
             type: type,
             date: date,
-            owner_id: userIdSelected 
+            owner_id: userIdSelected
         };
         // check if auth!==current 
         if (auth.id !== userIdSelected) {
             task.author_id = auth.id;
-            task.author_img_url = auth.img_url 
+            task.author_img_url = auth.img_url
         }
         return task;
     }

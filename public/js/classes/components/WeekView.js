@@ -42,7 +42,7 @@ export class WeekView {
         }
     }
 
-    renderParameters(params) { 
+    renderParameters(params) {
         const el = document.querySelector(".agendaContent__body__left");
         if (el) {
             const userTitle = document.createElement("p");
@@ -64,7 +64,7 @@ export class WeekView {
                 const name = document.createElement("p");
                 name.textContent = users[i].name;
                 const miniAvatar = document.createElement("img");
-                miniAvatar.setAttribute("src",`${HOST}/api/images/avatars/${users[i].img_url}`)
+                miniAvatar.setAttribute("src", `${HOST}/api/images/avatars/${users[i].img_url}`)
 
                 li.appendChild(check);
                 li.appendChild(name);
@@ -83,10 +83,10 @@ export class WeekView {
 
             const bank = document.createElement("li");
             const bankBox = document.createElement("div");
-            bankBox.className = "checkBoxParams";
+            bankBox.className = "checkBoxParams box-bank";
             if (params.bankHolidays) {
                 const i = document.createElement("i");
-                i.className = "fa-solid fa-check checkBox__params";
+                i.className = "fa-solid fa-check checkBox__Bank";
                 bankBox.appendChild(i);
             }
             const bankPara = document.createElement("p");
@@ -95,10 +95,17 @@ export class WeekView {
             bank.appendChild(bankPara);
             paramUl.appendChild(bank);
 
+
+
             const birth = document.createElement("li");
             const birthBox = document.createElement("div");
-            birthBox.className = "checkBox";
+            birthBox.className = "checkBoxParams box-birth";
 
+            if (params.birthDays) {
+                const i = document.createElement("i");
+                i.className = "fa-solid fa-check checkBox__birthDay";
+                birthBox.appendChild(i);
+            }
             const birthPara = document.createElement("p");
             birthPara.textContent = "BirthDays";
             birth.appendChild(birthBox);
@@ -222,7 +229,7 @@ export class WeekView {
         }
     }
 
-    renderCalendar(data) {  
+    renderCalendar(data) {
         const el = document.querySelector(".agendaContent__body__right");
         if (el) {
 
@@ -231,10 +238,10 @@ export class WeekView {
                 containerSupreme.className = "dayFiche";
                 let isDayOff = false;
                 const tasksCheck = cell.tasksByDay;
-                for(let i=0;i<tasksCheck.length;i++){
-                    if(tasksCheck[i].type==="dayOff") isDayOff = true;
+                for (let i = 0; i < tasksCheck.length; i++) {
+                    if (tasksCheck[i].type === "dayOff") isDayOff = true;
                 }
-                if(isDayOff) containerSupreme.className="dayFiche dayOff";
+                if (isDayOff) containerSupreme.className = "dayFiche dayOff";
 
                 const titleContainer = document.createElement("div");
                 titleContainer.className = "dayFiche--title";
@@ -256,11 +263,16 @@ export class WeekView {
                         li.className = `${data[index].tasksByDay[i].bg} task`;
                         li.setAttribute("data-id", data[index].tasksByDay[i].id);
                         const para = document.createElement("p");
-                        para.className="taskPara";
+                        para.className = "taskPara";
+
                         para.textContent = data[index].tasksByDay[i].name;
-                        if(data[index].tasksByDay[i].author_id){
+                        if (data[index].tasksByDay[i].type === "birthDays") {
+                            para.textContent = `🥳🎂Anniversaire de ${data[index].tasksByDay[i].name} ${data[index].tasksByDay[i].last_name}🎈🥳`;
+                            li.className = `birthDayBg task`;
+                        }
+                        if (data[index].tasksByDay[i].author_id) {
                             const img = document.createElement("img");
-                            img.className="taskImg"
+                            img.className = "taskImg"
                             img.setAttribute("src", `${HOST}/api/images/avatars/${data[index].tasksByDay[i].author_img_url}`);
                             li.appendChild(img);
                         }

@@ -79,16 +79,21 @@ export class ProfilEventBinder {
         else if (e.target.classList.contains("btn-profil-birthDay-add")) {
             e.preventDefault();
             const form = e.target.closest("form");
+            const name = form.elements['name'].value;
+            const lastName = form.elements['lastName'].value;
             const year = Number(form.elements['birthDay-year'].value);
-            const month = Number(form.elements['birthDay-month'].value);
+            const month = Number(form.elements['birthDay-month'].value) - 1;
             const date = Number(form.elements['birthDay-date'].value);
-            const formData = new FormData();
-            formData.append("year", year);
-            formData.append("month", month);
-            formData.append("date", date);
+            const fullDate = new Date(Date.UTC(year, month, date));
+            const data = {
+                name: name,
+                lastName: lastName,
+                date: fullDate
+            }
+
             form.reset();
             // definir la bdd birthDay + service // controller le format et ensuite renvoyer une réponse ui
-            const res = await this.controller.birthDayService.AddBirthDay(formData);
+            const res = await this.controller.birthDaysServices.addBirthDay(data);
             await this.controller.miseAJourAuth.init();
             await this.controller.show();
         }
@@ -109,8 +114,9 @@ export class ProfilEventBinder {
 
     async handleInputTask(e) {
         e.preventDefault();
-        const inputs = document.querySelectorAll('.birthdayInputsContainer input[type="text"]');
+        const inputs = document.querySelectorAll('.date');
         const input = e.target;
+        if (!input.closest(".birthdayInputsContainer")) return;
         const idx = Array.from(inputs).indexOf(input);
         const maxLength = input.maxLength;
         const value = input.value;

@@ -21,7 +21,6 @@ exports.readAlerts = async (req, res, next) => {
     try {
         const type = "alert";
         const [tasks] = await pool.execute('SELECT * FROM tasks WHERE type = ? ORDER BY _index', [type]);
-        console.log(tasks);
         if (tasks.length === 0) {
             return res.status(200).json({ tasks: [] });
         }
@@ -45,11 +44,9 @@ exports.readOneTask = async (req, res, next) => {
 };
 
 exports.readTasksByAuth = async (req, res, next) => {
-    console.log("ctrl tasksByAuthè--------------------------------------")
     try {
         const userId = req.auth.userId;
         const [tasks] = await pool.execute('SELECT * FROM tasks WHERE user_id = ? ORDER BY _index',[userId]);
-        console.log(tasks);
         if (tasks.length === 0) {
             return res.status(200).json({ tasks: [] });
         }

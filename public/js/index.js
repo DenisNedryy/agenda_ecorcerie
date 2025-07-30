@@ -21,6 +21,7 @@ import { UserServices } from "./classes/services/UserServices.js";
 import { TaskServices } from "./classes/services/TaskServices.js";
 import { AuthServices } from "./classes/services/AuthServices.js";
 import { MeteoServices } from "./classes/services/MeteoServices.js";
+import { BirthDaysServices } from "./classes/services/BirthDaysServices.js";
 
 // core
 import { NavHighLighter } from "./classes/core/NavHighLighter.js";
@@ -68,6 +69,7 @@ const userServices = new UserServices();
 const authServices = new AuthServices(userServices);
 const taskServices = new TaskServices();
 const meteoServices = new MeteoServices();
+const birthDaysServices = new BirthDaysServices();
 
 const dateHelper = new DateHelper();
 const taskHelper = new TaskHelper();
@@ -97,7 +99,7 @@ const agendaView = new AgendaView();
 const weekView = new WeekView();
 const yearView = new YearView();
 const planningView = new PlanningView();
-const agendaWeekModel = new AgendaWeek(dateHelper);
+const agendaWeekModel = new AgendaWeek(dateHelper, birthDaysServices);
 const agendaYearModel = new AgendaYear(dateHelper);
 const agendaEventBinder = new AgendaEventBinder(agendaView);
 const agendaWeekEventBinder = new AgendaWeekEventBinder(weekView);
@@ -119,7 +121,7 @@ const restaurantsCtrl = new RestaurantsCtrl(restaurantsView, seoManager);
 const profilView = new ProfilView();
 const profilFormView = new ProfilFormView();
 const profilEventBinder = new ProfilEventBinder(profilView);
-const profilCtrl = new ProfilCtrl(profilView, seoManager, profilEventBinder, authServices, miseAJourAuth, profilFormView);
+const profilCtrl = new ProfilCtrl(profilView, seoManager, profilEventBinder, authServices, miseAJourAuth, profilFormView, birthDaysServices);
 
 const routes = {
     "home": homeCtrl,

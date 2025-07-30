@@ -148,6 +148,7 @@
 }
 
 .checkBox,
+.checkBox__birthDay,
 .checkBoxParams {
     display: flex;
     justify-content: center;
@@ -156,6 +157,17 @@
 }
 
 /* === Thème personnalisé pour fond #121415 === */
+
+.birthDayBg {
+    background-color: #F7C59F;
+    /* Pêche doux festif */
+    color: #121415;
+    cursor: pointer;
+    animation-name: growUp;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+}
+
 .bgJaune {
     background-color: #D4AF37;
     /* Jaune or élégant */

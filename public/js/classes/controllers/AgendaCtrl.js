@@ -34,12 +34,19 @@ export class AgendaCtrl {
         const tasksRes = await this.taskServices.getTasks();
         const tasks = tasksRes.data.tasks;
         const tasksFiltered = await this.agendaWeekModel.getTasksFiltered(auth, userSelected, tasks);
+        // récupérer les anniversaires si isAnniversaires
+        if (this.agendaWeekModel.birthDays) {
+            const allBirthDaysRes = await this.agendaWeekModel.birthDaysServices.getBirthDaysByAuth();
+            const allBirthDays = allBirthDaysRes.data.birthDays;
+            this.agendaWeekModel.birthDaysTasks = allBirthDays;
+        }
         const date = new Date(this.agendaWeekModel.stateDateMs);
         const weekData = await this.agendaWeekModel.getAgendaPerWeek(tasksFiltered, date);
 
         const params = await this.authServices.getUsersStatus();
         params.bankHolidays = this.agendaWeekModel.bankHolidays;
-        
+        params.birthDays = this.agendaWeekModel.birthDays; 
+
         this.agendaView.render();
         this.weekView.render(weekData, params);
         this.seoManager.setTitle('Ecorcerie Gestionnaire - Agenda');

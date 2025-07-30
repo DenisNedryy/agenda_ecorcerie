@@ -42,10 +42,16 @@ export class AgendaWeekEventBinder {
         }
 
         // changement parameters
-        else if (e.target.classList.contains('checkBoxParams') || e.target.classList.contains("checkBox__params")) {
+        else if (e.target.classList.contains('checkBox__Bank') || e.target.classList.contains("box-bank")) {
             this.controller.agendaWeekModel.bankHolidays = !this.controller.agendaWeekModel.bankHolidays;
             this.controller.show();
         }
+
+        else if (e.target.classList.contains('checkBox__birthDay') || e.target.classList.contains("box-birth")) {
+            this.controller.agendaWeekModel.birthDays = !this.controller.agendaWeekModel.birthDays;
+            this.controller.show();
+        }
+
 
         // modal addTask
         else if (e.target.classList.contains("weekNumber")) {

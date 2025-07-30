@@ -67,11 +67,19 @@ export class ProfilFormView {
             el.innerHTML = `
             <form>
           <label>Birthday</label>
-<div class="birthdayInputsContainer">
-  <input type="text" id="day" name="birthDay-date" maxlength="2" placeholder="DD" inputmode="numeric" />
-  <input type="text" id="month" name="birthDay-month" maxlength="2" placeholder="MM" inputmode="numeric" />
-  <input type="text" id="year" name="birthDay-year" maxlength="4" placeholder="YYYY" inputmode="numeric" />
-</div>
+          <div class="form-group">
+            <label>Name:</label>
+            <input type="text" name="name"/>
+          </div>
+          <div class="form-group">
+            <label>Last name:</label>
+            <input type="text" name="lastName"/> 
+          </div>
+          <div class="birthdayInputsContainer">
+            <input type="text" class="date" id="day" name="birthDay-date" maxlength="2" placeholder="DD" inputmode="numeric" />
+             <input type="text" class="date" id="month" name="birthDay-month" maxlength="2" placeholder="MM" inputmode="numeric" />
+            <input type="text" class="date" id="year" name="birthDay-year" maxlength="4" placeholder="YYYY" inputmode="numeric" />
+          </div>
              <button class="btn btn-profil-birthDay-add">Submit</div>
             </form>
             `;
