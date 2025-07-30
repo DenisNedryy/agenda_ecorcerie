@@ -84,11 +84,38 @@
     width: 176px;
 }
 
-.birthdayInputsContainer input[name='birthDay-date'], .birthdayInputsContainer input[name='birthDay-month'] {
+.birthdayInputsContainer input[name='birthDay-date'],
+.birthdayInputsContainer input[name='birthDay-month'] {
     max-width: 40px;
     font-size: 19px;
 }
-.birthdayInputsContainer input[name='birthDay-year']{
-       max-width: 70px;
+
+.birthdayInputsContainer input[name='birthDay-year'] {
+    max-width: 70px;
     font-size: 19px;
+}
+
+
+.fiche-birthDay {
+    border: 1px solid rgba(108, 102, 102, 0.2);
+    border-radius: 3px;
+    padding: 5px 15px;
+    margin: 7px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fiche-birthDay p {
+    margin: 0px 15px;
+}
+
+.iconContainer-birthDay {
+    display: flex;
+    align-items: center;
+}
+
+.iconContainer-birthDay i {
+    margin-right: 15px;
 }

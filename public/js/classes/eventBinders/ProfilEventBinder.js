@@ -37,14 +37,14 @@ export class ProfilEventBinder {
             this.addEventListeners();
         }
 
-           else if (e.target.classList.contains("profilUpdate-birthdays")) {
+        else if (e.target.classList.contains("profilUpdate-birthdays")) {
             const birthDaysRes = await this.controller.birthDaysServices.getBirthDaysByAuth();
             const birthDays = await birthDaysRes.data.birthDays;
             this.controller.profilFormView.renderUpdateBirthDay(birthDays);
             this.addEventListeners();
         }
 
-        
+
 
         else if (e.target.classList.contains("btn-profil-name")) {
             e.preventDefault();
@@ -106,7 +106,7 @@ export class ProfilEventBinder {
             await this.controller.miseAJourAuth.init();
             await this.controller.show();
         }
-        
+
     }
 
     async handleChangeTask(e) {
