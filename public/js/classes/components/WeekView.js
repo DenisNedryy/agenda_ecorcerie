@@ -93,7 +93,7 @@ export class WeekView {
             bankPara.textContent = "Bank Holidays";
             bank.appendChild(bankBox);
             bank.appendChild(bankPara);
-            paramUl.appendChild(bank);
+            paramUl.appendChild(bank); 
 
 
 

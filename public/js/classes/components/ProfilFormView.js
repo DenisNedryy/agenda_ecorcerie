@@ -1,11 +1,11 @@
 export class ProfilFormView {
 
 
-    renderName() {
-        const el = document.querySelector(".profil_form");
-        if (el) {
-            el.classList.add("box");
-            el.innerHTML = `
+  renderName() {
+    const el = document.querySelector(".profil_form");
+    if (el) {
+      el.classList.add("box");
+      el.innerHTML = `
             <p>Update Name</p>
             <form>
             <div class="form-group"> 
@@ -15,14 +15,14 @@ export class ProfilFormView {
             <button class="btn btn-profil-name">Submit</div> 
             </form>
             `;
-        }
     }
+  }
 
-    renderPassword() {
-        const el = document.querySelector(".profil_form");
-        if (el) {
-            el.classList.add("box");
-            el.innerHTML = `
+  renderPassword() {
+    const el = document.querySelector(".profil_form");
+    if (el) {
+      el.classList.add("box");
+      el.innerHTML = `
             <form>
             <label>Update Password</label>
             <div class="form-group">
@@ -40,14 +40,14 @@ export class ProfilFormView {
             <button class="btn btn-profil-password">Submit</div>
             </form>
             `;
-        }
     }
+  }
 
-    renderRole() {
-        const el = document.querySelector(".profil_form");
-        if (el) {
-            el.classList.add("box");
-            el.innerHTML = `
+  renderRole() {
+    const el = document.querySelector(".profil_form");
+    if (el) {
+      el.classList.add("box");
+      el.innerHTML = `
             <form>
             <label>Update Role</label>
             <div class="form-group">
@@ -57,14 +57,14 @@ export class ProfilFormView {
             <button class="btn btn-profil-role">Submit</div>
             </form>
             `;
-        }
     }
+  }
 
-    renderAddBirthday() {
-        const el = document.querySelector(".profil_form");
-        if (el) {
-            el.classList.add("box");
-            el.innerHTML = `
+  renderAddBirthday() {
+    const el = document.querySelector(".profil_form");
+    if (el) {
+      el.classList.add("box");
+      el.innerHTML = `
             <form>
           <label>Birthday</label>
           <div class="form-group">
@@ -83,6 +83,36 @@ export class ProfilFormView {
              <button class="btn btn-profil-birthDay-add">Submit</div>
             </form>
             `;
-        }
     }
+  }
+
+  renderUpdateBirthDay(birthDays) {
+    const el = document.querySelector(".profil_form");
+    if (el) {
+      el.classList.add("box");
+      for (let i = 0; i < birthDays.length; i++) {
+        const fiche = document.createElement("div");
+        const name = document.createElement("p");
+        name.textContent = birthDays[i].name;
+
+        const lastName = document.createElement("p");
+        lastName.textContent = birthDays[i].last_name;
+
+        const birthDate = document.createElement("p");
+        const isoDate = birthDays[i].date;
+        const date = new Date(isoDate);
+        const formatted = date.toLocaleDateString('fr-FR');
+        const euroDate = formatted.split("/").join("-");
+        birthDate.textContent = euroDate;
+
+        // mettre date(DD/MM/YYYY)
+
+        fiche.appendChild(name);
+        fiche.appendChild(lastName);
+        fiche.appendChild(birthDate);
+        el.appendChild(fiche);
+      }
+
+    }
+  }
 }
