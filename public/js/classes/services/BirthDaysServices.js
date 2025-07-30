@@ -11,7 +11,7 @@ export class BirthDaysServices {
                 },
                 credentials: "include",
             });
-            const res = await preRes.json(); 
+            const res = await preRes.json();
             return {
                 status: preRes.status,
                 ok: preRes.ok,
@@ -20,11 +20,6 @@ export class BirthDaysServices {
         } catch (err) {
             console.error(err);
         }
-    }
-
-
-    async getOneBirthDay(id) {
-
     }
 
     async addBirthDay(data) {
@@ -52,12 +47,24 @@ export class BirthDaysServices {
         }
     }
 
-    async updateBirthday() {
-
-    }
-
-    async deleteBirthDay() {
-
+    async deleteBirthDay(id) {
+        try {
+            const preRes = await fetch(`${HOST}/api/birthdays/${id}`, {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                credentials: "include",
+            });
+            const res = await preRes.json();
+            return {
+                status: preRes.status,
+                ok: preRes.ok,
+                data: res
+            };
+        } catch (err) {
+            console.error(err);
+        }
     }
 
 

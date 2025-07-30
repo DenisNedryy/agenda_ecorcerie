@@ -93,12 +93,17 @@ export class ProfilFormView {
       el.classList.add("box");
       for (let i = 0; i < birthDays.length; i++) {
         const fiche = document.createElement("div");
+        fiche.setAttribute("data-id",birthDays[i].id);
+        const names = document.createElement("div");
+        names.className="names";
         fiche.className = "fiche-birthDay";
         const name = document.createElement("p");
         name.textContent = birthDays[i].name;
+        names.appendChild(name);
 
         const lastName = document.createElement("p");
         lastName.textContent = birthDays[i].last_name;
+        names.appendChild(lastName);
 
         const birthDate = document.createElement("p");
         const isoDate = birthDays[i].date;
@@ -107,20 +112,16 @@ export class ProfilFormView {
         const euroDate = formatted.split("/").join("-");
         birthDate.textContent = euroDate;
 
-        const iconContainer = document.createElement("div");
+        const iconContainer = document.createElement("div"); 
         iconContainer.className = "iconContainer-birthDay";
-        const updateBirthDate = document.createElement("i");
-        updateBirthDate.className = "fa-solid fa-pen-to-square fiche-update-birthDay";
-        iconContainer.appendChild(updateBirthDate);
         const deleteBirthDate = document.createElement("i");
-        deleteBirthDate.className = "fa-solid fa-trash-can";
+        deleteBirthDate.className = "fa-solid fa-trash-can delete-birthDay";
         iconContainer.appendChild(deleteBirthDate);
 
 
         // mettre date(DD/MM/YYYY)
 
-        fiche.appendChild(name);
-        fiche.appendChild(lastName);
+        fiche.appendChild(names);
         fiche.appendChild(birthDate);
         fiche.appendChild(iconContainer);
 

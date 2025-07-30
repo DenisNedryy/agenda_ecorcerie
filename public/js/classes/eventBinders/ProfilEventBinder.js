@@ -106,6 +106,16 @@ export class ProfilEventBinder {
             await this.controller.miseAJourAuth.init();
             await this.controller.show();
         }
+        else if (e.target.classList.contains("delete-birthDay")) {
+            console.log("deleting birthdaty in process");
+            const id = e.target.closest(".fiche-birthDay").getAttribute("data-id");
+            console.log(id);
+            await this.controller.birthDaysServices.deleteBirthDay(id);
+            const birthDaysRes = await this.controller.birthDaysServices.getBirthDaysByAuth();
+            const birthDays = await birthDaysRes.data.birthDays;
+            this.controller.profilFormView.renderUpdateBirthDay(birthDays);
+            this.addEventListeners();
+        }
 
     }
 
