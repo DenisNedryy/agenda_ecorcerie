@@ -51,7 +51,7 @@
         flex-direction: column;
     }
 
-    body .agendaContent__body__right {
-        width: 462px;
+    body .agenda {
+        width: 500px;
     }
 }
