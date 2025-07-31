@@ -82,7 +82,7 @@ export class AgendaWeekEventBinder {
         else if (e.target.classList.contains("task") || e.target.classList.contains("taskPara") || e.target.classList.contains("taskImg")) {
             const el = e.target.closest(".task");
             const taskId = el.getAttribute("data-id");
-            if (taskId !== undefined && (!el.classList.contains("bgJaune") && !el.classList.contains("bgBlack"))) {
+            if (taskId !== undefined && (!el.classList.contains("bgJaune") && !el.classList.contains("bgBlack")) && !el.classList.contains("bgBanksHollidays") && !el.classList.contains("birthDayBg")) {   
                 const taskRes = await this.controller.taskServices.readOneTask(taskId);
                 const task = taskRes.data.tasks;
                 this.controller.weekView.renderModalFocus(task);

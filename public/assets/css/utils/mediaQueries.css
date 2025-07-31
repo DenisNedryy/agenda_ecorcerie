@@ -1,0 +1,57 @@
+@media screen and (max-width: 1529px) {
+    body #root {
+        padding: 20px 10px;
+    }
+
+    body .agendaContent__body__left {
+        width: 152px;
+    }
+}
+
+@media screen and (max-width: 1065px) {
+    body #root {
+        padding: 20px 10px;
+    }
+
+    body .agendaContent__body__left {
+        width: 152px;
+    }
+
+    body aside {
+        width: 58px;
+    }
+
+    body .asside__top ul li p {
+        display: none;
+    }
+
+    body .aside__bottom ul li p {
+        display: none;
+    }
+
+    body .dayFiche ul li {
+        font-size: 10px;
+        padding: 13px 0px;
+    }
+
+    body .asside__top__logoContainer__left {
+        padding: 23px 0px 11px 11px;
+    }
+
+    body .asside__top__logoContainer p {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+
+    body .agendaContent__body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    body .agendaContent__body__right {
+        width: 462px;
+    }
+}

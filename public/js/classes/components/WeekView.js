@@ -93,7 +93,7 @@ export class WeekView {
             bankPara.textContent = "Bank Holidays";
             bank.appendChild(bankBox);
             bank.appendChild(bankPara);
-            paramUl.appendChild(bank); 
+            paramUl.appendChild(bank);
 
 
 
@@ -264,10 +264,12 @@ export class WeekView {
                         li.setAttribute("data-id", data[index].tasksByDay[i].id);
                         const para = document.createElement("p");
                         para.className = "taskPara";
-
                         para.textContent = data[index].tasksByDay[i].name;
                         if (data[index].tasksByDay[i].type === "birthDays") {
-                            para.textContent = `🥳🎂Anniversaire de ${data[index].tasksByDay[i].name} ${data[index].tasksByDay[i].last_name}🎈🥳`;
+                            // calcul de l'age + affichage
+                            const date = data[index].tasksByDay[i].date;
+                            const age = this.calculAge(date, cell.weekDays.year);
+                            para.innerHTML = `<p>Anniversaire</br>🥳🎂🎈🍾</br> ${data[index].tasksByDay[i].name} ${data[index].tasksByDay[i].last_name}</br> ${age} ans</p>`;
                             li.className = `birthDayBg task`;
                         }
                         if (data[index].tasksByDay[i].author_id) {
@@ -288,6 +290,25 @@ export class WeekView {
             modalFocus.className = "modalFocus hidden";
             el.appendChild(modalFocus);
         }
+    }
+
+    calculAge(date, year) {
+        const birthDate = new Date(date);
+        const day = birthDate.getDate();
+        const month = birthDate.getMonth();
+        const today = new Date(year, month, day);
+        console.log(today);
+
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const hasHadBirthdayThisYear =
+            today.getMonth() > birthDate.getMonth() ||
+            (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
+
+        if (!hasHadBirthdayThisYear) {
+            age--;
+        }
+
+        return age;
     }
 
 
