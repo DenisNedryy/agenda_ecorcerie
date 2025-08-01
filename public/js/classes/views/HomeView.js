@@ -73,12 +73,16 @@ export class HomeView {
                         <div class="home__bodyContainer__plannings__events">
                         </div>
                          <div class="home__bodyContainer__plannings__rdvs">
-                           
                         </div>
               
                     </div>
-                    <div class="home__bodyContainer__chatGeneral">
+                    <div class="home__bodyContainer__alarmes">
+                          <div class="home__bodyContainer__alarmes__alerts">
                           <p>Alerts</p>
+                          </div>
+                          <div class="home__bodyContainer__alarmes__courses">
+                          <p>Courses</p>
+                          </div>
                     </div>
                 </div>
             </div>

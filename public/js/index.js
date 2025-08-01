@@ -7,6 +7,7 @@ import { PlanningView } from "./classes/components/PlanningView.js";
 import { MiseAJourAuth } from "./classes/components/MiseAJourAuth.js";
 import { HomeAlertView } from "./classes/components/HomeAlertView.js";
 import { ProfilFormView } from "./classes/components/ProfilFormView.js";
+import { HomeCoursesView } from "./classes/components/HomeCoursesView.js";
 
 // datas
 import { dailyPlanningTasks } from "./data/dailyPlanningTasks.js";
@@ -78,6 +79,7 @@ const agendaPlanning = new AgendaPlanning(dateHelper);
 const decompteEvents = new DecompteEvents();
 const homeAgendaRdv = new HomeAgendaRdv();
 const homeAlertView = new HomeAlertView();
+const homeCoursesView = new HomeCoursesView();
 
 const miseAJourAuth = new MiseAJourAuth(authServices);
 miseAJourAuth.init();
@@ -88,7 +90,7 @@ headerCtrl.init();
 
 const homeView = new HomeView();
 const homeEventBinder = new HomeEventBinder(homeView);
-const homeCtrl = new HomeCtrl(homeView, seoManager, homeEventBinder, dateHelper, taskHelper, agendaPlanning, decompteEvents, homeAgendaRdv, homeAlertView, taskServices, meteoServices);
+const homeCtrl = new HomeCtrl(homeView, seoManager, homeEventBinder, dateHelper, taskHelper, agendaPlanning, decompteEvents, homeAgendaRdv, homeAlertView, taskServices, meteoServices, homeCoursesView);
 
 const authView = new AuthView();
 const authModel = new AuthModel(userServices);
@@ -107,16 +109,13 @@ const agendaYearEventBinder = new AgendaYearEventBinder(yearView);
 const agendaPlanningEventBinder = new AgendaPlanningEventBinder(planningView);
 const agendaCtrl = new AgendaCtrl(agendaView, seoManager, agendaEventBinder, authServices, weekView, agendaWeekEventBinder, taskServices, agendaWeekModel, yearView, planningView, agendaYearEventBinder, agendaPlanningEventBinder, agendaYearModel, agendaPlanning);
 
-
 const dailyPlanningView = new DailyPlanningView();
 const dailyPlanningModel = new DailyPlanningModel(dailyPlanningTasks);
 const dailyPlanningEventBinder = new DailyPlanningEventBinder(dailyPlanningView);
 const dailyPlanningCtrl = new DailyPlanningCtrl(dailyPlanningView, seoManager, dailyPlanningEventBinder, dailyPlanningModel);
 
-
 const restaurantsView = new RestaurantsView(restaurants);
 const restaurantsCtrl = new RestaurantsCtrl(restaurantsView, seoManager);
-
 
 const profilView = new ProfilView();
 const profilFormView = new ProfilFormView();

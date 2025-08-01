@@ -126,7 +126,7 @@ body .home__bodyContainer__plannings__rdvs {
     height: 300px;
 }
 
-.home__bodyContainer__chatGeneral {
+.home__bodyContainer__alarmes {
     background-color: rgb(29, 29, 31);
     color: white;
     padding: 24px;
@@ -134,6 +134,10 @@ body .home__bodyContainer__plannings__rdvs {
     margin: 20px 0px;
     height: 551px;
     width: 40%;
+}
+
+.home__bodyContainer__alarmes__alerts {
+    min-height: 200px;
 }
 
 .home__bodyContainer__chatGeneral img {
@@ -258,4 +262,19 @@ body .home__bodyContainer__plannings__rdvs {
 
 .alertContainer {
     margin-top: 15px;
+}
+
+/* -----courses----- */
+.courses-green {
+    color: #21a821;
+}
+
+.home__bodyContainer__alarmes__alerts,
+.home__bodyContainer__alarmes__courses {
+    overflow: scroll;
+    height: 237px;
+}
+
+.home__bodyContainer__alarmes__alerts {
+    margin-bottom: 37px;
 }

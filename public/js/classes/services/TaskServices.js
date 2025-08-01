@@ -63,6 +63,26 @@ export class TaskServices {
             console.error(err);
         }
     }
+    async getAllUsersCourses() {
+        try {
+            const preRes = await fetch(`${HOST}/api/tasks/alerts/courses`, {
+                method: "GET",
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                credentials: "include",
+            });
+            const res = await preRes.json();
+            return {
+                status: preRes.status,
+                ok: preRes.ok,
+                data: res
+            };
+        } catch (err) {
+            console.error(err);
+        }
+    }
+    
 
     async createTask(data) {
         try {

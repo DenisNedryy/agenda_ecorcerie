@@ -1,6 +1,6 @@
 export class HomeCtrl {
 
-    constructor(homeView, seoManager, homeEventBinder, dateHelper, taskHelper, modelAgendaPlanning, decompteEvent, composantAgendaRdv, homeAlertView, taskServices, meteoServices) {
+    constructor(homeView, seoManager, homeEventBinder, dateHelper, taskHelper, modelAgendaPlanning, decompteEvent, composantAgendaRdv, homeAlertView, taskServices, meteoServices, homeCoursesView) {
         this.homeView = homeView;
         this.seoManager = seoManager;
         this.homeEventBinder = homeEventBinder;
@@ -12,6 +12,7 @@ export class HomeCtrl {
         this.homeAlertView = homeAlertView;
         this.taskServices = taskServices;
         this.meteoServices = meteoServices;
+        this.homeCoursesView = homeCoursesView;
     }
 
     async show() {
@@ -20,6 +21,7 @@ export class HomeCtrl {
         await this.showDecompteEvent(meteoData);
         await this.show3NextRdvs();
         await this.showAlerts();
+        await this.showCourses();
         this.seoManager.setTitle('Ecorcerie Gestionnaire - Accueil');
         this.homeEventBinder.addEventListeners();
     }
@@ -45,18 +47,28 @@ export class HomeCtrl {
         this.homeAlertView.render(alerts);
     }
 
+    async showCourses() {
+        const courses = await this.getAllUsersCourses();
+        this.homeCoursesView.render(courses);
+    }
+
     async getTasks() {
         const res = await this.taskServices.getTasks();
         return res.data.tasks;
     }
 
     async getTasksByAuth() {
-        const res = await this.taskServices.getTasksByAuth(); 
+        const res = await this.taskServices.getTasksByAuth();
         return res.data.tasks;
     }
 
     async getAlerts() {
         const res = await this.taskServices.getAlerts();
         return res.data.alerts;
+    }
+
+    async getAllUsersCourses(){
+        const res = await this.taskServices.getAllUsersCourses();
+        return res.data.courses;
     }
 }

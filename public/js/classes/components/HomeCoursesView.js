@@ -1,4 +1,4 @@
-export class HomeAlertView {
+export class HomeCoursesView {
 
     constructor() {
         this.yearMonth = [
@@ -7,7 +7,7 @@ export class HomeAlertView {
             "Mars",
             "Avril",
             "Mai",
-            "Juin", 
+            "Juin",
             "Juillet",
             "Août",
             "Septembre",
@@ -17,21 +17,20 @@ export class HomeAlertView {
         ];
     }
 
-
-    render(alerts=[]) {
-        const el = document.querySelector(".home__bodyContainer__alarmes__alerts");
+    render(data) {
+        const el = document.querySelector(".home__bodyContainer__alarmes__courses");
         if (el) {
-            const alertContainer = document.createElement("div");
-            alertContainer.className = "alertContainer";
-            for (let i = 0; i < alerts.length; i++) {
+            const coursesContainer = document.createElement("div");
+            coursesContainer.className = "alertContainer";
+            for (let i = 0; i < data.length; i++) {
                 const alert = document.createElement("div");
                 alert.className = "alert";
                 const ico = document.createElement("i");
-                ico.className = "fa-solid fa-triangle-exclamation alert-red";
+                ico.className = "fa-solid fa-truck-fast courses-green";
                 const name = document.createElement("p");
-                name.textContent = alerts[i].name;
+                name.textContent = data[i].name;
                 const dateEl = document.createElement("p");
-                const realDate = new Date(alerts[i].date);
+                const realDate = new Date(data[i].date);
                 const year = realDate.getFullYear();
                 const month = realDate.getMonth();
                 const day = realDate.getDate();
@@ -39,10 +38,9 @@ export class HomeAlertView {
                 alert.appendChild(ico);
                 alert.appendChild(name);
                 alert.appendChild(dateEl);
-                alertContainer.appendChild(alert);
+                coursesContainer.appendChild(alert);
             }
-            el.appendChild(alertContainer);
+            el.appendChild(coursesContainer);
         }
     }
-
 }
