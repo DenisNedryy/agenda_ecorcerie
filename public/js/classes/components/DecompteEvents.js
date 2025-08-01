@@ -38,6 +38,7 @@ export class DecompteEvents {
                      <p>Seconds</p>
                 </div>
                      </div>
+                     <i class="fa-solid fa-ban deleteEvent" data-id=${event.id}></i>
             <div>
             <div class="meteo">
                 <p>Meteo ligugé</p>

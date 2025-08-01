@@ -34,10 +34,14 @@ export class HomeCoursesView {
                 const year = realDate.getFullYear();
                 const month = realDate.getMonth();
                 const day = realDate.getDate();
+                const deleteIco = document.createElement("i");
+                deleteIco.className="fa-solid fa-ban deleteCourse"; 
+                deleteIco.setAttribute("data-id", data[i].id);
                 dateEl.textContent = `${day} ${this.yearMonth[month]} ${year}`;
                 alert.appendChild(ico);
                 alert.appendChild(name);
                 alert.appendChild(dateEl);
+                alert.appendChild(deleteIco);
                 coursesContainer.appendChild(alert);
             }
             el.appendChild(coursesContainer);

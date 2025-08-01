@@ -180,6 +180,18 @@ body .home__bodyContainer__plannings__rdvs {
     letter-spacing: 1px;
 }
 
+.deleteEvent {
+    margin-left: 15px;
+    color: orangered;
+    filter: brightness(.3);
+    cursor: pointer;
+}
+
+.deleteEvent:hover {
+    color: orange;
+    filter: brightness(1);
+}
+
 .meteo {
     margin-right: 15px;
     display: flex;
@@ -234,6 +246,19 @@ body .home__bodyContainer__plannings__rdvs {
     justify-content: space-between;
 }
 
+.deleteRDV {
+    margin-left: 15px;
+    color: orangered;
+    filter: brightness(.5);
+    cursor: pointer;
+}
+
+.deleteRDV:hover {
+    color: orange;
+    filter: brightness(1);
+}
+
+
 /* --------alerts--------  */
 
 .alert {
@@ -243,7 +268,11 @@ body .home__bodyContainer__plannings__rdvs {
     border: 1px solid rgba(255, 255, 255, .1);
 }
 
-.alert i {
+.alert-red {
+    margin-right: 15px;
+}
+
+.courses-green {
     margin-right: 15px;
 }
 
@@ -264,6 +293,19 @@ body .home__bodyContainer__plannings__rdvs {
     margin-top: 15px;
 }
 
+.deleteAlert {
+    margin-left: 15px;
+    color: orangered;
+    filter: brightness(.3);
+    cursor: pointer;
+}
+
+.deleteAlert:hover {
+    color: orange;
+    filter: brightness(1);
+}
+
+
 /* -----courses----- */
 .courses-green {
     color: #21a821;
@@ -277,4 +319,16 @@ body .home__bodyContainer__plannings__rdvs {
 
 .home__bodyContainer__alarmes__alerts {
     margin-bottom: 37px;
+}
+
+.deleteCourse {
+    margin-left: 15px;
+    color: orangered;
+    filter: brightness(.3);
+    cursor: pointer;
+}
+
+.deleteCourse:hover {
+    color: orange;
+    filter: brightness(1);
 }

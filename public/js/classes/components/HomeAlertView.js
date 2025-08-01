@@ -7,7 +7,7 @@ export class HomeAlertView {
             "Mars",
             "Avril",
             "Mai",
-            "Juin", 
+            "Juin",
             "Juillet",
             "Août",
             "Septembre",
@@ -18,7 +18,7 @@ export class HomeAlertView {
     }
 
 
-    render(alerts=[]) {
+    render(alerts = []) {
         const el = document.querySelector(".home__bodyContainer__alarmes__alerts");
         if (el) {
             const alertContainer = document.createElement("div");
@@ -36,9 +36,13 @@ export class HomeAlertView {
                 const month = realDate.getMonth();
                 const day = realDate.getDate();
                 dateEl.textContent = `${day} ${this.yearMonth[month]} ${year}`;
+                const deleteIco = document.createElement("i");
+                deleteIco.className = "fa-solid fa-ban deleteAlert";
+                deleteIco.setAttribute("data-id", alerts[i].id);
                 alert.appendChild(ico);
                 alert.appendChild(name);
                 alert.appendChild(dateEl);
+                alert.appendChild(deleteIco);
                 alertContainer.appendChild(alert);
             }
             el.appendChild(alertContainer);
