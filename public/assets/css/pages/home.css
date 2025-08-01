@@ -280,6 +280,11 @@ body .home__bodyContainer__plannings__rdvs {
     text-transform: uppercase;
 }
 
+.alert p:nth-child(3) {
+    margin-left: 15px;
+    color: #bfbfbf;
+}
+
 .alert p:last-child {
     margin: 0px 15px;
     color: rgb(0, 95, 242);
