@@ -13,6 +13,8 @@ export class HomeCtrl {
         this.taskServices = taskServices;
         this.meteoServices = meteoServices;
         this.homeCoursesView = homeCoursesView;
+
+        this.homeEventBinder.setController(this);
     }
 
     async show() {
@@ -67,7 +69,7 @@ export class HomeCtrl {
         return res.data.alerts;
     }
 
-    async getAllUsersCourses(){
+    async getAllUsersCourses() {
         const res = await this.taskServices.getAllUsersCourses();
         return res.data.courses;
     }

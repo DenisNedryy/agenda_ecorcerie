@@ -6,7 +6,7 @@ export class AgendaEventBinder {
     }
 
     setController(controller) {
-        this.controller = controller;
+        this.controller = controller; 
     }
 
     addEventListeners() {
