@@ -19,7 +19,7 @@ export class DailyPlanningView {
                     </div>
                     </div>
                 </div> 
-                <div class="dailyPlanning__content"></div> 
+                <div class="dailyPlanning__content"></div>  
            </div>
            `;
         }
@@ -28,7 +28,6 @@ export class DailyPlanningView {
 
 
     renderService(data, service = "morning") {
-        console.log(service);
         const dataByService = data;
         this.renderTasks(dataByService, service)
     }
@@ -36,20 +35,29 @@ export class DailyPlanningView {
     renderTasks(data, service) {
         const el = document.querySelector(".dailyPlanning__content");
         if (el) {
-            let cpt=0;
+            let cpt = 0;
             const title = document.createElement("p");
             title.textContent = `${service} tasks`;
 
             const btnReset = document.createElement("div");
             btnReset.setAttribute("data-service", service);
-            btnReset.className="btn btn-reset";
-            btnReset.textContent=`Reset ${service} tasks`;
+            btnReset.className = "btn-reset";
+            const resetPara = document.createElement("p");
+            resetPara.textContent = `Reset ${service} tasks`;
+            btnReset.appendChild(resetPara);
+            const resetIco = document.createElement("i");
+            resetIco.className = "fa-solid fa-rotate-right";
+            btnReset.appendChild(resetIco);
+
 
             const tasksContainer = document.createElement("div");
 
             tasksContainer.className = "dailyPlanning__content__tasksContainer";
             for (let i = 0; i < data.length; i++) {
                 const task = document.createElement("div");
+                if(data[i].isDone){
+                    task.className="dark";
+                }
 
                 const name = document.createElement("p");
                 if (data[i].isDone) name.className = "rayé"
@@ -62,9 +70,11 @@ export class DailyPlanningView {
                     iconContainer.appendChild(icon);
                 }
 
-                task.appendChild(name);
                 task.appendChild(iconContainer);
-                tasksContainer.appendChild(task);
+                task.appendChild(name);
+
+                    tasksContainer.appendChild(task);
+
             }
             el.appendChild(title);
             el.appendChild(btnReset);
