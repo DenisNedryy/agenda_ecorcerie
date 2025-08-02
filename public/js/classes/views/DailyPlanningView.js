@@ -43,10 +43,11 @@ export class DailyPlanningView {
             btnReset.setAttribute("data-service", service);
             btnReset.className = "btn-reset";
             const resetPara = document.createElement("p");
+            resetPara.className="resetPara";
             resetPara.textContent = `Reset ${service} tasks`;
             btnReset.appendChild(resetPara);
             const resetIco = document.createElement("i");
-            resetIco.className = "fa-solid fa-rotate-right";
+            resetIco.className = "fa-solid fa-rotate-right resetIco"; 
             btnReset.appendChild(resetIco);
 
 

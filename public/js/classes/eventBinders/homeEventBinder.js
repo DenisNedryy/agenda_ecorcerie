@@ -24,7 +24,7 @@ export class HomeEventBinder {
             this.controller.show();
         }
 
-        else if (e.target.classList.contains("deleteAlert")) {
+        else if (e.target.classList.contains("deleteAlert")) { 
             await this.deleteTaskEventManger(e);
             this.controller.show();
         }

@@ -40,8 +40,8 @@ export class DailyPlanningEventBinder {
         }
 
         // reset
-        else if (e.target.classList.contains("btn-reset")) {
-            const el = e.target;
+        else if (e.target.classList.contains("btn-reset") || e.target.classList.contains("resetPara") || e.target.classList.contains("resetIco")) {
+            const el = e.target.closest(".btn-reset");
             const service = el.getAttribute("data-service");
             this.controller.dailyPlanningModel.resetService(service);
             this.controller.show();
