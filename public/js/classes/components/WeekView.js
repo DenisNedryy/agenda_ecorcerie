@@ -246,13 +246,18 @@ export class WeekView {
                 const titleContainer = document.createElement("div");
                 titleContainer.className = "dayFiche--title";
                 const day = document.createElement("p");
+                day.className = "dayAll";
                 day.textContent = this.weekDays[index];
+                const dayMini = document.createElement("p");
+                dayMini.className = "dayMini";
+                dayMini.textContent = this.weekDays[index].split("")[0];
                 const number = document.createElement("p");
                 number.className = cell.weekDays.isCurrentDay ? "weekNumber currentDay" : "weekNumber";
                 number.textContent = cell.weekDays.dayDateNum;
                 const date = `${cell.weekDays.year}-${cell.weekDays.month}-${cell.weekDays.dayDateNum}`;
                 number.setAttribute("data-date", date);
                 titleContainer.appendChild(day);
+                titleContainer.appendChild(dayMini);
                 titleContainer.appendChild(number);
                 containerSupreme.appendChild(titleContainer);
 

@@ -93,6 +93,11 @@
     align-items: center;
 }
 
+.dayMini{
+    text-transform:uppercase;
+    display:none;
+}
+
 .currentDay {
     background-color: rgb(0, 95, 242);
 }

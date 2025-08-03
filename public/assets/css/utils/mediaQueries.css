@@ -21,6 +21,22 @@
         width: 58px;
     }
 
+    body main {
+        width: 100%;
+    }
+
+    html body .agendaContent {
+        width: 100%;
+    }
+
+    html body .agenda {
+        width: 100%;
+    }
+
+    body .agenda {
+        width: 100%;
+    }
+
     body .asside__top ul li p {
         display: none;
     }
@@ -51,7 +67,71 @@
         flex-direction: column;
     }
 
-    body .agenda {
-        width: 500px;
+}
+
+@media screen and (max-width: 600px) {
+
+    body .dayAll {
+        display: none;
+    }
+
+    body .dayMini {
+        display: flex;
+    }
+
+    html body .dayFiche--title p:last-child {
+        font-size: 12px;
+        width: 20px;
+        height: 20px;
+    }
+
+    body .agendaContent {
+        padding: 0px;
+    }
+
+    body #root {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .header__left {
+        display: none;
+    }
+
+    body .header__right__alerts {
+        display: none;
+    }
+
+    body .agenda__viewSelection__viewContainer li i {
+        display: none;
+    }
+
+    body .agendaContent__header {
+        width: 90%;
+    }
+
+    body .agenda__viewSelection {
+        border-radius: 0px;
+    }
+
+    body .agendaContent {
+        border-radius: 0px;
+    }
+
+    html body .dayFiche {
+        width: 12.2%;
+    }
+
+    html body main {
+        width: 100%;
+    }
+
+    html .modalContent {
+        width: 90%;
+        border-radius: 0;
+    }
+
+    html .modal {
+        justify-content: flex-start;
     }
 }
