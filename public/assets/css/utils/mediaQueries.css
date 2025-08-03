@@ -59,6 +59,12 @@
     }
 }
 
+@media screen and (max-width: 916px) {
+    body .home__webSites--container a div p {
+        display: none;
+    }
+}
+
 
 @media screen and (max-width: 800px) {
 
@@ -70,6 +76,76 @@
 }
 
 @media screen and (max-width: 600px) {
+
+    body .home__webSites--container {
+        flex-wrap: wrap;
+    }
+
+    body .home__webSites {
+        width: 95%;
+        border-radius: 0px;
+    }
+
+    body .bgImg-blue {
+        border-radius: 0px;
+    }
+
+    body .home__bodyContainer__plannings__rdvs {
+        width: 100%;
+        margin: 0px;
+    }
+
+    body .home__bodyContainer__alarmes__alerts,
+    body .home__bodyContainer__alarmes__courses {
+        overflow: auto;
+        height: auto;
+    }
+
+    body .alert p {
+        word-wrap: break-word;
+    }
+
+
+    body .home__bodyContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    body .home__bodyContainer__plannings__events {
+        width: 100%;
+        margin: 0px;
+    }
+
+    body .home__bodyContainer__alarmes {
+        width: 100%;
+        margin: 0px;
+        height: auto;
+    }
+
+    .home__bodyContainer__plannings__rdvs__container li {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .home__bodyContainer__plannings__rdvs__container li p {
+        margin: 10px 0px;
+    }
+
+    .alert {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .alert p {
+        margin: 10px 0px;
+    }
+
+
+    html body .home__bodyContainer__plannings {
+        width: 100%;
+    }
+
 
     body .dayAll {
         display: none;
@@ -208,11 +284,17 @@
         display: none;
     }
 
-    .task--type {
+    body .task--type {
         margin-right: 15px;
+        width: auto;
     }
 
-    .tasksKeys--type {
+    body .task--name {
+        width: auto;
+    }
+
+    body .tasksKeys--type {
         margin-right: 15px;
+        width: auto;
     }
 }
