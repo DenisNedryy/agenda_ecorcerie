@@ -45,6 +45,29 @@ export class WeekView {
     renderParameters(params) {
         const el = document.querySelector(".agendaContent__body__left");
         if (el) {
+
+            // options pour width 600px
+            const option = document.createElement("div");
+            option.className = "paramsOptions";
+            const optionPara = document.createElement("p");
+            optionPara.className = "paramsOptionsp";
+            optionPara.textContent = "Options";
+            const optionIco = document.createElement("i");
+            optionIco.className = "fa-solid fa-align-justify paramsOptionsi";
+            option.appendChild(optionPara);
+            option.appendChild(optionIco);
+            el.appendChild(option);
+
+            const optionContainer = document.createElement("div");
+            optionContainer.className = "optionsContainer hiddenOnMobile";
+
+            const header = document.createElement("div");
+            header.className = "optionsHeader hiddenOnDesktop";
+            const leave = document.createElement("i");
+            leave.className = "fa-solid fa-xmark exitOptions";
+            header.appendChild(leave);
+            optionContainer.appendChild(header);
+
             const userTitle = document.createElement("p");
             userTitle.className = "agendaContent__body__left--category";
             userTitle.textContent = "Users";
@@ -72,8 +95,9 @@ export class WeekView {
                 ul.appendChild(li);
             };
 
-            el.appendChild(userTitle);
-            el.appendChild(ul);
+
+            optionContainer.appendChild(userTitle);
+            optionContainer.appendChild(ul);
 
             const paramTitle = document.createElement("p");
             paramTitle.className = "agendaContent__body__left--category";
@@ -112,9 +136,9 @@ export class WeekView {
             birth.appendChild(birthPara);
             paramUl.appendChild(birth);
 
-            el.appendChild(paramTitle);
-            el.appendChild(paramUl);
-
+            optionContainer.appendChild(paramTitle);
+            optionContainer.appendChild(paramUl);
+            el.appendChild(optionContainer);
             // modal selector
             const modalContainer = document.createElement("div");
             modalContainer.className = "modalAddContainer";

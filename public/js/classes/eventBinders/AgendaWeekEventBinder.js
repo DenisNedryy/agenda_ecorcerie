@@ -52,6 +52,18 @@ export class AgendaWeekEventBinder {
             this.controller.show();
         }
 
+        // toggle parameters
+        else if (e.target.classList.contains('paramsOptions') || e.target.classList.contains("paramsOptionsp") || e.target.classList.contains("paramsOptionsi")) {
+            const el = document.querySelector(".optionsContainer");
+            el.classList.toggle("hiddenOnMobile");
+        }
+        else if (e.target.classList.contains('exitOptions')) {
+            const el = document.querySelector(".optionsContainer");
+            el.classList.add("hiddenOnMobile");
+        }
+
+
+
 
         // modal addTask
         else if (e.target.classList.contains("weekNumber")) {
@@ -82,7 +94,7 @@ export class AgendaWeekEventBinder {
         else if (e.target.classList.contains("task") || e.target.classList.contains("taskPara") || e.target.classList.contains("taskImg")) {
             const el = e.target.closest(".task");
             const taskId = el.getAttribute("data-id");
-            if (taskId !== undefined && (!el.classList.contains("bgJaune") && !el.classList.contains("bgBlack")) && !el.classList.contains("bgBanksHollidays") && !el.classList.contains("birthDayBg")) {   
+            if (taskId !== undefined && (!el.classList.contains("bgJaune") && !el.classList.contains("bgBlack")) && !el.classList.contains("bgBanksHollidays") && !el.classList.contains("birthDayBg")) {
                 const taskRes = await this.controller.taskServices.readOneTask(taskId);
                 const task = taskRes.data.tasks;
                 this.controller.weekView.renderModalFocus(task);

@@ -9,6 +9,36 @@
     padding: 10px;
 }
 
+.paramsOptions {
+    display: none;
+    align-items: center;
+    padding: 6px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, .1);
+    width: fit-content;
+    margin: 15px;
+}
+
+.paramsOptions:hover {
+    background-color: rgb(255, 255, 255, .1)
+}
+
+.paramsOptions i {
+    margin-left: 10px;
+}
+
+.optionsHeader {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hiddenOnDesktop {
+    display: none;
+}
+.optionsHeader i{
+    cursor:pointer;
+}
+
 .agendaContent__header--iconsContainer {
     margin: 0px 11px;
 }
@@ -93,9 +123,9 @@
     align-items: center;
 }
 
-.dayMini{
-    text-transform:uppercase;
-    display:none;
+.dayMini {
+    text-transform: uppercase;
+    display: none;
 }
 
 .currentDay {

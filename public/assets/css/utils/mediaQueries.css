@@ -112,6 +112,42 @@
 
     body .agenda__viewSelection {
         border-radius: 0px;
+        position: relative;
+        background-color: rgb(20, 20, 20);
+        top: 0px;
+        z-index: 999;
+    }
+
+    html body .paramsOptions {
+        display: flex;
+    } 
+
+    html body .hiddenOnDesktop{
+        display:flex;
+    }
+
+    .hiddenOnMobile{
+        display:none;
+    }
+
+    html body .optionsContainer { 
+        width: 100vw;
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: black;
+        z-index: 9999;
+        padding: 15px;
+    }
+
+    html body .agendaContent__body__right {
+        width: 95vw;
+    }
+
+    .agenda__viewSelection__viewContainer li {
+        background-color: rgb(20, 20, 20);
     }
 
     body .agendaContent {
@@ -129,6 +165,11 @@
     html .modalContent {
         width: 90%;
         border-radius: 0;
+    }
+
+    html body .agendaContent {
+        padding-top: 30px;
+        margin-top: -11px;
     }
 
     html .modal {
