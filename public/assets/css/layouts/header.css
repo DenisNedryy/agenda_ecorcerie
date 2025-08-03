@@ -145,7 +145,7 @@ header .header__right__profil__text--role {
     position: relative;
     border: none;
     color: #dbdbdb;
-    transition-duration:.4s;
+    transition-duration: .4s;
 }
 
 .header__right__profil__options .fa-angle-up {
@@ -170,6 +170,8 @@ header .header__right__profil__text--role {
     animation-name: menuDeroulant;
     animation-duration: .4s;
     animation-fill-mode: forwards;
+    z-index: 99999;
+    border: 1px solid rgba(255, 255, 255, .1);
 }
 
 .header__right__profil__options ul a {

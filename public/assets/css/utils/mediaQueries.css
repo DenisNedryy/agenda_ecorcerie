@@ -120,17 +120,21 @@
 
     html body .paramsOptions {
         display: flex;
-    } 
-
-    html body .hiddenOnDesktop{
-        display:flex;
     }
 
-    .hiddenOnMobile{
-        display:none;
+    html body .hiddenOnDesktop {
+        display: flex;
     }
 
-    html body .optionsContainer { 
+    .hiddenOnMobile {
+        display: none;
+    }
+
+    body .modalFocus {
+        justify-content: flex-start;
+    }
+
+    html body .optionsContainer {
         width: 100vw;
         position: fixed;
         left: 0;
@@ -174,5 +178,41 @@
 
     html .modal {
         justify-content: flex-start;
+    }
+
+    body .tasksFilters p {
+        margin-top: 16px;
+    }
+
+    body .tasksFilters {
+        flex-wrap: wrap;
+        display: flex;
+        width: 84%;
+    }
+
+    body .task--date {
+        display: none;
+    }
+
+    body .task--status p {
+        display: none;
+    }
+
+    body .tasksKeys--date,
+    body .task--date,
+    body .tasksKeys--status {
+        display: none;
+    }
+
+    body .task--status {
+        display: none;
+    }
+
+    .task--type {
+        margin-right: 15px;
+    }
+
+    .tasksKeys--type {
+        margin-right: 15px;
     }
 }
