@@ -27,6 +27,7 @@
     margin-left: 10px;
 }
 
+
 .optionsHeader {
     display: flex;
     justify-content: flex-end;
@@ -35,8 +36,19 @@
 .hiddenOnDesktop {
     display: none;
 }
-.optionsHeader i{
-    cursor:pointer;
+
+/* .optionsContainer {
+    transition: transform .4s cubic-bezier(.77, 0, .175, 1);
+    transform: translate(-100%);
+
+}
+
+.optionsContainer.open {
+    transform: translate(0);
+    right: 0;
+} */
+.optionsHeader i {
+    cursor: pointer;
 }
 
 .agendaContent__header--iconsContainer {
