@@ -368,6 +368,7 @@
         margin: 24px 20px;
         width: auto;
         border-radius: 15px;
+        background-color: transparent;
     }
 
     body .home__bodyContainer__alarmes__courses {
@@ -378,9 +379,9 @@
     body .home__bodyContainer__alarmes__alerts {
         background-color: rgb(29, 29, 31);
         height: auto;
-        margin: 24px 20px;
-        width: auto;
+        width: 100%;
         border-radius: 15px;
+        margin: auto;
     }
 
     body .home__bodyContainer__plannings {
