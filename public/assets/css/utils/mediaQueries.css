@@ -82,12 +82,14 @@
     }
 
     body .home__webSites {
-        width: 95%;
+        width: 100%;
         border-radius: 0px;
+        background-color: black;
     }
 
     body .bgImg-blue {
         border-radius: 0px;
+        margin: 16px;
     }
 
     body .home__bodyContainer__plannings__rdvs {
@@ -115,12 +117,6 @@
     body .home__bodyContainer__plannings__events {
         width: 100%;
         margin: 0px;
-    }
-
-    body .home__bodyContainer__alarmes {
-        width: 100%;
-        margin: 0px;
-        height: auto;
     }
 
     .home__bodyContainer__plannings__rdvs__container li {
@@ -297,4 +293,99 @@
         margin-right: 15px;
         width: auto;
     }
+
+    html body .home__webSites--container {
+        margin-left: 0px;
+    }
+
+    body .meteo {
+        display: none;
+    }
+
+    body .home__bodyContainer__plannings__events {
+        padding: 20px;
+        border-radius: 0px;
+        width: 100%;
+        width: auto;
+        border-radius: 15px;
+        margin: 24px 20px;
+        width: auto;
+    }
+
+    html body .home__bodyContainer__plannings__rdvs {
+        padding: 20px;
+        border-radius: 0px;
+        background-color: rgb(29, 29, 31);
+        height: auto;
+        margin: 24px 20px;
+        width: auto;
+        border-radius: 15px;
+    }
+
+    body .decompte {
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    body .deleteEvent {
+        margin-top: 40px;
+    }
+
+    body .home__bodyContainer__plannings__rdvs__container li {
+        padding: 7px;
+    }
+
+    body .alertContainer {
+        padding: 15px;
+    }
+
+    .alert {
+        border: 1px solid rgba(108, 102, 102, 0.2);
+        border-radius: 3px;
+        padding: 16px;
+        margin: 7px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    body .home__bodyContainer__plannings__rdvs p:first-child {
+        padding-left: 15px;
+    }
+
+    body .home__bodyContainer__alarmes__alerts p:first-child {
+        padding: 15px;
+    }
+
+    body .home__bodyContainer__alarmes__courses p:first-child {
+        padding: 15px;
+    }
+
+    body .home__bodyContainer__alarmes {
+        padding: 10px 5px;
+        border-radius: 0px;
+        margin: 24px 20px;
+        width: auto;
+        border-radius: 15px;
+    }
+
+    body .home__bodyContainer__alarmes__courses {
+        background-color: rgb(29, 29, 31);
+        margin-top: 138px;
+    }
+
+    body .home__bodyContainer__alarmes__alerts {
+        background-color: rgb(29, 29, 31);
+        height: auto;
+        margin: 24px 20px;
+        width: auto;
+        border-radius: 15px;
+    }
+
+    body .home__bodyContainer__plannings {
+        height: auto;
+    }
+
+
 }
