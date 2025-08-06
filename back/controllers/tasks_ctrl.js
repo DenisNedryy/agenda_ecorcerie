@@ -19,7 +19,7 @@ exports.readTasks = async (req, res, next) => {
 
 exports.readCourses = async (req, res, next) => {
     try {
-        const [tasks] = await pool.execute('SELECT * FROM tasks WHERE type = ? ORDER BY _index',["courses"]);
+        const [tasks] = await pool.execute('SELECT * FROM tasks WHERE type = ? ORDER BY _index', ["courses"]);
         if (tasks.length === 0) {
             return res.status(200).json({ courses: [] });
         }
@@ -59,7 +59,7 @@ exports.readOneTask = async (req, res, next) => {
 exports.readTasksByAuth = async (req, res, next) => {
     try {
         const userId = req.auth.userId;
-        const [tasks] = await pool.execute('SELECT * FROM tasks WHERE user_id = ? ORDER BY _index',[userId]);
+        const [tasks] = await pool.execute('SELECT * FROM tasks WHERE user_id = ? ORDER BY _index', [userId]);
         if (tasks.length === 0) {
             return res.status(200).json({ tasks: [] });
         }
@@ -106,15 +106,14 @@ exports.updateTask = async (req, res, next) => {
 
         const [task] = await pool.execute("SELECT * FROM tasks WHERE id = ?", [taskId]);
         if (req.auth.userId !== task[0].user_id) {
-            console.log(console.log(req.auth.userId));
-            console.log(task[0].user_id);
             return res.status(400).json({ msg: "action non authorisée" });
         }
-        const { name, description } = req.body;
+        const { name, description, type } = req.body;
 
         const data = {
             name: name || null,
             description: description || null,
+            type: type || null
         }
 
         const keys = Object.keys(data).filter((key) => data[key] !== null);

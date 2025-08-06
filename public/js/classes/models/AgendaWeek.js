@@ -228,9 +228,9 @@ export class AgendaWeek {
         const type = form.elements['type'].value;
         form.reset();
         const task = {
-            name: name,
+            name: name || null,
             description: description || null,
-            type: type,
+            type: type || null,
             date: date,
             owner_id: userIdSelected
         };
@@ -239,6 +239,9 @@ export class AgendaWeek {
             task.author_id = auth.id;
             task.author_img_url = auth.img_url
         }
+
+        // check if null values
+        if (!task.name) return;
         return task;
     }
 }

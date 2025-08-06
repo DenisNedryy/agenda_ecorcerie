@@ -124,6 +124,7 @@ export class TaskServices {
                 body: JSON.stringify({
                     name: data.name,
                     description: data.description,
+                    type: data.type
                 }),
             });
             const res = await preRes.json();
