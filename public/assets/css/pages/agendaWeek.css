@@ -114,6 +114,7 @@
     width: 25px;
     height: 25px;
     margin-left: 15px;
+    display: none;
 }
 
 .agendaContent__body__right ul {
