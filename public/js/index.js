@@ -36,6 +36,7 @@ import { AgendaPlanning } from "./classes/models/AgendaPlanning.js";
 import { AgendaWeek } from "./classes/models/AgendaWeek.js";
 import { AgendaYear } from "./classes/models/AgendaYear.js";
 import { DailyPlanningModel } from "./classes/models/DailyPlanningModel.js";
+import { GouvernanteModel } from "./classes/models/GouvernanteModel.js";
 
 // views
 import { HomeView } from "./classes/views/HomeView.js";
@@ -44,6 +45,7 @@ import { AgendaView } from "./classes/views/AgendaView.js";
 import { DailyPlanningView } from "./classes/views/DailyPlanningView.js";
 import { RestaurantsView } from "./classes/views/restaurantsView.js";
 import { ProfilView } from "./classes/views/ProfilView.js";
+import { GouvernanteView } from "./classes/views/GouvernanteView.js";
 
 // ctrls
 import { HomeCtrl } from "/public/js/classes/controllers/HomeCtrl.js";
@@ -53,6 +55,7 @@ import { DailyPlanningCtrl } from "./classes/controllers/DailyPlanningCtrl.js";
 import { RestaurantsCtrl } from "./classes/controllers/RestaurantsCtrl.js";
 import { HeaderCtrl } from "./classes/controllers/HeaderCtrl.js";
 import { ProfilCtrl } from "./classes/controllers/ProfilCtrl.js";
+import { GouvernanteCtrl } from "./classes/controllers/GourvernanteCtrl.js";
 
 // eventBinder
 import { HomeEventBinder } from "./classes/eventBinders/homeEventBinder.js";
@@ -64,6 +67,7 @@ import { AgendaPlanningEventBinder } from "./classes/eventBinders/AgendaPlanning
 import { DailyPlanningEventBinder } from "./classes/eventBinders/DailyPlanningEventBinder.js";
 import { HeaderEventBinder } from "./classes/eventBinders/HeaderEventBinder.js";
 import { ProfilEventBinder } from "./classes/eventBinders/ProfilEventBinder.js";
+import { GouvernanteEventBinder } from "./classes/eventBinders/GouveranteEventBinder.js";
 
 const seoManager = new SEOManager();
 const userServices = new UserServices();
@@ -122,13 +126,19 @@ const profilFormView = new ProfilFormView();
 const profilEventBinder = new ProfilEventBinder(profilView);
 const profilCtrl = new ProfilCtrl(profilView, seoManager, profilEventBinder, authServices, miseAJourAuth, profilFormView, birthDaysServices);
 
+const gouvernanteView = new GouvernanteView();
+const gouvernanteEventBinder = new GouvernanteEventBinder(gouvernanteView);
+const gouvernanteModel = new GouvernanteModel();
+const gouvernanteCtrl = new GouvernanteCtrl(gouvernanteView, seoManager, gouvernanteEventBinder, gouvernanteModel);
+
 const routes = {
     "home": homeCtrl,
     "auth": authCtrl,
     "agenda": agendaCtrl,
     "planning": dailyPlanningCtrl,
     "restaurants": restaurantsCtrl,
-    "profil": profilCtrl
+    "profil": profilCtrl,
+    "gouvernante": gouvernanteCtrl
 }
 
 const navHighLighter = new NavHighLighter();

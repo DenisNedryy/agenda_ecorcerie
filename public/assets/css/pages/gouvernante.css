@@ -1,0 +1,37 @@
+.gourvernante {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    margin-top: 15px;
+}
+
+.gourvernante__header {
+    display: flex;
+    list-style-type: none;
+    border: 1px solid black;
+}
+
+.gourvernante__header li {
+    width: calc(100% / 7);
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.gourvernante__fiches {
+    display: flex;
+    flex-direction: column;
+}
+
+.gourvernante__fiches li {
+    display: flex;
+}
+
+.gourvernante__fiches li p {
+    width: calc(100% / 7);
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.checksIn {
+    background-color: wheat;
+}
