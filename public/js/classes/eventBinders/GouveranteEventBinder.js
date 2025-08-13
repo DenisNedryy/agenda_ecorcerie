@@ -19,6 +19,10 @@ export class GouvernanteEventBinder {
     }
 
     async handleClickTask(e) {
+        if (e.target.classList.contains("btn-capture")) {
+            e.preventDefault();
+            this.dllDiv("zoneToDll");
+        }
     }
 
     async handleChangeTask(e) {
@@ -48,8 +52,24 @@ export class GouvernanteEventBinder {
         this.controller.showGourvernante(finalData);
     }
 
-    sortDataByRoom(data){
-        return data.sort((a,b)=>a.roomNum - b.roomNum)
+
+    dllDiv(idDiv) {
+        const div = document.getElementById(`${idDiv}`);
+
+        html2canvas(div).then(canvas => {
+            // Convertit en image
+            const imgData = canvas.toDataURL('image/png');
+
+            // Crée un lien de téléchargement
+            const link = document.createElement('a');
+            link.href = imgData;
+            link.download = 'capture_div.png';
+            link.click();
+        });
+    }
+
+    sortDataByRoom(data) {
+        return data.sort((a, b) => a.roomNum - b.roomNum)
     }
 
     getDate(data) {

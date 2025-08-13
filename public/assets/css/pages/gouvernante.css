@@ -1,20 +1,20 @@
 .gourvernante {
     background-color: white;
     color: black;
-    border: 1px solid black;
     margin-top: 15px;
 }
 
 .gourvernante__header {
     display: flex;
     list-style-type: none;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, .6);
 }
 
 .gourvernante__header li {
     width: calc(100% / 7);
-    border: 1px solid black;
+    border-right: 1px solid rgba(0, 0, 0, .6);
     padding: 5px;
+    background-color: wheat;
 }
 
 .gourvernante__fiches {
@@ -28,10 +28,24 @@
 
 .gourvernante__fiches li p {
     width: calc(100% / 7);
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, .6);
     padding: 5px;
 }
 
 .checksIn {
-    background-color: wheat;
+    background-color: #f2a3a3;
+}
+
+.surPlace {
+    background-color: white;
+}
+
+.btn-capture {
+    margin-top: 15px;
+}
+
+.gourvernante h2 {
+    padding: 10px;
+    background-color: black;
+    color: white;
 }

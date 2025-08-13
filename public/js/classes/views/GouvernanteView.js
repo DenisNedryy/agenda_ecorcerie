@@ -11,8 +11,8 @@ export class GouvernanteView {
               <input type="file" name="planningGouvernante" id="f" accept=".pdf,.xlsx,.xls"/>
             </div>
           </form>
-
-        <div class="gourvernante"></div>
+          <button class="btn btn-capture">Download</button>
+        <div class="gourvernante" id="zoneToDll"></div>
         </div>`;
     }
   }
@@ -25,9 +25,10 @@ export class GouvernanteView {
       const title = document.createElement("h2");
       const date = new Date(data.date);
 
-      title.textContent = date.toLocaleDateString('fr-FR');
-      el.appendChild(title);
+      title.textContent = `Planning Gourvernante - ${date.toLocaleDateString('fr-FR')}`;
+
       const container = document.createElement("div");
+      container.appendChild(title);
       const header = document.createElement("ul");
       header.className = "gourvernante__header";
       header.innerHTML = `
@@ -41,11 +42,11 @@ export class GouvernanteView {
       `;
       container.appendChild(header);
       const fiche = document.createElement("ul");
-      fiche.className="gourvernante__fiches";
+      fiche.className = "gourvernante__fiches";
       const rooms = data.rooms;
       for (let i = 0; i < rooms.length; i++) {
         const li = document.createElement("li");
-        li.className = `${rooms[i].type==="Checks-ins" ? "checksIn" : ""}`
+        li.className = `${rooms[i].type === "Checks-ins" ? "checksIn" : "surPlace"}`
         li.innerHTML = `
         <p>${rooms[i].type}</p>
         <p>${rooms[i].roomNum}</p>
