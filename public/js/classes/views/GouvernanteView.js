@@ -25,7 +25,7 @@ export class GouvernanteView {
       const title = document.createElement("h2");
       const date = new Date(data.date);
 
-      title.textContent = `Planning Gourvernante - ${date.toLocaleDateString('fr-FR')}`;
+      title.innerHTML = `<span class="db-red">Planning</span> <span class="db-orange">Gourvernante</span> - ${date.toLocaleDateString('fr-FR')}`;
 
       const container = document.createElement("div");
       container.appendChild(title);
