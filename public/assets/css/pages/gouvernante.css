@@ -35,12 +35,14 @@
 }
 
 .checksIn {
-    background-color: white;
+  background-color: #4aa9e14a;
 }
 
 .surPlace {
     background-color: rgba(254, 207, 65, 0.55);
-
+}
+.virgin{
+    background-color:white;
 }
 
 .btn-capture {

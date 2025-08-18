@@ -47,7 +47,7 @@ export class GouvernanteView {
       for (let i = 0; i < rooms.length; i++) {
         if(rooms[i].roomNum===13) continue;
         const li = document.createElement("li");
-        li.className = `${rooms[i].type === "Checks-ins" ? "checksIn" : "surPlace"}`
+        li.className = `${rooms[i].type===""?  "virgin" : (rooms[i].type === "Checks-ins" ? "checksIn" : "surPlace")}`
         li.innerHTML = `
         <p>${rooms[i].type}</p>
         <p>${rooms[i].roomNum===15 ? "Appart" : rooms[i].roomNum===14? '14 / 1-bis' : rooms[i].roomNum}</p>
