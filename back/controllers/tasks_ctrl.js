@@ -30,7 +30,6 @@ exports.readCourses = async (req, res, next) => {
 };
 
 exports.readAlerts = async (req, res, next) => {
-    console.log("ctrl alerts")
     try {
         const type = "alert";
         const [tasks] = await pool.execute('SELECT * FROM tasks WHERE type = ? ORDER BY _index', [type]);
@@ -86,11 +85,8 @@ exports.createTask = async (req, res, next) => {
         data.user_id = owner_id;
 
         const keys = Object.keys(data).filter((key) => data[key] !== null);
-        console.log(keys);
         const values = keys.map((key) => data[key]);
-        console.log(values);
         const placeholder = keys.map(() => "?").join(", ");
-        console.log(placeholder);
 
         await pool.execute(`INSERT INTO tasks (${keys.join(", ")}) VALUES(${placeholder})`, values);
         return res.status(200).json({ msg: "task created" })

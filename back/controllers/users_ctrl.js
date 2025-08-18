@@ -16,10 +16,8 @@ exports.getUsers = async (req, res, next) => {
 }
 
 exports.getOneUser = async (req, res, next) => {
-    console.log("ctrl getoneUser");
     try {
         const id = req.params.id;
-        console.log(id);
         const [users] = await pool.execute(`SELECT id, name, img_url, role FROM users WHERE id = ?`, [id]);
         if (users.length === 0) { return res.status(200).json({ users: [] }) };
         return res.status(200).json({ user: users[0] });
@@ -42,7 +40,6 @@ exports.getMyPfofil = async (req, res, next) => {
 
 
 exports.inscription = async (req, res, next) => {
-    console.log("ctrl_inscription");
     try {
         const magicWord = req.body.magicWord;
         if (!magicWord || magicWord !== process.env.MAGIC_WORD) {
@@ -80,9 +77,7 @@ exports.inscription = async (req, res, next) => {
 };
 
 exports.connection = async (req, res, next) => {
-    console.log("connection CTRL");
     const { name, password } = req.body;
-    console.log(req.body)
     // Vérification des champs
     if (!name || !password) return res.status(400).json({ msg: "All fields are required" });
 
@@ -161,8 +156,6 @@ exports.disconnect = async (req, res, next) => {
 
 exports.updateUser = async (req, res, next) => {
     try {
-        console.log("ctrl updateUser");
-        console.log(req.body);
         const authId = req.auth.userId;
         const { name, password, role } = req.body;
 

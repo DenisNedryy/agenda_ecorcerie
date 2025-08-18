@@ -44,13 +44,26 @@ export class GouvernanteEventBinder {
         const reduceData = this.reduceDataByRoom(jsonData);
 
         const sortData = this.sortDataByRoom(reduceData);
+        const combleReste = this.combleLeReste(sortData);
 
 
         const finalData = datePlanning;
-        finalData.rooms = sortData;
+        finalData.rooms = combleReste;
 
         this.controller.showGourvernante(finalData);
     }
+
+    combleLeReste(data) {
+        let res = [];
+        for (let i = 1; i < 16; i++) {
+            const found = data.find(d => Number(d.roomNum) === i);
+            res.push(found || {
+                type: "", roomNum: i, clientName: "", clientPhone: "", nbClient: "", source: "", extras: ""
+            });
+        }
+        return res;
+    }
+
 
 
     dllDiv(idDiv) {
