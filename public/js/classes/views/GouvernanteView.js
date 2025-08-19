@@ -11,7 +11,9 @@ export class GouvernanteView {
               <input type="file" name="planningGouvernante" id="f" accept=".pdf,.xlsx,.xls"/>
             </div>
           </form>
-          <button class="btn btn-capture">Download</button>
+ 
+            <button class="btn btn-capture">DLL planning</button>
+            <button class="btn btn-conso">Dll Conso</button>
         <div class="gourvernante" id="zoneToDll"></div>
         </div>`;
     }
@@ -45,12 +47,12 @@ export class GouvernanteView {
       fiche.className = "gourvernante__fiches";
       const rooms = data.rooms;
       for (let i = 0; i < rooms.length; i++) {
-        if(rooms[i].roomNum===13) continue;
+        if (rooms[i].roomNum === 13) continue;
         const li = document.createElement("li");
-        li.className = `${rooms[i].type===""?  "virgin" : (rooms[i].type === "Checks-ins" ? "checksIn" : "surPlace")}`
+        li.className = `${rooms[i].type === "" ? "virgin" : (rooms[i].type === "Checks-ins" ? "checksIn" : "surPlace")}`
         li.innerHTML = `
         <p>${rooms[i].type}</p>
-        <p>${rooms[i].roomNum===15 ? "Appart" : rooms[i].roomNum===14? '14 / 1-bis' : rooms[i].roomNum}</p>
+        <p>${rooms[i].roomNum === 15 ? "Appart" : rooms[i].roomNum === 14 ? '14 / 1-bis' : rooms[i].roomNum}</p>
         <p>${rooms[i].clientName}</p>
         <p>${rooms[i].clientPhone}</p>
         <p>${rooms[i].nbClient}</p>
@@ -63,4 +65,40 @@ export class GouvernanteView {
       el.appendChild(container);
     }
   }
+
+  renderConsomations() {
+    const el = document.querySelector(".gourvernante");
+    if (el) {
+      el.innerHTML = "";
+
+      const container = document.createElement("ul");
+      container.className = "consoContainer";
+      for (let i = 0; i < 15; i++) {
+        const li = document.createElement("li");
+        const room = document.createElement("p");
+        if (i < 12) {
+          room.textContent = i + 1;
+        }
+        if (i === 12) {
+          continue;
+        }
+        if (i === 13) {
+          room.textContent = `14`;
+        }
+        if (i === 14) {
+          room.textContent = "App";
+        }
+        const conso = document.createElement("p");
+        li.appendChild(room);
+        li.appendChild(conso);
+        container.appendChild(li);
+
+      }
+      el.appendChild(container);
+    }
+  }
+
+
+
 }
+

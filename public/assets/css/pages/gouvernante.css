@@ -35,14 +35,15 @@
 }
 
 .checksIn {
-  background-color: #4aa9e14a;
+    background-color: #4aa9e14a;
 }
 
 .surPlace {
     background-color: rgba(254, 207, 65, 0.55);
 }
-.virgin{
-    background-color:white;
+
+.virgin {
+    background-color: white;
 }
 
 .btn-capture {
@@ -64,4 +65,27 @@
 .db-orange {
     color: rgb(255, 151, 34);
     font-size: 30px;
+}
+
+.consoContainer {
+    list-style-type: none;
+}
+
+.consoContainer li {
+    border: 1px solid black;
+    display: flex;
+}
+
+.consoContainer li p:first-child {
+    border-right: 1px solid black;
+    width: fit-content;
+    padding: 25px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.consoContainer li p:nth-child(2) {
+    padding: 25px;
 }

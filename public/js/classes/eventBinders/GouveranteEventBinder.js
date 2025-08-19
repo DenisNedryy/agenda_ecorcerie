@@ -23,6 +23,11 @@ export class GouvernanteEventBinder {
             e.preventDefault();
             this.dllDiv("zoneToDll");
         }
+        else if (e.target.classList.contains("btn-conso")) {
+            e.preventDefault();
+            this.view.renderConsomations();
+            this.dllDiv("zoneToDll");
+        }
     }
 
     async handleChangeTask(e) {
