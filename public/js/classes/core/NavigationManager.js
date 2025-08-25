@@ -31,7 +31,7 @@ export class NavigationManager {
         }
     }
 
-    async navigate(pageKey, push = true) {
+    async navigate(pageKey, push = true) { 
         const pageKeyWithoutParams = pageKey.split("?")[0];
         const controller = this.routes[pageKeyWithoutParams];
 
@@ -45,7 +45,7 @@ export class NavigationManager {
 
         if (push) {
             const url = `/${pageKey.replace('_', '/')}`;
-            history.pushState({ page: pageKey }, '', url);
+            history.pushState({ page: pageKey }, '', url); // ajouter une nouvelle entrée dans l’historique du navigateur
         }
 
         controller.show();

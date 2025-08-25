@@ -34,6 +34,7 @@ export class GouvernanteView {
       const header = document.createElement("ul");
       header.className = "gourvernante__header";
       header.innerHTML = `
+      <li>Check</li>
       <li>Type</li>
       <li>N°</li>
       <li>name</li>
@@ -51,8 +52,9 @@ export class GouvernanteView {
         const li = document.createElement("li");
         li.className = `${rooms[i].type === "" ? "virgin" : (rooms[i].type === "Checks-ins" ? "checksIn" : "surPlace")}`
         li.innerHTML = `
+        <p class="check"></p>
         <p>${rooms[i].type}</p>
-        <p>${rooms[i].roomNum === 15 ? "Appart" : rooms[i].roomNum === 14 ? '14 / 1-bis' : rooms[i].roomNum}</p>
+        <p>${rooms[i].roomNum === 15 ? "Appart" : rooms[i].roomNum===16? "Studio" :  rooms[i].roomNum === 14 ? '14 / 1-bis' : rooms[i].roomNum}</p>
         <p>${rooms[i].clientName}</p>
         <p>${rooms[i].clientPhone}</p>
         <p>${rooms[i].nbClient}</p>

@@ -67,6 +67,15 @@
     font-size: 30px;
 }
 
+.gourvernante__header li:first-child {
+    width: 60px;
+}
+
+.gourvernante__fiches p:first-child {
+    width: 60px;
+    background-color:white;
+}
+
 .consoContainer {
     list-style-type: none;
 }
