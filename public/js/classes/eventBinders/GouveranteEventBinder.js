@@ -60,7 +60,8 @@ export class GouvernanteEventBinder {
 
     combleLeReste(data) {
         let res = [];
-        for (let i = 1; i < 17; i++) {
+        for (let i = 1; i < 18; i++) {
+            if(i===16)continue;
             const found = data.find(d => Number(d.roomNum) === i);
             res.push(found || {
                 type: "", roomNum: i, clientName: "", clientPhone: "", nbClient: "", source: "", extras: ""
