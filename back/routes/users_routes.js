@@ -10,6 +10,7 @@ router.get("/", ctrl_auth.getUsers);
 router.get("/getOneUser/:id", ctrl_auth.getOneUser);
 router.get("/myProfil", auth, ctrl_auth.getMyPfofil);
 router.get("/isConnected", auth, ctrl_auth.isConnected);
+router.post('/clientsInfo', ctrl_auth.sendSms);
 router.post("/inscription", upload.none(), ctrl_auth.inscription);
 router.post("/connection", upload.none(), ctrl_auth.connection); 
 router.post("/logout", ctrl_auth.disconnect);

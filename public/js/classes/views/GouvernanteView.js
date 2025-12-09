@@ -4,7 +4,7 @@ export class GouvernanteView {
     if (el) {
       el.innerHTML = `
         <div class="box">
-          <p>Gouvernante</p>
+          <p>Gouvernante</p> 
           <form>
             <div>
               <label>Insert a planning</label>
@@ -12,6 +12,7 @@ export class GouvernanteView {
             </div>
           </form>
  
+            <button class="btn btn-sendSms">Send SMS</button>
             <button class="btn btn-capture">DLL planning</button>
             <button class="btn btn-conso">Dll Conso</button>
         <div class="gourvernante" id="zoneToDll"></div>

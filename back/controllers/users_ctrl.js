@@ -212,3 +212,54 @@ exports.updatePassword = async (req, res, next) => {
     }
 };
 
+
+// ⚙️ À mettre dans ton .env
+const SMS_GATEWAY_URL = process.env.SMS_GATEWAY_URL || "http://192.168.1.42:8080/message";
+const SMS_GATEWAY_USER = process.env.SMS_GATEWAY_USER || "sms";
+const SMS_GATEWAY_PASS = process.env.SMS_GATEWAY_PASS || "-49PU_Ln";
+
+exports.sendSms = async (req, res) => {
+    try {
+        const { clientName, clientPhone } = req.body;
+
+        if (!clientName || !clientPhone) {
+            return res.status(400).json({ msg: "All fields are required" });
+        }
+
+        const text = `Bonjour Monsieur/Madame ${clientName},\n
+Je suis le réceptionniste de l’hôtel Le Domaine de l’Écorcerie.\n
+La réception ferme à 22h.\n
+Si vous prévoyez d’arriver plus tard, merci de me le signaler afin que je puisse faire le nécessaire pour votre arrivée.`;
+
+        const payload = {
+            textMessage: { text },
+            phoneNumbers: [Number(clientPhone)],
+        };
+
+        const authBase64 = Buffer.from(`${SMS_GATEWAY_USER}:${SMS_GATEWAY_PASS}`).toString("base64");
+
+        const response = await fetch(SMS_GATEWAY_URL, {
+            method: "POST",
+            headers: {
+                "Authorization": `Basic ${authBase64}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            return res.status(response.status).json({ error: data });
+        }
+
+        return res.status(200).json({
+            msg: "SMS envoyé",
+            gatewayResponse: data,
+        });
+
+    } catch (err) {
+        console.error("Erreur en envoyant le SMS :", err);
+        return res.status(500).json({ err: err.message });
+    }
+};

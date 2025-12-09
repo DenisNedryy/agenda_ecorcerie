@@ -1,10 +1,12 @@
 import * as pdfjsLib from "https://cdn.jsdelivr.net/npm/pdfjs-dist@4/build/pdf.mjs";
+import { HOST } from "../../host.js";
 
 export class GouvernanteEventBinder {
     constructor(view) {
         this.view = view;
         this.boundHandleClickTask = this.handleClickTask.bind(this);
         this.boundChangeTask = this.handleChangeTask.bind(this);
+        this.clientData = null;
     }
 
     setController(controller) {
@@ -28,6 +30,14 @@ export class GouvernanteEventBinder {
             this.view.renderConsomations();
             this.dllDiv("zoneToDll");
         }
+
+        const btnSms = e.target.closest('.btn-sendSms');
+        if (btnSms && this.clientData !== null) {
+            for (let i = 0; i < this.clientData.length; i++) {
+                await this.sendSms(this.clientData[i]);
+            }
+
+        }
     }
 
     async handleChangeTask(e) {
@@ -49,6 +59,7 @@ export class GouvernanteEventBinder {
         const reduceData = this.reduceDataByRoom(jsonData);
 
         const sortData = this.sortDataByRoom(reduceData);
+        this.clientData = sortData;
         const combleReste = this.combleLeReste(sortData);
 
 
@@ -61,13 +72,41 @@ export class GouvernanteEventBinder {
     combleLeReste(data) {
         let res = [];
         for (let i = 1; i < 18; i++) {
-            if(i===16)continue;
+            if (i === 16) continue;
             const found = data.find(d => Number(d.roomNum) === i);
             res.push(found || {
                 type: "", roomNum: i, clientName: "", clientPhone: "", nbClient: "", source: "", extras: ""
             });
         }
         return res;
+    }
+
+    async sendSms(data) {
+        console.log("fetching data");
+        const myData = {clientName: "quentin Redont", clientPhone: "0642321311"}
+        try {
+            const preRes = await fetch(`${HOST}/api/auth/clientsInfo`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    clientName: myData.clientName,
+                    clientPhone: myData.clientPhone,
+                }),
+            });
+            const res = await preRes.json();
+            console.log(res);
+            return {
+                status: preRes.status,
+                ok: preRes.ok,
+                data: res
+            };
+        } catch (err) {
+            console.error(err);
+        }
+    
     }
 
 
