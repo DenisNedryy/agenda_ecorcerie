@@ -221,10 +221,12 @@ const SMS_GATEWAY_PASS = process.env.SMS_GATEWAY_PASS || "-49PU_Ln";
 exports.sendSms = async (req, res) => {
     try {
         const { clientName, clientPhone, roomNum } = req.body;
-
         if (!clientName || !clientPhone || !roomNum) {
             return res.status(400).json({ msg: "All fields are required" });
         }
+
+        const cleanSpace = clientPhone.trim().replace(/\s+/g, '');
+        const phoneClean = cleanSpace.startsWith('+') ? cleanSpace : "+" + cleanSpace;
 
         const wifi = [
             { "chambre": "1", "reseau": "L'Ecorcerie", "motDePasse": "97860-35852" },
@@ -244,7 +246,7 @@ exports.sendSms = async (req, res) => {
             { "chambre": "Studio", "reseau": "L'Ecorcerie", "motDePasse": "16007-31405" }
         ];
 
-        const wifiCode = wifi.find((obj)=>obj.chambre==roomNum);
+        const wifiCode = wifi.find((obj) => obj.chambre == roomNum);
 
         const text = `Mme/Mr ${clientName}, bonjour,
 
@@ -269,7 +271,7 @@ Thibault Boutaud.
 `;
         const payload = {
             textMessage: { text },
-            phoneNumbers: [clientPhone],
+            phoneNumbers: [phoneClean],
         };
 
         const authBase64 = Buffer.from(`${SMS_GATEWAY_USER}:${SMS_GATEWAY_PASS}`).toString("base64");
