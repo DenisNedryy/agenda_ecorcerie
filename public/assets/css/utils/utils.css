@@ -29,3 +29,8 @@
 .bold {
     font-weight: 600;
 }
+
+.toDelete:hover{
+    color:green;
+        cursor:pointer;
+}

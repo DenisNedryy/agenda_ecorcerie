@@ -254,7 +254,7 @@ Si vous prévoyez d’arriver plus tard, merci de me le signaler afin que je pui
         }
 
         return res.status(200).json({
-            msg: "SMS envoyé",
+            msg: `SMS send to ${clientName}`,
             gatewayResponse: data,
         });
 

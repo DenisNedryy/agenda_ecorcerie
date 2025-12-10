@@ -31,16 +31,30 @@ export class GouvernanteEventBinder {
             this.dllDiv("zoneToDll");
         }
 
-        const btnSms = e.target.closest('.btn-sendSms');
-        if (btnSms && this.clientData !== null) {
+        const btnSms = e.target.closest('.sms-all');
+        if (btnSms) {
+            if (this.clientData === null) {
+                alert('Clients data is required');
+                return;
+            }
             for (let i = 0; i < this.clientData.length; i++) {
                 await this.sendSms(this.clientData[i]);
             }
+        }
 
+        const btnSmsSolo = e.target.closest('.sms-solo');
+        if(btnSmsSolo){
+            const name = btnSmsSolo.getAttribute('data-name');
+            const phone = btnSmsSolo.getAttribute('data-phone');
+
+            const data = { clientName: name, clientPhone: phone };
+            if(data){
+                await this.sendSms(data);
+            }
         }
     }
 
-    async handleChangeTask(e) {
+    async handleChangeTask(e) { 
         if (e.target.name !== "planningGouvernante") return;
 
         pdfjsLib.GlobalWorkerOptions.workerSrc =
@@ -82,8 +96,8 @@ export class GouvernanteEventBinder {
     }
 
     async sendSms(data) {
-        console.log("fetching data");
-        const myData = {clientName: "quentin Redont", clientPhone: "+33650474178"}
+        console.log(data);
+        const myData = { clientName: `thibault Boutaud`, clientPhone: "+33650474178" }
         try {
             const preRes = await fetch(`${HOST}/api/auth/clientsInfo`, {
                 method: "POST",
@@ -98,6 +112,7 @@ export class GouvernanteEventBinder {
             });
             const res = await preRes.json();
             console.log(res);
+            alert(res.msg);
             return {
                 status: preRes.status,
                 ok: preRes.ok,
@@ -106,13 +121,20 @@ export class GouvernanteEventBinder {
         } catch (err) {
             console.error(err);
         }
-    
+
     }
 
 
 
     dllDiv(idDiv) {
         const div = document.getElementById(`${idDiv}`);
+
+        const elToDelete = document.querySelectorAll('.toDelete');
+        if(elToDelete){
+            elToDelete.forEach((el)=>{
+                el.remove();
+            })
+        }
 
         html2canvas(div).then(canvas => {
             // Convertit en image

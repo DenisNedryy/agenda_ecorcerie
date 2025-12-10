@@ -12,7 +12,6 @@ export class GouvernanteView {
             </div>
           </form>
  
-            <button class="btn btn-sendSms">Send SMS</button>
             <button class="btn btn-capture">DLL planning</button>
             <button class="btn btn-conso">Dll Conso</button>
         <div class="gourvernante" id="zoneToDll"></div>
@@ -35,6 +34,7 @@ export class GouvernanteView {
       const header = document.createElement("ul");
       header.className = "gourvernante__header";
       header.innerHTML = `
+      <li class="toDelete sms-all">SMS</li>
       <li>Check</li>
       <li>Type</li>
       <li>N°</li>
@@ -53,6 +53,7 @@ export class GouvernanteView {
         const li = document.createElement("li");
         li.className = `${rooms[i].type === "" ? "virgin" : (rooms[i].type === "Checks-ins" ? "checksIn" : "surPlace")}`
         li.innerHTML = `
+          <p class="toDelete sms-solo" data-name="${rooms[i].clientName}" data-phone="${rooms[i].clientPhone}" >${rooms[i].clientName? "SMS" : ""}</p>
         <p class="check"></p>
         <p>${rooms[i].type}</p>
         <p>${rooms[i].roomNum === 15 ? "Appart" : rooms[i].roomNum===17? "Studio" :  rooms[i].roomNum === 14 ? '14 / 1-bis' : rooms[i].roomNum}</p>
