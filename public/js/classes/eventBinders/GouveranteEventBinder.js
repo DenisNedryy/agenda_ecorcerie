@@ -37,6 +37,7 @@ export class GouvernanteEventBinder {
                 alert('Clients data is required');
                 return;
             }
+
             for (let i = 0; i < this.clientData.length; i++) {
                 await this.sendSms(this.clientData[i]);
             }
@@ -96,8 +97,7 @@ export class GouvernanteEventBinder {
     }
 
     async sendSms(data) {
-        console.log(data);
-        const myData = { clientName: `thibault Boutaud`, clientPhone: "+33650474178" }
+
         try {
             const preRes = await fetch(`${HOST}/api/auth/clientsInfo`, {
                 method: "POST",
@@ -106,8 +106,8 @@ export class GouvernanteEventBinder {
                 },
                 credentials: "include",
                 body: JSON.stringify({
-                    clientName: myData.clientName,
-                    clientPhone: myData.clientPhone,
+                    clientName: data.clientName,
+                    clientPhone: data.clientPhone,
                 }),
             });
             const res = await preRes.json();
