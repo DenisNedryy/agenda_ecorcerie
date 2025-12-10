@@ -95,6 +95,7 @@
     "negotiator": "^1.0.0",
     "node-addon-api": "^8.4.0",
     "node-cron": "^4.2.1",
+    "node-fetch": "^3.3.2",
     "node-gyp-build": "^4.8.4",
     "nodemon": "^3.1.10",
     "normalize-path": "^3.0.0",

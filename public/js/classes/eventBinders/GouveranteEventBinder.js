@@ -83,7 +83,7 @@ export class GouvernanteEventBinder {
 
     async sendSms(data) {
         console.log("fetching data");
-        const myData = {clientName: "quentin Redont", clientPhone: "0642321311"}
+        const myData = {clientName: "quentin Redont", clientPhone: "+33650474178"}
         try {
             const preRes = await fetch(`${HOST}/api/auth/clientsInfo`, {
                 method: "POST",

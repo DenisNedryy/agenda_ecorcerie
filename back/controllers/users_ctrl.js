@@ -214,7 +214,7 @@ exports.updatePassword = async (req, res, next) => {
 
 
 // ⚙️ À mettre dans ton .env
-const SMS_GATEWAY_URL = process.env.SMS_GATEWAY_URL || "http://192.168.1.42:8080/message";
+const SMS_GATEWAY_URL = process.env.SMS_GATEWAY_URL || "http://192.168.1.148:8080/message";
 const SMS_GATEWAY_USER = process.env.SMS_GATEWAY_USER || "sms";
 const SMS_GATEWAY_PASS = process.env.SMS_GATEWAY_PASS || "-49PU_Ln";
 
@@ -233,7 +233,7 @@ Si vous prévoyez d’arriver plus tard, merci de me le signaler afin que je pui
 
         const payload = {
             textMessage: { text },
-            phoneNumbers: [Number(clientPhone)],
+            phoneNumbers: [clientPhone],
         };
 
         const authBase64 = Buffer.from(`${SMS_GATEWAY_USER}:${SMS_GATEWAY_PASS}`).toString("base64");
@@ -258,8 +258,17 @@ Si vous prévoyez d’arriver plus tard, merci de me le signaler afin que je pui
             gatewayResponse: data,
         });
 
-    } catch (err) {
-        console.error("Erreur en envoyant le SMS :", err);
-        return res.status(500).json({ err: err.message });
-    }
+} catch (err) {
+    console.error("Erreur en envoyant le SMS :");
+    console.error("message:", err.message);
+    console.error("name:", err.name);
+    console.error("stack:", err.stack);
+    console.error("cause:", err.cause);
+
+    return res.status(500).json({
+        msg: "Erreur interne lors de l'envoi du SMS",
+        error: err.message,
+    });
+}
+
 };
