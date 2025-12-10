@@ -220,17 +220,53 @@ const SMS_GATEWAY_PASS = process.env.SMS_GATEWAY_PASS || "-49PU_Ln";
 
 exports.sendSms = async (req, res) => {
     try {
-        const { clientName, clientPhone } = req.body;
+        const { clientName, clientPhone, roomNum } = req.body;
 
-        if (!clientName || !clientPhone) {
+        if (!clientName || !clientPhone || !roomNum) {
             return res.status(400).json({ msg: "All fields are required" });
         }
 
-        const text = `Bonjour Monsieur/Madame ${clientName},\n
-Je suis le réceptionniste de l’hôtel Le Domaine de l’Écorcerie.\n
-La réception ferme à 22h.\n
-Si vous prévoyez d’arriver plus tard, merci de me le signaler afin que je puisse faire le nécessaire pour votre arrivée.`;
+        const wifi = [
+            { "chambre": "1", "reseau": "L'Ecorcerie", "motDePasse": "97860-35852" },
+            { "chambre": "1 Bis", "reseau": "L'Ecorcerie", "motDePasse": "97860-35852" },
+            { "chambre": "2", "reseau": "L'Ecorcerie", "motDePasse": "85712-67470" },
+            { "chambre": "3", "reseau": "L'Ecorcerie", "motDePasse": "14262-38352" },
+            { "chambre": "4", "reseau": "L'Ecorcerie", "motDePasse": "64721-09002" },
+            { "chambre": "5", "reseau": "L'Ecorcerie", "motDePasse": "26718-69269" },
+            { "chambre": "6", "reseau": "L'Ecorcerie", "motDePasse": "09565-02544" },
+            { "chambre": "7", "reseau": "L'Ecorcerie", "motDePasse": "01394-48362" },
+            { "chambre": "8", "reseau": "L'Ecorcerie", "motDePasse": "07684-66348" },
+            { "chambre": "9", "reseau": "L'Ecorcerie", "motDePasse": "74323-27749" },
+            { "chambre": "10", "reseau": "L'Ecorcerie", "motDePasse": "24908-26361" },
+            { "chambre": "11", "reseau": "L'Ecorcerie", "motDePasse": "68728-64594" },
+            { "chambre": "12", "reseau": "L'Ecorcerie", "motDePasse": "88953-31424" },
+            { "chambre": "Appart", "reseau": "L'Ecorcerie", "motDePasse": "16007-31405" },
+            { "chambre": "Studio", "reseau": "L'Ecorcerie", "motDePasse": "16007-31405" }
+        ];
 
+        const wifiCode = wifi.find((obj)=>obj.chambre==roomNum);
+
+        const text = `Mme/Mr ${clientName}, bonjour,
+
+Je suis le réceptionniste de l’hôtel *Le Domaine de l’Écorcerie*.
+La réception ferme à 21h.  
+Si vous prévoyez d’arriver plus tard, merci de me le signaler afin que je puisse faire le nécessaire pour votre arrivée.
+
+Le code de la porte est : 7510.  
+Votre numéro de chambre est : ${roomNum}.  
+Nom-wifi: ${wifiCode.reseau}
+mdp-wifi: ${wifiCode.motDePasse}
+
+L'accès au bar reste ouvert.  
+Il vous suffit de noter dans le carnet la date, le numéro de votre chambre (${roomNum}) et la boisson choisie.
+
+Si vous choisissez d'arriver après la fermeture, une enveloppe à votre nom sera déposée.
+
+Excellente fin de journée.
+
+Cordialement,  
+Thibault Boutaud.
+`;
         const payload = {
             textMessage: { text },
             phoneNumbers: [clientPhone],
@@ -258,17 +294,17 @@ Si vous prévoyez d’arriver plus tard, merci de me le signaler afin que je pui
             gatewayResponse: data,
         });
 
-} catch (err) {
-    console.error("Erreur en envoyant le SMS :");
-    console.error("message:", err.message);
-    console.error("name:", err.name);
-    console.error("stack:", err.stack);
-    console.error("cause:", err.cause);
+    } catch (err) {
+        console.error("Erreur en envoyant le SMS :");
+        console.error("message:", err.message);
+        console.error("name:", err.name);
+        console.error("stack:", err.stack);
+        console.error("cause:", err.cause);
 
-    return res.status(500).json({
-        msg: "Erreur interne lors de l'envoi du SMS",
-        error: err.message,
-    });
-}
+        return res.status(500).json({
+            msg: "Erreur interne lors de l'envoi du SMS",
+            error: err.message,
+        });
+    }
 
 };
