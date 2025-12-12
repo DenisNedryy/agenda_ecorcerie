@@ -214,7 +214,7 @@ exports.updatePassword = async (req, res, next) => {
 
 
 // ⚙️ À mettre dans ton .env
-const SMS_GATEWAY_URL = process.env.SMS_GATEWAY_URL || "http://192.168.1.148:8080/message";
+const SMS_GATEWAY_URL = process.env.SMS_GATEWAY_URL || "http://192.168.10.247:8080/message";
 const SMS_GATEWAY_USER = process.env.SMS_GATEWAY_USER || "sms";
 const SMS_GATEWAY_PASS = process.env.SMS_GATEWAY_PASS || "-49PU_Ln";
 
@@ -227,6 +227,9 @@ exports.sendSms = async (req, res) => {
 
         const cleanSpace = clientPhone.trim().replace(/\s+/g, '');
         const phoneClean = cleanSpace.startsWith('+') ? cleanSpace : "+" + cleanSpace;
+
+        console.log("name: ", clientName);
+        console.log('phone : ', phoneClean);
 
         const wifi = [
             { "chambre": "1", "reseau": "L'Ecorcerie", "motDePasse": "97860-35852" },
@@ -254,19 +257,48 @@ Je suis le réceptionniste de l’hôtel *Le Domaine de l’Écorcerie*.
 La réception ferme à 21h.  
 Si vous prévoyez d’arriver plus tard, merci de me le signaler afin que je puisse faire le nécessaire pour votre arrivée.
 
-Le code de la porte est : 7510.  
+Le code de la porte est : 0205.  
 Votre numéro de chambre est : ${roomNum}.  
-Nom-wifi: ${wifiCode.reseau}
-mdp-wifi: ${wifiCode.motDePasse}
+Nom du Wi-Fi : ${wifiCode.reseau}  
+Mot de passe Wi-Fi : ${wifiCode.motDePasse}
 
-L'accès au bar reste ouvert.  
+Des bocaux fermiers sont à la vente.  
+Le service restauration s’arrête à 19h30.
+
+L’accès au bar reste ouvert.  
 Il vous suffit de noter dans le carnet la date, le numéro de votre chambre (${roomNum}) et la boisson choisie.
 
-Si vous choisissez d'arriver après la fermeture, une enveloppe à votre nom sera déposée.
+Si vous choisissez d’arriver après la fermeture, une enveloppe à votre nom sera déposée.
 
 Excellente fin de journée.
 
 Cordialement,  
+Thibault Boutaud.
+
+....
+
+Dear Mr/Ms ${clientName},
+
+I am the receptionist of *Le Domaine de l’Écorcerie* hotel.
+The reception closes at 9:00 PM.  
+If you plan to arrive later, please let me know so that I can make the necessary arrangements for your arrival.
+
+The door code is: 0205.  
+Your room number is: ${roomNum}.  
+Wi-Fi network name: ${wifiCode.reseau}  
+Wi-Fi password: ${wifiCode.motDePasse}
+
+Farm-style jars are available for purchase.  
+The restaurant service ends at 7:30 PM.
+
+Access to the bar remains open.  
+You simply need to write the date, your room number (${roomNum}), and the chosen drink in the logbook.
+
+If you choose to arrive after closing time, an envelope with your name will be left for you.
+
+Have a wonderful rest of the day.
+
+Kind regards,  
 Thibault Boutaud.
 `;
         const payload = {

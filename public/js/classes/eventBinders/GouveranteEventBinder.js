@@ -44,18 +44,19 @@ export class GouvernanteEventBinder {
         }
 
         const btnSmsSolo = e.target.closest('.sms-solo');
-        if(btnSmsSolo){
+        if (btnSmsSolo) {
             const name = btnSmsSolo.getAttribute('data-name');
             const phone = btnSmsSolo.getAttribute('data-phone');
+            const room = btnSmsSolo.getAttribute('data-room');
 
-            const data = { clientName: name, clientPhone: phone };
-            if(data){
+            const data = { clientName: name, clientPhone: phone, roomNum: room };
+            if (data) {
                 await this.sendSms(data);
             }
         }
     }
 
-    async handleChangeTask(e) { 
+    async handleChangeTask(e) {
         if (e.target.name !== "planningGouvernante") return;
 
         pdfjsLib.GlobalWorkerOptions.workerSrc =
@@ -97,7 +98,6 @@ export class GouvernanteEventBinder {
     }
 
     async sendSms(data) {
-
         try {
             const preRes = await fetch(`${HOST}/api/auth/clientsInfo`, {
                 method: "POST",
@@ -105,9 +105,11 @@ export class GouvernanteEventBinder {
                     'Content-Type': "application/json"
                 },
                 credentials: "include",
+                
                 body: JSON.stringify({
                     clientName: data.clientName,
                     clientPhone: data.clientPhone,
+                    roomNum: data.roomNum
                 }),
             });
             const res = await preRes.json();
@@ -130,8 +132,8 @@ export class GouvernanteEventBinder {
         const div = document.getElementById(`${idDiv}`);
 
         const elToDelete = document.querySelectorAll('.toDelete');
-        if(elToDelete){
-            elToDelete.forEach((el)=>{
+        if (elToDelete) {
+            elToDelete.forEach((el) => {
                 el.remove();
             })
         }
